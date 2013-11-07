@@ -305,7 +305,8 @@ am__libmesh_dbg_la_SOURCES_DIST = src/base/dof_map.C \
 	src/mesh/tecplot_io.C src/mesh/tetgen_io.C src/mesh/ucd_io.C \
 	src/mesh/unstructured_mesh.C src/mesh/unv_io.C \
 	src/mesh/vtk_io.C src/mesh/xdr_head.C src/mesh/xdr_io.C \
-	src/mesh/xdr_mesh.C src/mesh/xdr_mgf.C src/mesh/xdr_soln.C \
+	src/mesh/xdr_io_checkpoint_restore.C src/mesh/xdr_mesh.C \
+	src/mesh/xdr_mgf.C src/mesh/xdr_soln.C \
 	src/numerics/analytic_function.C \
 	src/numerics/coupling_matrix.C src/numerics/dense_matrix.C \
 	src/numerics/dense_matrix_base.C \
@@ -667,6 +668,7 @@ am__objects_1 = src/base/libmesh_dbg_la-dof_map.lo \
 	src/mesh/libmesh_dbg_la-vtk_io.lo \
 	src/mesh/libmesh_dbg_la-xdr_head.lo \
 	src/mesh/libmesh_dbg_la-xdr_io.lo \
+	src/mesh/libmesh_dbg_la-xdr_io_checkpoint_restore.lo \
 	src/mesh/libmesh_dbg_la-xdr_mesh.lo \
 	src/mesh/libmesh_dbg_la-xdr_mgf.lo \
 	src/mesh/libmesh_dbg_la-xdr_soln.lo \
@@ -987,7 +989,8 @@ am__libmesh_devel_la_SOURCES_DIST = src/base/dof_map.C \
 	src/mesh/tecplot_io.C src/mesh/tetgen_io.C src/mesh/ucd_io.C \
 	src/mesh/unstructured_mesh.C src/mesh/unv_io.C \
 	src/mesh/vtk_io.C src/mesh/xdr_head.C src/mesh/xdr_io.C \
-	src/mesh/xdr_mesh.C src/mesh/xdr_mgf.C src/mesh/xdr_soln.C \
+	src/mesh/xdr_io_checkpoint_restore.C src/mesh/xdr_mesh.C \
+	src/mesh/xdr_mgf.C src/mesh/xdr_soln.C \
 	src/numerics/analytic_function.C \
 	src/numerics/coupling_matrix.C src/numerics/dense_matrix.C \
 	src/numerics/dense_matrix_base.C \
@@ -1348,6 +1351,7 @@ am__objects_2 = src/base/libmesh_devel_la-dof_map.lo \
 	src/mesh/libmesh_devel_la-vtk_io.lo \
 	src/mesh/libmesh_devel_la-xdr_head.lo \
 	src/mesh/libmesh_devel_la-xdr_io.lo \
+	src/mesh/libmesh_devel_la-xdr_io_checkpoint_restore.lo \
 	src/mesh/libmesh_devel_la-xdr_mesh.lo \
 	src/mesh/libmesh_devel_la-xdr_mgf.lo \
 	src/mesh/libmesh_devel_la-xdr_soln.lo \
@@ -1665,7 +1669,8 @@ am__libmesh_oprof_la_SOURCES_DIST = src/base/dof_map.C \
 	src/mesh/tecplot_io.C src/mesh/tetgen_io.C src/mesh/ucd_io.C \
 	src/mesh/unstructured_mesh.C src/mesh/unv_io.C \
 	src/mesh/vtk_io.C src/mesh/xdr_head.C src/mesh/xdr_io.C \
-	src/mesh/xdr_mesh.C src/mesh/xdr_mgf.C src/mesh/xdr_soln.C \
+	src/mesh/xdr_io_checkpoint_restore.C src/mesh/xdr_mesh.C \
+	src/mesh/xdr_mgf.C src/mesh/xdr_soln.C \
 	src/numerics/analytic_function.C \
 	src/numerics/coupling_matrix.C src/numerics/dense_matrix.C \
 	src/numerics/dense_matrix_base.C \
@@ -2026,6 +2031,7 @@ am__objects_3 = src/base/libmesh_oprof_la-dof_map.lo \
 	src/mesh/libmesh_oprof_la-vtk_io.lo \
 	src/mesh/libmesh_oprof_la-xdr_head.lo \
 	src/mesh/libmesh_oprof_la-xdr_io.lo \
+	src/mesh/libmesh_oprof_la-xdr_io_checkpoint_restore.lo \
 	src/mesh/libmesh_oprof_la-xdr_mesh.lo \
 	src/mesh/libmesh_oprof_la-xdr_mgf.lo \
 	src/mesh/libmesh_oprof_la-xdr_soln.lo \
@@ -2343,7 +2349,8 @@ am__libmesh_opt_la_SOURCES_DIST = src/base/dof_map.C \
 	src/mesh/tecplot_io.C src/mesh/tetgen_io.C src/mesh/ucd_io.C \
 	src/mesh/unstructured_mesh.C src/mesh/unv_io.C \
 	src/mesh/vtk_io.C src/mesh/xdr_head.C src/mesh/xdr_io.C \
-	src/mesh/xdr_mesh.C src/mesh/xdr_mgf.C src/mesh/xdr_soln.C \
+	src/mesh/xdr_io_checkpoint_restore.C src/mesh/xdr_mesh.C \
+	src/mesh/xdr_mgf.C src/mesh/xdr_soln.C \
 	src/numerics/analytic_function.C \
 	src/numerics/coupling_matrix.C src/numerics/dense_matrix.C \
 	src/numerics/dense_matrix_base.C \
@@ -2704,6 +2711,7 @@ am__objects_4 = src/base/libmesh_opt_la-dof_map.lo \
 	src/mesh/libmesh_opt_la-vtk_io.lo \
 	src/mesh/libmesh_opt_la-xdr_head.lo \
 	src/mesh/libmesh_opt_la-xdr_io.lo \
+	src/mesh/libmesh_opt_la-xdr_io_checkpoint_restore.lo \
 	src/mesh/libmesh_opt_la-xdr_mesh.lo \
 	src/mesh/libmesh_opt_la-xdr_mgf.lo \
 	src/mesh/libmesh_opt_la-xdr_soln.lo \
@@ -3020,7 +3028,8 @@ am__libmesh_prof_la_SOURCES_DIST = src/base/dof_map.C \
 	src/mesh/tecplot_io.C src/mesh/tetgen_io.C src/mesh/ucd_io.C \
 	src/mesh/unstructured_mesh.C src/mesh/unv_io.C \
 	src/mesh/vtk_io.C src/mesh/xdr_head.C src/mesh/xdr_io.C \
-	src/mesh/xdr_mesh.C src/mesh/xdr_mgf.C src/mesh/xdr_soln.C \
+	src/mesh/xdr_io_checkpoint_restore.C src/mesh/xdr_mesh.C \
+	src/mesh/xdr_mgf.C src/mesh/xdr_soln.C \
 	src/numerics/analytic_function.C \
 	src/numerics/coupling_matrix.C src/numerics/dense_matrix.C \
 	src/numerics/dense_matrix_base.C \
@@ -3381,6 +3390,7 @@ am__objects_5 = src/base/libmesh_prof_la-dof_map.lo \
 	src/mesh/libmesh_prof_la-vtk_io.lo \
 	src/mesh/libmesh_prof_la-xdr_head.lo \
 	src/mesh/libmesh_prof_la-xdr_io.lo \
+	src/mesh/libmesh_prof_la-xdr_io_checkpoint_restore.lo \
 	src/mesh/libmesh_prof_la-xdr_mesh.lo \
 	src/mesh/libmesh_prof_la-xdr_mgf.lo \
 	src/mesh/libmesh_prof_la-xdr_soln.lo \
@@ -4593,6 +4603,7 @@ libmesh_SOURCES = \
         src/mesh/vtk_io.C \
         src/mesh/xdr_head.C \
         src/mesh/xdr_io.C \
+        src/mesh/xdr_io_checkpoint_restore.C \
         src/mesh/xdr_mesh.C \
         src/mesh/xdr_mgf.C \
         src/mesh/xdr_soln.C \
@@ -5567,6 +5578,8 @@ src/mesh/libmesh_dbg_la-xdr_head.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_dbg_la-xdr_io.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
+src/mesh/libmesh_dbg_la-xdr_io_checkpoint_restore.lo:  \
+	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_dbg_la-xdr_mesh.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_dbg_la-xdr_mgf.lo: src/mesh/$(am__dirstamp) \
@@ -6601,6 +6614,8 @@ src/mesh/libmesh_devel_la-xdr_head.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_devel_la-xdr_io.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
+src/mesh/libmesh_devel_la-xdr_io_checkpoint_restore.lo:  \
+	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_devel_la-xdr_mesh.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_devel_la-xdr_mgf.lo: src/mesh/$(am__dirstamp) \
@@ -7578,6 +7593,8 @@ src/mesh/libmesh_oprof_la-xdr_head.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_oprof_la-xdr_io.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
+src/mesh/libmesh_oprof_la-xdr_io_checkpoint_restore.lo:  \
+	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_oprof_la-xdr_mesh.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_oprof_la-xdr_mgf.lo: src/mesh/$(am__dirstamp) \
@@ -8555,6 +8572,8 @@ src/mesh/libmesh_opt_la-xdr_head.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_opt_la-xdr_io.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
+src/mesh/libmesh_opt_la-xdr_io_checkpoint_restore.lo:  \
+	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_opt_la-xdr_mesh.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_opt_la-xdr_mgf.lo: src/mesh/$(am__dirstamp) \
@@ -9529,6 +9548,8 @@ src/mesh/libmesh_prof_la-xdr_head.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_prof_la-xdr_io.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
+src/mesh/libmesh_prof_la-xdr_io_checkpoint_restore.lo:  \
+	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_prof_la-xdr_mesh.lo: src/mesh/$(am__dirstamp) \
 	src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_prof_la-xdr_mgf.lo: src/mesh/$(am__dirstamp) \
@@ -11312,6 +11333,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-vtk_io.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-xdr_head.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-xdr_io.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-xdr_io_checkpoint_restore.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-xdr_mesh.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-xdr_mgf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-xdr_soln.Plo@am__quote@
@@ -11371,6 +11393,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-vtk_io.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-xdr_head.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-xdr_io.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-xdr_io_checkpoint_restore.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-xdr_mesh.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-xdr_mgf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-xdr_soln.Plo@am__quote@
@@ -11430,6 +11453,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-vtk_io.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-xdr_head.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-xdr_io.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-xdr_io_checkpoint_restore.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-xdr_mesh.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-xdr_mgf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-xdr_soln.Plo@am__quote@
@@ -11489,6 +11513,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-vtk_io.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-xdr_head.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-xdr_io.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-xdr_io_checkpoint_restore.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-xdr_mesh.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-xdr_mgf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-xdr_soln.Plo@am__quote@
@@ -11548,6 +11573,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-vtk_io.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-xdr_head.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-xdr_io.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-xdr_io_checkpoint_restore.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-xdr_mesh.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-xdr_mgf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-xdr_soln.Plo@am__quote@
@@ -13994,6 +14020,13 @@ src/mesh/libmesh_dbg_la-xdr_io.lo: src/mesh/xdr_io.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/xdr_io.C' object='src/mesh/libmesh_dbg_la-xdr_io.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_dbg_la-xdr_io.lo `test -f 'src/mesh/xdr_io.C' || echo '$(srcdir)/'`src/mesh/xdr_io.C
+
+src/mesh/libmesh_dbg_la-xdr_io_checkpoint_restore.lo: src/mesh/xdr_io_checkpoint_restore.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_dbg_la-xdr_io_checkpoint_restore.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_dbg_la-xdr_io_checkpoint_restore.Tpo -c -o src/mesh/libmesh_dbg_la-xdr_io_checkpoint_restore.lo `test -f 'src/mesh/xdr_io_checkpoint_restore.C' || echo '$(srcdir)/'`src/mesh/xdr_io_checkpoint_restore.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mesh/$(DEPDIR)/libmesh_dbg_la-xdr_io_checkpoint_restore.Tpo src/mesh/$(DEPDIR)/libmesh_dbg_la-xdr_io_checkpoint_restore.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/xdr_io_checkpoint_restore.C' object='src/mesh/libmesh_dbg_la-xdr_io_checkpoint_restore.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_dbg_la-xdr_io_checkpoint_restore.lo `test -f 'src/mesh/xdr_io_checkpoint_restore.C' || echo '$(srcdir)/'`src/mesh/xdr_io_checkpoint_restore.C
 
 src/mesh/libmesh_dbg_la-xdr_mesh.lo: src/mesh/xdr_mesh.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_dbg_la-xdr_mesh.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_dbg_la-xdr_mesh.Tpo -c -o src/mesh/libmesh_dbg_la-xdr_mesh.lo `test -f 'src/mesh/xdr_mesh.C' || echo '$(srcdir)/'`src/mesh/xdr_mesh.C
@@ -16795,6 +16828,13 @@ src/mesh/libmesh_devel_la-xdr_io.lo: src/mesh/xdr_io.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_devel_la-xdr_io.lo `test -f 'src/mesh/xdr_io.C' || echo '$(srcdir)/'`src/mesh/xdr_io.C
 
+src/mesh/libmesh_devel_la-xdr_io_checkpoint_restore.lo: src/mesh/xdr_io_checkpoint_restore.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_devel_la-xdr_io_checkpoint_restore.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_devel_la-xdr_io_checkpoint_restore.Tpo -c -o src/mesh/libmesh_devel_la-xdr_io_checkpoint_restore.lo `test -f 'src/mesh/xdr_io_checkpoint_restore.C' || echo '$(srcdir)/'`src/mesh/xdr_io_checkpoint_restore.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mesh/$(DEPDIR)/libmesh_devel_la-xdr_io_checkpoint_restore.Tpo src/mesh/$(DEPDIR)/libmesh_devel_la-xdr_io_checkpoint_restore.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/xdr_io_checkpoint_restore.C' object='src/mesh/libmesh_devel_la-xdr_io_checkpoint_restore.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_devel_la-xdr_io_checkpoint_restore.lo `test -f 'src/mesh/xdr_io_checkpoint_restore.C' || echo '$(srcdir)/'`src/mesh/xdr_io_checkpoint_restore.C
+
 src/mesh/libmesh_devel_la-xdr_mesh.lo: src/mesh/xdr_mesh.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_devel_la-xdr_mesh.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_devel_la-xdr_mesh.Tpo -c -o src/mesh/libmesh_devel_la-xdr_mesh.lo `test -f 'src/mesh/xdr_mesh.C' || echo '$(srcdir)/'`src/mesh/xdr_mesh.C
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mesh/$(DEPDIR)/libmesh_devel_la-xdr_mesh.Tpo src/mesh/$(DEPDIR)/libmesh_devel_la-xdr_mesh.Plo
@@ -19594,6 +19634,13 @@ src/mesh/libmesh_oprof_la-xdr_io.lo: src/mesh/xdr_io.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/xdr_io.C' object='src/mesh/libmesh_oprof_la-xdr_io.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_oprof_la-xdr_io.lo `test -f 'src/mesh/xdr_io.C' || echo '$(srcdir)/'`src/mesh/xdr_io.C
+
+src/mesh/libmesh_oprof_la-xdr_io_checkpoint_restore.lo: src/mesh/xdr_io_checkpoint_restore.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_oprof_la-xdr_io_checkpoint_restore.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_oprof_la-xdr_io_checkpoint_restore.Tpo -c -o src/mesh/libmesh_oprof_la-xdr_io_checkpoint_restore.lo `test -f 'src/mesh/xdr_io_checkpoint_restore.C' || echo '$(srcdir)/'`src/mesh/xdr_io_checkpoint_restore.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mesh/$(DEPDIR)/libmesh_oprof_la-xdr_io_checkpoint_restore.Tpo src/mesh/$(DEPDIR)/libmesh_oprof_la-xdr_io_checkpoint_restore.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/xdr_io_checkpoint_restore.C' object='src/mesh/libmesh_oprof_la-xdr_io_checkpoint_restore.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_oprof_la-xdr_io_checkpoint_restore.lo `test -f 'src/mesh/xdr_io_checkpoint_restore.C' || echo '$(srcdir)/'`src/mesh/xdr_io_checkpoint_restore.C
 
 src/mesh/libmesh_oprof_la-xdr_mesh.lo: src/mesh/xdr_mesh.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_oprof_la-xdr_mesh.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_oprof_la-xdr_mesh.Tpo -c -o src/mesh/libmesh_oprof_la-xdr_mesh.lo `test -f 'src/mesh/xdr_mesh.C' || echo '$(srcdir)/'`src/mesh/xdr_mesh.C
@@ -22395,6 +22442,13 @@ src/mesh/libmesh_opt_la-xdr_io.lo: src/mesh/xdr_io.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_opt_la-xdr_io.lo `test -f 'src/mesh/xdr_io.C' || echo '$(srcdir)/'`src/mesh/xdr_io.C
 
+src/mesh/libmesh_opt_la-xdr_io_checkpoint_restore.lo: src/mesh/xdr_io_checkpoint_restore.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_opt_la-xdr_io_checkpoint_restore.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_opt_la-xdr_io_checkpoint_restore.Tpo -c -o src/mesh/libmesh_opt_la-xdr_io_checkpoint_restore.lo `test -f 'src/mesh/xdr_io_checkpoint_restore.C' || echo '$(srcdir)/'`src/mesh/xdr_io_checkpoint_restore.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mesh/$(DEPDIR)/libmesh_opt_la-xdr_io_checkpoint_restore.Tpo src/mesh/$(DEPDIR)/libmesh_opt_la-xdr_io_checkpoint_restore.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/xdr_io_checkpoint_restore.C' object='src/mesh/libmesh_opt_la-xdr_io_checkpoint_restore.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_opt_la-xdr_io_checkpoint_restore.lo `test -f 'src/mesh/xdr_io_checkpoint_restore.C' || echo '$(srcdir)/'`src/mesh/xdr_io_checkpoint_restore.C
+
 src/mesh/libmesh_opt_la-xdr_mesh.lo: src/mesh/xdr_mesh.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_opt_la-xdr_mesh.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_opt_la-xdr_mesh.Tpo -c -o src/mesh/libmesh_opt_la-xdr_mesh.lo `test -f 'src/mesh/xdr_mesh.C' || echo '$(srcdir)/'`src/mesh/xdr_mesh.C
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mesh/$(DEPDIR)/libmesh_opt_la-xdr_mesh.Tpo src/mesh/$(DEPDIR)/libmesh_opt_la-xdr_mesh.Plo
@@ -25194,6 +25248,13 @@ src/mesh/libmesh_prof_la-xdr_io.lo: src/mesh/xdr_io.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/xdr_io.C' object='src/mesh/libmesh_prof_la-xdr_io.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_prof_la-xdr_io.lo `test -f 'src/mesh/xdr_io.C' || echo '$(srcdir)/'`src/mesh/xdr_io.C
+
+src/mesh/libmesh_prof_la-xdr_io_checkpoint_restore.lo: src/mesh/xdr_io_checkpoint_restore.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_prof_la-xdr_io_checkpoint_restore.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_prof_la-xdr_io_checkpoint_restore.Tpo -c -o src/mesh/libmesh_prof_la-xdr_io_checkpoint_restore.lo `test -f 'src/mesh/xdr_io_checkpoint_restore.C' || echo '$(srcdir)/'`src/mesh/xdr_io_checkpoint_restore.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mesh/$(DEPDIR)/libmesh_prof_la-xdr_io_checkpoint_restore.Tpo src/mesh/$(DEPDIR)/libmesh_prof_la-xdr_io_checkpoint_restore.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/xdr_io_checkpoint_restore.C' object='src/mesh/libmesh_prof_la-xdr_io_checkpoint_restore.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_prof_la-xdr_io_checkpoint_restore.lo `test -f 'src/mesh/xdr_io_checkpoint_restore.C' || echo '$(srcdir)/'`src/mesh/xdr_io_checkpoint_restore.C
 
 src/mesh/libmesh_prof_la-xdr_mesh.lo: src/mesh/xdr_mesh.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_prof_la-xdr_mesh.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_prof_la-xdr_mesh.Tpo -c -o src/mesh/libmesh_prof_la-xdr_mesh.lo `test -f 'src/mesh/xdr_mesh.C' || echo '$(srcdir)/'`src/mesh/xdr_mesh.C

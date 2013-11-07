@@ -219,6 +219,7 @@ libmesh_SOURCES =  \
         src/mesh/vtk_io.C \
         src/mesh/xdr_head.C \
         src/mesh/xdr_io.C \
+        src/mesh/xdr_io_checkpoint_restore.C \
         src/mesh/xdr_mesh.C \
         src/mesh/xdr_mgf.C \
         src/mesh/xdr_soln.C \

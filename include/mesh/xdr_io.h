@@ -96,6 +96,16 @@ class XdrIO : public MeshInput<MeshBase>,
   virtual void write (const std::string&);
 
   /**
+   *
+   */
+  void checkpoint (const std::string&) const;
+
+  /**
+   *
+   */
+  void restore (const std::string&);
+
+  /**
    * Get/Set the flag indicating if we should read/write binary.
    */
   bool   binary() const { return _binary; }
