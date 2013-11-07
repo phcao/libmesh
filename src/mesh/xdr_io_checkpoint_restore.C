@@ -38,11 +38,55 @@
 #include "libmesh/partitioner.h"
 #include "libmesh/libmesh_logging.h"
 
+
+
+namespace
+{
+  std::string local_file_name (const unsigned int processor_id,
+			       const std::string &name)
+  {
+    std::string basename(name);
+    char buf[256];
+
+    if (basename.size() - basename.rfind(".bz2") == 4)
+      {
+	basename.erase(basename.end()-4, basename.end());
+	std::sprintf(buf, "%s.%04d.bz2", basename.c_str(), processor_id);
+      }
+    else if (basename.size() - basename.rfind(".gz") == 3)
+      {
+	basename.erase(basename.end()-3, basename.end());
+	std::sprintf(buf, "%s.%04d.gz", basename.c_str(), processor_id);
+      }
+    else
+      std::sprintf(buf, "%s.%04d", basename.c_str(), processor_id);
+
+    return std::string(buf);
+  }
+}
+
+
 namespace libMesh
 {
 
-  void XdrIO::checkpoint (const std::string &) const
-  {}
+  void XdrIO::checkpoint (const std::string &basename) const
+  {
+    Xdr io (local_file_name(this->processor_id(),basename), this->binary() ? ENCODE : WRITE);
+
+    START_LOG("checkpoint()","XdrIO");
+
+
+    int val=0;
+    std::string full_ver = this->version() + " checkpoint";
+    io.data (full_ver);
+    io.data (val = this->processor_id(), "# MPI rank");
+    io.data (val = 0, "# number of stored elements on this rank");
+    io.data (val = 0, "# number of stored nodes on this rank");
+
+
+
+    STOP_LOG ("checkpoint()","XdrIO");
+  }
 
 
 
