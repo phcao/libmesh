@@ -54,11 +54,11 @@ target_triplet = @target@
 DIST_COMMON = README $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(top_srcdir)/build-aux/depcomp \
 	$(top_srcdir)/contrib/Make.common
-@LIBMESH_DBG_MODE_TRUE@am__append_1 = libdbg.la
-@LIBMESH_DEVEL_MODE_TRUE@am__append_2 = libdevel.la
-@LIBMESH_OPT_MODE_TRUE@am__append_3 = libopt.la
-@LIBMESH_PROF_MODE_TRUE@am__append_4 = libprof.la
-@LIBMESH_OPROF_MODE_TRUE@am__append_5 = liboprof.la
+@LIBMESH_DBG_MODE_TRUE@am__append_1 = libdbg.a
+@LIBMESH_DEVEL_MODE_TRUE@am__append_2 = libdevel.a
+@LIBMESH_OPT_MODE_TRUE@am__append_3 = libopt.a
+@LIBMESH_PROF_MODE_TRUE@am__append_4 = libprof.a
+@LIBMESH_OPROF_MODE_TRUE@am__append_5 = liboprof.a
 subdir = contrib/sfcurves
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ac_cxx_rtti.m4 \
@@ -81,14 +81,11 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/ac_cxx_rtti.m4 \
 	$(top_srcdir)/m4/libmesh_core_features.m4 \
 	$(top_srcdir)/m4/libmesh_method.m4 \
 	$(top_srcdir)/m4/libmesh_optional_packages.m4 \
-	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/locale.m4 \
-	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
-	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/metis.m4 $(top_srcdir)/m4/mpi.m4 \
-	$(top_srcdir)/m4/namespaces.m4 $(top_srcdir)/m4/nanoflann.m4 \
-	$(top_srcdir)/m4/nemesis.m4 $(top_srcdir)/m4/netcdf.m4 \
-	$(top_srcdir)/m4/parmetis.m4 $(top_srcdir)/m4/petsc.m4 \
-	$(top_srcdir)/m4/precision.m4 \
+	$(top_srcdir)/m4/locale.m4 $(top_srcdir)/m4/metis.m4 \
+	$(top_srcdir)/m4/mpi.m4 $(top_srcdir)/m4/namespaces.m4 \
+	$(top_srcdir)/m4/nanoflann.m4 $(top_srcdir)/m4/nemesis.m4 \
+	$(top_srcdir)/m4/netcdf.m4 $(top_srcdir)/m4/parmetis.m4 \
+	$(top_srcdir)/m4/petsc.m4 $(top_srcdir)/m4/precision.m4 \
 	$(top_srcdir)/m4/prefix_config.m4 $(top_srcdir)/m4/sfc.m4 \
 	$(top_srcdir)/m4/slepc.m4 $(top_srcdir)/m4/sstream.m4 \
 	$(top_srcdir)/m4/strstream.m4 $(top_srcdir)/m4/tbb.m4 \
@@ -103,66 +100,53 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/include/libmesh_config.h.tmp
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-LTLIBRARIES = $(noinst_LTLIBRARIES)
-libdbg_la_DEPENDENCIES =
-am__libdbg_la_SOURCES_DIST = sfcurves.h sfcurves_internal.h cmp.c \
+LIBRARIES = $(noinst_LIBRARIES)
+AR = ar
+ARFLAGS = cru
+AM_V_AR = $(am__v_AR_@AM_V@)
+am__v_AR_ = $(am__v_AR_@AM_DEFAULT_V@)
+am__v_AR_0 = @echo "  AR      " $@;
+am__v_AR_1 = 
+libdbg_a_AR = $(AR) $(ARFLAGS)
+libdbg_a_DEPENDENCIES =
+am__libdbg_a_SOURCES_DIST = sfcurves.h sfcurves_internal.h cmp.c \
 	hilbert.c morton.c
-am__objects_1 = libdbg_la-cmp.lo libdbg_la-hilbert.lo \
-	libdbg_la-morton.lo
-@LIBMESH_DBG_MODE_TRUE@am_libdbg_la_OBJECTS = $(am__objects_1)
-libdbg_la_OBJECTS = $(am_libdbg_la_OBJECTS)
-AM_V_lt = $(am__v_lt_@AM_V@)
-am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
-am__v_lt_0 = --silent
-am__v_lt_1 = 
-libdbg_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(libdbg_la_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-@LIBMESH_DBG_MODE_TRUE@am_libdbg_la_rpath =
-libdevel_la_DEPENDENCIES =
-am__libdevel_la_SOURCES_DIST = sfcurves.h sfcurves_internal.h cmp.c \
+am__objects_1 = libdbg_a-cmp.$(OBJEXT) libdbg_a-hilbert.$(OBJEXT) \
+	libdbg_a-morton.$(OBJEXT)
+@LIBMESH_DBG_MODE_TRUE@am_libdbg_a_OBJECTS = $(am__objects_1)
+libdbg_a_OBJECTS = $(am_libdbg_a_OBJECTS)
+libdevel_a_AR = $(AR) $(ARFLAGS)
+libdevel_a_DEPENDENCIES =
+am__libdevel_a_SOURCES_DIST = sfcurves.h sfcurves_internal.h cmp.c \
 	hilbert.c morton.c
-am__objects_2 = libdevel_la-cmp.lo libdevel_la-hilbert.lo \
-	libdevel_la-morton.lo
-@LIBMESH_DEVEL_MODE_TRUE@am_libdevel_la_OBJECTS = $(am__objects_2)
-libdevel_la_OBJECTS = $(am_libdevel_la_OBJECTS)
-libdevel_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(libdevel_la_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-@LIBMESH_DEVEL_MODE_TRUE@am_libdevel_la_rpath =
-liboprof_la_DEPENDENCIES =
-am__liboprof_la_SOURCES_DIST = sfcurves.h sfcurves_internal.h cmp.c \
+am__objects_2 = libdevel_a-cmp.$(OBJEXT) libdevel_a-hilbert.$(OBJEXT) \
+	libdevel_a-morton.$(OBJEXT)
+@LIBMESH_DEVEL_MODE_TRUE@am_libdevel_a_OBJECTS = $(am__objects_2)
+libdevel_a_OBJECTS = $(am_libdevel_a_OBJECTS)
+liboprof_a_AR = $(AR) $(ARFLAGS)
+liboprof_a_DEPENDENCIES =
+am__liboprof_a_SOURCES_DIST = sfcurves.h sfcurves_internal.h cmp.c \
 	hilbert.c morton.c
-am__objects_3 = liboprof_la-cmp.lo liboprof_la-hilbert.lo \
-	liboprof_la-morton.lo
-@LIBMESH_OPROF_MODE_TRUE@am_liboprof_la_OBJECTS = $(am__objects_3)
-liboprof_la_OBJECTS = $(am_liboprof_la_OBJECTS)
-liboprof_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(liboprof_la_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-@LIBMESH_OPROF_MODE_TRUE@am_liboprof_la_rpath =
-libopt_la_DEPENDENCIES =
-am__libopt_la_SOURCES_DIST = sfcurves.h sfcurves_internal.h cmp.c \
+am__objects_3 = liboprof_a-cmp.$(OBJEXT) liboprof_a-hilbert.$(OBJEXT) \
+	liboprof_a-morton.$(OBJEXT)
+@LIBMESH_OPROF_MODE_TRUE@am_liboprof_a_OBJECTS = $(am__objects_3)
+liboprof_a_OBJECTS = $(am_liboprof_a_OBJECTS)
+libopt_a_AR = $(AR) $(ARFLAGS)
+libopt_a_DEPENDENCIES =
+am__libopt_a_SOURCES_DIST = sfcurves.h sfcurves_internal.h cmp.c \
 	hilbert.c morton.c
-am__objects_4 = libopt_la-cmp.lo libopt_la-hilbert.lo \
-	libopt_la-morton.lo
-@LIBMESH_OPT_MODE_TRUE@am_libopt_la_OBJECTS = $(am__objects_4)
-libopt_la_OBJECTS = $(am_libopt_la_OBJECTS)
-libopt_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(libopt_la_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-@LIBMESH_OPT_MODE_TRUE@am_libopt_la_rpath =
-libprof_la_DEPENDENCIES =
-am__libprof_la_SOURCES_DIST = sfcurves.h sfcurves_internal.h cmp.c \
+am__objects_4 = libopt_a-cmp.$(OBJEXT) libopt_a-hilbert.$(OBJEXT) \
+	libopt_a-morton.$(OBJEXT)
+@LIBMESH_OPT_MODE_TRUE@am_libopt_a_OBJECTS = $(am__objects_4)
+libopt_a_OBJECTS = $(am_libopt_a_OBJECTS)
+libprof_a_AR = $(AR) $(ARFLAGS)
+libprof_a_DEPENDENCIES =
+am__libprof_a_SOURCES_DIST = sfcurves.h sfcurves_internal.h cmp.c \
 	hilbert.c morton.c
-am__objects_5 = libprof_la-cmp.lo libprof_la-hilbert.lo \
-	libprof_la-morton.lo
-@LIBMESH_PROF_MODE_TRUE@am_libprof_la_OBJECTS = $(am__objects_5)
-libprof_la_OBJECTS = $(am_libprof_la_OBJECTS)
-libprof_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(libprof_la_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-@LIBMESH_PROF_MODE_TRUE@am_libprof_la_rpath =
+am__objects_5 = libprof_a-cmp.$(OBJEXT) libprof_a-hilbert.$(OBJEXT) \
+	libprof_a-morton.$(OBJEXT)
+@LIBMESH_PROF_MODE_TRUE@am_libprof_a_OBJECTS = $(am__objects_5)
+libprof_a_OBJECTS = $(am_libprof_a_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -179,31 +163,27 @@ DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)/include
 depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
+AM_V_lt = $(am__v_lt_@AM_V@)
+am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+am__v_lt_0 = --silent
+am__v_lt_1 = 
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
-	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
-	$(AM_CFLAGS) $(CFLAGS)
 AM_V_CC = $(am__v_CC_@AM_V@)
 am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
 am__v_CC_0 = @echo "  CC      " $@;
 am__v_CC_1 = 
 CCLD = $(CC)
-LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(libdbg_la_SOURCES) $(libdevel_la_SOURCES) \
-	$(liboprof_la_SOURCES) $(libopt_la_SOURCES) \
-	$(libprof_la_SOURCES)
-DIST_SOURCES = $(am__libdbg_la_SOURCES_DIST) \
-	$(am__libdevel_la_SOURCES_DIST) \
-	$(am__liboprof_la_SOURCES_DIST) $(am__libopt_la_SOURCES_DIST) \
-	$(am__libprof_la_SOURCES_DIST)
+SOURCES = $(libdbg_a_SOURCES) $(libdevel_a_SOURCES) \
+	$(liboprof_a_SOURCES) $(libopt_a_SOURCES) $(libprof_a_SOURCES)
+DIST_SOURCES = $(am__libdbg_a_SOURCES_DIST) \
+	$(am__libdevel_a_SOURCES_DIST) $(am__liboprof_a_SOURCES_DIST) \
+	$(am__libopt_a_SOURCES_DIST) $(am__libprof_a_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -215,7 +195,6 @@ DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
-AR = @AR@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
@@ -265,13 +244,10 @@ CXXSHAREDFLAG = @CXXSHAREDFLAG@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
-DLLTOOL = @DLLTOOL@
 DOT = @DOT@
 DOTPATH = @DOTPATH@
 DOXYGEN = @DOXYGEN@
-DSYMUTIL = @DSYMUTIL@
 DTK_MAKEFILE_EXPORT = @DTK_MAKEFILE_EXPORT@
-DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
@@ -284,7 +260,6 @@ F77 = @F77@
 FC = @FC@
 FCFLAGS = @FCFLAGS@
 FFLAGS = @FFLAGS@
-FGREP = @FGREP@
 FLIBS = @FLIBS@
 FPARSER_INCLUDE = @FPARSER_INCLUDE@
 FPARSER_LIBRARY = @FPARSER_LIBRARY@
@@ -314,19 +289,15 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LASPACK_INCLUDE = @LASPACK_INCLUDE@
 LASPACK_LIB = @LASPACK_LIB@
-LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBHILBERT_INCLUDE = @LIBHILBERT_INCLUDE@
 LIBHILBERT_LIBRARY = @LIBHILBERT_LIBRARY@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
-LIBTOOL = @LIBTOOL@
-LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
-MANIFEST_TOOL = @MANIFEST_TOOL@
 METHOD = @METHOD@
 METHODS = @METHODS@
 METIS_INCLUDE = @METIS_INCLUDE@
@@ -346,20 +317,15 @@ MPI_LIBS_PATHS = @MPI_LIBS_PATHS@
 NANOFLANN_INCLUDE = @NANOFLANN_INCLUDE@
 NEMESIS_INCLUDE = @NEMESIS_INCLUDE@
 NETCDF_INCLUDE = @NETCDF_INCLUDE@
-NM = @NM@
-NMEDIT = @NMEDIT@
 NODEPRECATEDFLAG = @NODEPRECATEDFLAG@
 NOX_INCLUDES = @NOX_INCLUDES@
 NOX_LIBS = @NOX_LIBS@
 NOX_MAKEFILE_EXPORT = @NOX_MAKEFILE_EXPORT@
-OBJDUMP = @OBJDUMP@
 OBJEXT = @OBJEXT@
 OPENMP_CFLAGS = @OPENMP_CFLAGS@
 OPENMP_CXXFLAGS = @OPENMP_CXXFLAGS@
 OPENMP_FFLAGS = @OPENMP_FFLAGS@
 OPROFILE_FLAGS = @OPROFILE_FLAGS@
-OTOOL = @OTOOL@
-OTOOL64 = @OTOOL64@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
@@ -421,10 +387,8 @@ abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
-ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
-ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
 ac_ct_F77 = @ac_ct_F77@
 ac_ct_FC = @ac_ct_FC@
 am__include = @am__include@
@@ -504,11 +468,11 @@ pkg_sources = sfcurves.h sfcurves_internal.h cmp.c hilbert.c morton.c
 ######################################################################
 #
 # Common environment for all contribued packages
-# 
-# If we are careful, common rules can be defined here, 
+#
+# If we are careful, common rules can be defined here,
 # once and for all.
-# 
-AUTOMAKE_OPTIONS = subdir-objects 
+#
+AUTOMAKE_OPTIONS = subdir-objects
 AM_CPPFLAGS = $(pkg_cppflags) # any defined package-specific include paths
 AM_CFLAGS = 
 AM_CXXFLAGS = 
@@ -518,37 +482,37 @@ AM_LDFLAGS = $(libmesh_LDFLAGS)
 #
 # Building the flavors
 #
-noinst_LTLIBRARIES = $(am__append_1) $(am__append_2) $(am__append_3) \
+noinst_LIBRARIES = $(am__append_1) $(am__append_2) $(am__append_3) \
 	$(am__append_4) $(am__append_5)
-@LIBMESH_DBG_MODE_TRUE@libdbg_la_SOURCES = $(pkg_sources)
-@LIBMESH_DBG_MODE_TRUE@libdbg_la_CPPFLAGS = $(CPPFLAGS_DBG) $(AM_CPPFLAGS)
-@LIBMESH_DBG_MODE_TRUE@libdbg_la_CXXFLAGS = $(CXXFLAGS_DBG)
-@LIBMESH_DBG_MODE_TRUE@libdbg_la_CFLAGS = $(CFLAGS_DBG)
-@LIBMESH_DBG_MODE_TRUE@libdbg_la_LIBADD = $(pkg_libs) # any defined package-specific libs
-@LIBMESH_DEVEL_MODE_TRUE@libdevel_la_SOURCES = $(pkg_sources)
-@LIBMESH_DEVEL_MODE_TRUE@libdevel_la_CPPFLAGS = $(CPPFLAGS_DEVEL) $(AM_CPPFLAGS)
-@LIBMESH_DEVEL_MODE_TRUE@libdevel_la_CXXFLAGS = $(CXXFLAGS_DEVEL)
-@LIBMESH_DEVEL_MODE_TRUE@libdevel_la_CFLAGS = $(CFLAGS_DEVEL)
-@LIBMESH_DEVEL_MODE_TRUE@libdevel_la_LIBADD = $(pkg_libs) # any defined package-specific libs
-@LIBMESH_OPT_MODE_TRUE@libopt_la_SOURCES = $(pkg_sources)
-@LIBMESH_OPT_MODE_TRUE@libopt_la_CPPFLAGS = $(CPPFLAGS_OPT) $(AM_CPPFLAGS)
-@LIBMESH_OPT_MODE_TRUE@libopt_la_CXXFLAGS = $(CXXFLAGS_OPT)
-@LIBMESH_OPT_MODE_TRUE@libopt_la_CFLAGS = $(CFLAGS_OPT)
-@LIBMESH_OPT_MODE_TRUE@libopt_la_LIBADD = $(pkg_libs) # any defined package-specific libs
-@LIBMESH_PROF_MODE_TRUE@libprof_la_SOURCES = $(pkg_sources)
-@LIBMESH_PROF_MODE_TRUE@libprof_la_CPPFLAGS = $(CPPFLAGS_PROF) $(AM_CPPFLAGS)
-@LIBMESH_PROF_MODE_TRUE@libprof_la_CXXFLAGS = $(CXXFLAGS_PROF)
-@LIBMESH_PROF_MODE_TRUE@libprof_la_CFLAGS = $(CFLAGS_PROF)
-@LIBMESH_PROF_MODE_TRUE@libprof_la_LIBADD = $(pkg_libs) # any defined package-specific libs
-@LIBMESH_OPROF_MODE_TRUE@liboprof_la_SOURCES = $(pkg_sources)
-@LIBMESH_OPROF_MODE_TRUE@liboprof_la_CPPFLAGS = $(CPPFLAGS_OPROF) $(AM_CPPFLAGS)
-@LIBMESH_OPROF_MODE_TRUE@liboprof_la_CXXFLAGS = $(CXXFLAGS_OPROF)
-@LIBMESH_OPROF_MODE_TRUE@liboprof_la_CFLAGS = $(CFLAGS_OPROF)
-@LIBMESH_OPROF_MODE_TRUE@liboprof_la_LIBADD = $(pkg_libs) # any defined package-specific libs
+@LIBMESH_DBG_MODE_TRUE@libdbg_a_SOURCES = $(pkg_sources)
+@LIBMESH_DBG_MODE_TRUE@libdbg_a_CPPFLAGS = $(CPPFLAGS_DBG) $(AM_CPPFLAGS)
+@LIBMESH_DBG_MODE_TRUE@libdbg_a_CXXFLAGS = $(CXXFLAGS_DBG)
+@LIBMESH_DBG_MODE_TRUE@libdbg_a_CFLAGS = $(CFLAGS_DBG)
+@LIBMESH_DBG_MODE_TRUE@libdbg_a_LIBADD = $(pkg_libs) # any defined package-specific libs
+@LIBMESH_DEVEL_MODE_TRUE@libdevel_a_SOURCES = $(pkg_sources)
+@LIBMESH_DEVEL_MODE_TRUE@libdevel_a_CPPFLAGS = $(CPPFLAGS_DEVEL) $(AM_CPPFLAGS)
+@LIBMESH_DEVEL_MODE_TRUE@libdevel_a_CXXFLAGS = $(CXXFLAGS_DEVEL)
+@LIBMESH_DEVEL_MODE_TRUE@libdevel_a_CFLAGS = $(CFLAGS_DEVEL)
+@LIBMESH_DEVEL_MODE_TRUE@libdevel_a_LIBADD = $(pkg_libs) # any defined package-specific libs
+@LIBMESH_OPT_MODE_TRUE@libopt_a_SOURCES = $(pkg_sources)
+@LIBMESH_OPT_MODE_TRUE@libopt_a_CPPFLAGS = $(CPPFLAGS_OPT) $(AM_CPPFLAGS)
+@LIBMESH_OPT_MODE_TRUE@libopt_a_CXXFLAGS = $(CXXFLAGS_OPT)
+@LIBMESH_OPT_MODE_TRUE@libopt_a_CFLAGS = $(CFLAGS_OPT)
+@LIBMESH_OPT_MODE_TRUE@libopt_a_LIBADD = $(pkg_libs) # any defined package-specific libs
+@LIBMESH_PROF_MODE_TRUE@libprof_a_SOURCES = $(pkg_sources)
+@LIBMESH_PROF_MODE_TRUE@libprof_a_CPPFLAGS = $(CPPFLAGS_PROF) $(AM_CPPFLAGS)
+@LIBMESH_PROF_MODE_TRUE@libprof_a_CXXFLAGS = $(CXXFLAGS_PROF)
+@LIBMESH_PROF_MODE_TRUE@libprof_a_CFLAGS = $(CFLAGS_PROF)
+@LIBMESH_PROF_MODE_TRUE@libprof_a_LIBADD = $(pkg_libs) # any defined package-specific libs
+@LIBMESH_OPROF_MODE_TRUE@liboprof_a_SOURCES = $(pkg_sources)
+@LIBMESH_OPROF_MODE_TRUE@liboprof_a_CPPFLAGS = $(CPPFLAGS_OPROF) $(AM_CPPFLAGS)
+@LIBMESH_OPROF_MODE_TRUE@liboprof_a_CXXFLAGS = $(CXXFLAGS_OPROF)
+@LIBMESH_OPROF_MODE_TRUE@liboprof_a_CFLAGS = $(CFLAGS_OPROF)
+@LIBMESH_OPROF_MODE_TRUE@liboprof_a_LIBADD = $(pkg_libs) # any defined package-specific libs
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .c .lo .o .obj
+.SUFFIXES: .c .o .obj
 $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/contrib/Make.common $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -581,26 +545,28 @@ $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 
-clean-noinstLTLIBRARIES:
-	-test -z "$(noinst_LTLIBRARIES)" || rm -f $(noinst_LTLIBRARIES)
-	@list='$(noinst_LTLIBRARIES)'; \
-	locs=`for p in $$list; do echo $$p; done | \
-	      sed 's|^[^/]*$$|.|; s|/[^/]*$$||; s|$$|/so_locations|' | \
-	      sort -u`; \
-	test -z "$$locs" || { \
-	  echo rm -f $${locs}; \
-	  rm -f $${locs}; \
-	}
-libdbg.la: $(libdbg_la_OBJECTS) $(libdbg_la_DEPENDENCIES) $(EXTRA_libdbg_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(libdbg_la_LINK) $(am_libdbg_la_rpath) $(libdbg_la_OBJECTS) $(libdbg_la_LIBADD) $(LIBS)
-libdevel.la: $(libdevel_la_OBJECTS) $(libdevel_la_DEPENDENCIES) $(EXTRA_libdevel_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(libdevel_la_LINK) $(am_libdevel_la_rpath) $(libdevel_la_OBJECTS) $(libdevel_la_LIBADD) $(LIBS)
-liboprof.la: $(liboprof_la_OBJECTS) $(liboprof_la_DEPENDENCIES) $(EXTRA_liboprof_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(liboprof_la_LINK) $(am_liboprof_la_rpath) $(liboprof_la_OBJECTS) $(liboprof_la_LIBADD) $(LIBS)
-libopt.la: $(libopt_la_OBJECTS) $(libopt_la_DEPENDENCIES) $(EXTRA_libopt_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(libopt_la_LINK) $(am_libopt_la_rpath) $(libopt_la_OBJECTS) $(libopt_la_LIBADD) $(LIBS)
-libprof.la: $(libprof_la_OBJECTS) $(libprof_la_DEPENDENCIES) $(EXTRA_libprof_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(libprof_la_LINK) $(am_libprof_la_rpath) $(libprof_la_OBJECTS) $(libprof_la_LIBADD) $(LIBS)
+clean-noinstLIBRARIES:
+	-test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
+libdbg.a: $(libdbg_a_OBJECTS) $(libdbg_a_DEPENDENCIES) $(EXTRA_libdbg_a_DEPENDENCIES) 
+	$(AM_V_at)-rm -f libdbg.a
+	$(AM_V_AR)$(libdbg_a_AR) libdbg.a $(libdbg_a_OBJECTS) $(libdbg_a_LIBADD)
+	$(AM_V_at)$(RANLIB) libdbg.a
+libdevel.a: $(libdevel_a_OBJECTS) $(libdevel_a_DEPENDENCIES) $(EXTRA_libdevel_a_DEPENDENCIES) 
+	$(AM_V_at)-rm -f libdevel.a
+	$(AM_V_AR)$(libdevel_a_AR) libdevel.a $(libdevel_a_OBJECTS) $(libdevel_a_LIBADD)
+	$(AM_V_at)$(RANLIB) libdevel.a
+liboprof.a: $(liboprof_a_OBJECTS) $(liboprof_a_DEPENDENCIES) $(EXTRA_liboprof_a_DEPENDENCIES) 
+	$(AM_V_at)-rm -f liboprof.a
+	$(AM_V_AR)$(liboprof_a_AR) liboprof.a $(liboprof_a_OBJECTS) $(liboprof_a_LIBADD)
+	$(AM_V_at)$(RANLIB) liboprof.a
+libopt.a: $(libopt_a_OBJECTS) $(libopt_a_DEPENDENCIES) $(EXTRA_libopt_a_DEPENDENCIES) 
+	$(AM_V_at)-rm -f libopt.a
+	$(AM_V_AR)$(libopt_a_AR) libopt.a $(libopt_a_OBJECTS) $(libopt_a_LIBADD)
+	$(AM_V_at)$(RANLIB) libopt.a
+libprof.a: $(libprof_a_OBJECTS) $(libprof_a_DEPENDENCIES) $(EXTRA_libprof_a_DEPENDENCIES) 
+	$(AM_V_at)-rm -f libprof.a
+	$(AM_V_AR)$(libprof_a_AR) libprof.a $(libprof_a_OBJECTS) $(libprof_a_LIBADD)
+	$(AM_V_at)$(RANLIB) libprof.a
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -608,21 +574,21 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdbg_la-cmp.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdbg_la-hilbert.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdbg_la-morton.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdevel_la-cmp.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdevel_la-hilbert.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdevel_la-morton.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/liboprof_la-cmp.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/liboprof_la-hilbert.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/liboprof_la-morton.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libopt_la-cmp.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libopt_la-hilbert.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libopt_la-morton.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libprof_la-cmp.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libprof_la-hilbert.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libprof_la-morton.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdbg_a-cmp.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdbg_a-hilbert.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdbg_a-morton.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdevel_a-cmp.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdevel_a-hilbert.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdevel_a-morton.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/liboprof_a-cmp.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/liboprof_a-hilbert.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/liboprof_a-morton.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libopt_a-cmp.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libopt_a-hilbert.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libopt_a-morton.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libprof_a-cmp.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libprof_a-hilbert.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libprof_a-morton.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -640,124 +606,215 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
-.c.lo:
-@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
-@am__fastdepCC_TRUE@	$(LTCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
-@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+libdbg_a-cmp.o: cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_a_CPPFLAGS) $(CPPFLAGS) $(libdbg_a_CFLAGS) $(CFLAGS) -MT libdbg_a-cmp.o -MD -MP -MF $(DEPDIR)/libdbg_a-cmp.Tpo -c -o libdbg_a-cmp.o `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdbg_a-cmp.Tpo $(DEPDIR)/libdbg_a-cmp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='libdbg_a-cmp.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_a_CPPFLAGS) $(CPPFLAGS) $(libdbg_a_CFLAGS) $(CFLAGS) -c -o libdbg_a-cmp.o `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
 
-libdbg_la-cmp.lo: cmp.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_la_CPPFLAGS) $(CPPFLAGS) $(libdbg_la_CFLAGS) $(CFLAGS) -MT libdbg_la-cmp.lo -MD -MP -MF $(DEPDIR)/libdbg_la-cmp.Tpo -c -o libdbg_la-cmp.lo `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdbg_la-cmp.Tpo $(DEPDIR)/libdbg_la-cmp.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='libdbg_la-cmp.lo' libtool=yes @AMDEPBACKSLASH@
+libdbg_a-cmp.obj: cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_a_CPPFLAGS) $(CPPFLAGS) $(libdbg_a_CFLAGS) $(CFLAGS) -MT libdbg_a-cmp.obj -MD -MP -MF $(DEPDIR)/libdbg_a-cmp.Tpo -c -o libdbg_a-cmp.obj `if test -f 'cmp.c'; then $(CYGPATH_W) 'cmp.c'; else $(CYGPATH_W) '$(srcdir)/cmp.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdbg_a-cmp.Tpo $(DEPDIR)/libdbg_a-cmp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='libdbg_a-cmp.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_la_CPPFLAGS) $(CPPFLAGS) $(libdbg_la_CFLAGS) $(CFLAGS) -c -o libdbg_la-cmp.lo `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_a_CPPFLAGS) $(CPPFLAGS) $(libdbg_a_CFLAGS) $(CFLAGS) -c -o libdbg_a-cmp.obj `if test -f 'cmp.c'; then $(CYGPATH_W) 'cmp.c'; else $(CYGPATH_W) '$(srcdir)/cmp.c'; fi`
 
-libdbg_la-hilbert.lo: hilbert.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_la_CPPFLAGS) $(CPPFLAGS) $(libdbg_la_CFLAGS) $(CFLAGS) -MT libdbg_la-hilbert.lo -MD -MP -MF $(DEPDIR)/libdbg_la-hilbert.Tpo -c -o libdbg_la-hilbert.lo `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdbg_la-hilbert.Tpo $(DEPDIR)/libdbg_la-hilbert.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='libdbg_la-hilbert.lo' libtool=yes @AMDEPBACKSLASH@
+libdbg_a-hilbert.o: hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_a_CPPFLAGS) $(CPPFLAGS) $(libdbg_a_CFLAGS) $(CFLAGS) -MT libdbg_a-hilbert.o -MD -MP -MF $(DEPDIR)/libdbg_a-hilbert.Tpo -c -o libdbg_a-hilbert.o `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdbg_a-hilbert.Tpo $(DEPDIR)/libdbg_a-hilbert.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='libdbg_a-hilbert.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_la_CPPFLAGS) $(CPPFLAGS) $(libdbg_la_CFLAGS) $(CFLAGS) -c -o libdbg_la-hilbert.lo `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_a_CPPFLAGS) $(CPPFLAGS) $(libdbg_a_CFLAGS) $(CFLAGS) -c -o libdbg_a-hilbert.o `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
 
-libdbg_la-morton.lo: morton.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_la_CPPFLAGS) $(CPPFLAGS) $(libdbg_la_CFLAGS) $(CFLAGS) -MT libdbg_la-morton.lo -MD -MP -MF $(DEPDIR)/libdbg_la-morton.Tpo -c -o libdbg_la-morton.lo `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdbg_la-morton.Tpo $(DEPDIR)/libdbg_la-morton.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='libdbg_la-morton.lo' libtool=yes @AMDEPBACKSLASH@
+libdbg_a-hilbert.obj: hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_a_CPPFLAGS) $(CPPFLAGS) $(libdbg_a_CFLAGS) $(CFLAGS) -MT libdbg_a-hilbert.obj -MD -MP -MF $(DEPDIR)/libdbg_a-hilbert.Tpo -c -o libdbg_a-hilbert.obj `if test -f 'hilbert.c'; then $(CYGPATH_W) 'hilbert.c'; else $(CYGPATH_W) '$(srcdir)/hilbert.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdbg_a-hilbert.Tpo $(DEPDIR)/libdbg_a-hilbert.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='libdbg_a-hilbert.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_la_CPPFLAGS) $(CPPFLAGS) $(libdbg_la_CFLAGS) $(CFLAGS) -c -o libdbg_la-morton.lo `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_a_CPPFLAGS) $(CPPFLAGS) $(libdbg_a_CFLAGS) $(CFLAGS) -c -o libdbg_a-hilbert.obj `if test -f 'hilbert.c'; then $(CYGPATH_W) 'hilbert.c'; else $(CYGPATH_W) '$(srcdir)/hilbert.c'; fi`
 
-libdevel_la-cmp.lo: cmp.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_la_CPPFLAGS) $(CPPFLAGS) $(libdevel_la_CFLAGS) $(CFLAGS) -MT libdevel_la-cmp.lo -MD -MP -MF $(DEPDIR)/libdevel_la-cmp.Tpo -c -o libdevel_la-cmp.lo `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdevel_la-cmp.Tpo $(DEPDIR)/libdevel_la-cmp.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='libdevel_la-cmp.lo' libtool=yes @AMDEPBACKSLASH@
+libdbg_a-morton.o: morton.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_a_CPPFLAGS) $(CPPFLAGS) $(libdbg_a_CFLAGS) $(CFLAGS) -MT libdbg_a-morton.o -MD -MP -MF $(DEPDIR)/libdbg_a-morton.Tpo -c -o libdbg_a-morton.o `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdbg_a-morton.Tpo $(DEPDIR)/libdbg_a-morton.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='libdbg_a-morton.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_la_CPPFLAGS) $(CPPFLAGS) $(libdevel_la_CFLAGS) $(CFLAGS) -c -o libdevel_la-cmp.lo `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_a_CPPFLAGS) $(CPPFLAGS) $(libdbg_a_CFLAGS) $(CFLAGS) -c -o libdbg_a-morton.o `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
 
-libdevel_la-hilbert.lo: hilbert.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_la_CPPFLAGS) $(CPPFLAGS) $(libdevel_la_CFLAGS) $(CFLAGS) -MT libdevel_la-hilbert.lo -MD -MP -MF $(DEPDIR)/libdevel_la-hilbert.Tpo -c -o libdevel_la-hilbert.lo `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdevel_la-hilbert.Tpo $(DEPDIR)/libdevel_la-hilbert.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='libdevel_la-hilbert.lo' libtool=yes @AMDEPBACKSLASH@
+libdbg_a-morton.obj: morton.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_a_CPPFLAGS) $(CPPFLAGS) $(libdbg_a_CFLAGS) $(CFLAGS) -MT libdbg_a-morton.obj -MD -MP -MF $(DEPDIR)/libdbg_a-morton.Tpo -c -o libdbg_a-morton.obj `if test -f 'morton.c'; then $(CYGPATH_W) 'morton.c'; else $(CYGPATH_W) '$(srcdir)/morton.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdbg_a-morton.Tpo $(DEPDIR)/libdbg_a-morton.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='libdbg_a-morton.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_la_CPPFLAGS) $(CPPFLAGS) $(libdevel_la_CFLAGS) $(CFLAGS) -c -o libdevel_la-hilbert.lo `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_a_CPPFLAGS) $(CPPFLAGS) $(libdbg_a_CFLAGS) $(CFLAGS) -c -o libdbg_a-morton.obj `if test -f 'morton.c'; then $(CYGPATH_W) 'morton.c'; else $(CYGPATH_W) '$(srcdir)/morton.c'; fi`
 
-libdevel_la-morton.lo: morton.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_la_CPPFLAGS) $(CPPFLAGS) $(libdevel_la_CFLAGS) $(CFLAGS) -MT libdevel_la-morton.lo -MD -MP -MF $(DEPDIR)/libdevel_la-morton.Tpo -c -o libdevel_la-morton.lo `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdevel_la-morton.Tpo $(DEPDIR)/libdevel_la-morton.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='libdevel_la-morton.lo' libtool=yes @AMDEPBACKSLASH@
+libdevel_a-cmp.o: cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_a_CPPFLAGS) $(CPPFLAGS) $(libdevel_a_CFLAGS) $(CFLAGS) -MT libdevel_a-cmp.o -MD -MP -MF $(DEPDIR)/libdevel_a-cmp.Tpo -c -o libdevel_a-cmp.o `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdevel_a-cmp.Tpo $(DEPDIR)/libdevel_a-cmp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='libdevel_a-cmp.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_la_CPPFLAGS) $(CPPFLAGS) $(libdevel_la_CFLAGS) $(CFLAGS) -c -o libdevel_la-morton.lo `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_a_CPPFLAGS) $(CPPFLAGS) $(libdevel_a_CFLAGS) $(CFLAGS) -c -o libdevel_a-cmp.o `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
 
-liboprof_la-cmp.lo: cmp.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_la_CPPFLAGS) $(CPPFLAGS) $(liboprof_la_CFLAGS) $(CFLAGS) -MT liboprof_la-cmp.lo -MD -MP -MF $(DEPDIR)/liboprof_la-cmp.Tpo -c -o liboprof_la-cmp.lo `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/liboprof_la-cmp.Tpo $(DEPDIR)/liboprof_la-cmp.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='liboprof_la-cmp.lo' libtool=yes @AMDEPBACKSLASH@
+libdevel_a-cmp.obj: cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_a_CPPFLAGS) $(CPPFLAGS) $(libdevel_a_CFLAGS) $(CFLAGS) -MT libdevel_a-cmp.obj -MD -MP -MF $(DEPDIR)/libdevel_a-cmp.Tpo -c -o libdevel_a-cmp.obj `if test -f 'cmp.c'; then $(CYGPATH_W) 'cmp.c'; else $(CYGPATH_W) '$(srcdir)/cmp.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdevel_a-cmp.Tpo $(DEPDIR)/libdevel_a-cmp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='libdevel_a-cmp.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_la_CPPFLAGS) $(CPPFLAGS) $(liboprof_la_CFLAGS) $(CFLAGS) -c -o liboprof_la-cmp.lo `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_a_CPPFLAGS) $(CPPFLAGS) $(libdevel_a_CFLAGS) $(CFLAGS) -c -o libdevel_a-cmp.obj `if test -f 'cmp.c'; then $(CYGPATH_W) 'cmp.c'; else $(CYGPATH_W) '$(srcdir)/cmp.c'; fi`
 
-liboprof_la-hilbert.lo: hilbert.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_la_CPPFLAGS) $(CPPFLAGS) $(liboprof_la_CFLAGS) $(CFLAGS) -MT liboprof_la-hilbert.lo -MD -MP -MF $(DEPDIR)/liboprof_la-hilbert.Tpo -c -o liboprof_la-hilbert.lo `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/liboprof_la-hilbert.Tpo $(DEPDIR)/liboprof_la-hilbert.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='liboprof_la-hilbert.lo' libtool=yes @AMDEPBACKSLASH@
+libdevel_a-hilbert.o: hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_a_CPPFLAGS) $(CPPFLAGS) $(libdevel_a_CFLAGS) $(CFLAGS) -MT libdevel_a-hilbert.o -MD -MP -MF $(DEPDIR)/libdevel_a-hilbert.Tpo -c -o libdevel_a-hilbert.o `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdevel_a-hilbert.Tpo $(DEPDIR)/libdevel_a-hilbert.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='libdevel_a-hilbert.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_la_CPPFLAGS) $(CPPFLAGS) $(liboprof_la_CFLAGS) $(CFLAGS) -c -o liboprof_la-hilbert.lo `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_a_CPPFLAGS) $(CPPFLAGS) $(libdevel_a_CFLAGS) $(CFLAGS) -c -o libdevel_a-hilbert.o `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
 
-liboprof_la-morton.lo: morton.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_la_CPPFLAGS) $(CPPFLAGS) $(liboprof_la_CFLAGS) $(CFLAGS) -MT liboprof_la-morton.lo -MD -MP -MF $(DEPDIR)/liboprof_la-morton.Tpo -c -o liboprof_la-morton.lo `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/liboprof_la-morton.Tpo $(DEPDIR)/liboprof_la-morton.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='liboprof_la-morton.lo' libtool=yes @AMDEPBACKSLASH@
+libdevel_a-hilbert.obj: hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_a_CPPFLAGS) $(CPPFLAGS) $(libdevel_a_CFLAGS) $(CFLAGS) -MT libdevel_a-hilbert.obj -MD -MP -MF $(DEPDIR)/libdevel_a-hilbert.Tpo -c -o libdevel_a-hilbert.obj `if test -f 'hilbert.c'; then $(CYGPATH_W) 'hilbert.c'; else $(CYGPATH_W) '$(srcdir)/hilbert.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdevel_a-hilbert.Tpo $(DEPDIR)/libdevel_a-hilbert.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='libdevel_a-hilbert.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_la_CPPFLAGS) $(CPPFLAGS) $(liboprof_la_CFLAGS) $(CFLAGS) -c -o liboprof_la-morton.lo `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_a_CPPFLAGS) $(CPPFLAGS) $(libdevel_a_CFLAGS) $(CFLAGS) -c -o libdevel_a-hilbert.obj `if test -f 'hilbert.c'; then $(CYGPATH_W) 'hilbert.c'; else $(CYGPATH_W) '$(srcdir)/hilbert.c'; fi`
 
-libopt_la-cmp.lo: cmp.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_la_CPPFLAGS) $(CPPFLAGS) $(libopt_la_CFLAGS) $(CFLAGS) -MT libopt_la-cmp.lo -MD -MP -MF $(DEPDIR)/libopt_la-cmp.Tpo -c -o libopt_la-cmp.lo `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libopt_la-cmp.Tpo $(DEPDIR)/libopt_la-cmp.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='libopt_la-cmp.lo' libtool=yes @AMDEPBACKSLASH@
+libdevel_a-morton.o: morton.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_a_CPPFLAGS) $(CPPFLAGS) $(libdevel_a_CFLAGS) $(CFLAGS) -MT libdevel_a-morton.o -MD -MP -MF $(DEPDIR)/libdevel_a-morton.Tpo -c -o libdevel_a-morton.o `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdevel_a-morton.Tpo $(DEPDIR)/libdevel_a-morton.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='libdevel_a-morton.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_la_CPPFLAGS) $(CPPFLAGS) $(libopt_la_CFLAGS) $(CFLAGS) -c -o libopt_la-cmp.lo `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_a_CPPFLAGS) $(CPPFLAGS) $(libdevel_a_CFLAGS) $(CFLAGS) -c -o libdevel_a-morton.o `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
 
-libopt_la-hilbert.lo: hilbert.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_la_CPPFLAGS) $(CPPFLAGS) $(libopt_la_CFLAGS) $(CFLAGS) -MT libopt_la-hilbert.lo -MD -MP -MF $(DEPDIR)/libopt_la-hilbert.Tpo -c -o libopt_la-hilbert.lo `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libopt_la-hilbert.Tpo $(DEPDIR)/libopt_la-hilbert.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='libopt_la-hilbert.lo' libtool=yes @AMDEPBACKSLASH@
+libdevel_a-morton.obj: morton.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_a_CPPFLAGS) $(CPPFLAGS) $(libdevel_a_CFLAGS) $(CFLAGS) -MT libdevel_a-morton.obj -MD -MP -MF $(DEPDIR)/libdevel_a-morton.Tpo -c -o libdevel_a-morton.obj `if test -f 'morton.c'; then $(CYGPATH_W) 'morton.c'; else $(CYGPATH_W) '$(srcdir)/morton.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdevel_a-morton.Tpo $(DEPDIR)/libdevel_a-morton.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='libdevel_a-morton.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_la_CPPFLAGS) $(CPPFLAGS) $(libopt_la_CFLAGS) $(CFLAGS) -c -o libopt_la-hilbert.lo `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_a_CPPFLAGS) $(CPPFLAGS) $(libdevel_a_CFLAGS) $(CFLAGS) -c -o libdevel_a-morton.obj `if test -f 'morton.c'; then $(CYGPATH_W) 'morton.c'; else $(CYGPATH_W) '$(srcdir)/morton.c'; fi`
 
-libopt_la-morton.lo: morton.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_la_CPPFLAGS) $(CPPFLAGS) $(libopt_la_CFLAGS) $(CFLAGS) -MT libopt_la-morton.lo -MD -MP -MF $(DEPDIR)/libopt_la-morton.Tpo -c -o libopt_la-morton.lo `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libopt_la-morton.Tpo $(DEPDIR)/libopt_la-morton.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='libopt_la-morton.lo' libtool=yes @AMDEPBACKSLASH@
+liboprof_a-cmp.o: cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_a_CPPFLAGS) $(CPPFLAGS) $(liboprof_a_CFLAGS) $(CFLAGS) -MT liboprof_a-cmp.o -MD -MP -MF $(DEPDIR)/liboprof_a-cmp.Tpo -c -o liboprof_a-cmp.o `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/liboprof_a-cmp.Tpo $(DEPDIR)/liboprof_a-cmp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='liboprof_a-cmp.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_la_CPPFLAGS) $(CPPFLAGS) $(libopt_la_CFLAGS) $(CFLAGS) -c -o libopt_la-morton.lo `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_a_CPPFLAGS) $(CPPFLAGS) $(liboprof_a_CFLAGS) $(CFLAGS) -c -o liboprof_a-cmp.o `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
 
-libprof_la-cmp.lo: cmp.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_la_CPPFLAGS) $(CPPFLAGS) $(libprof_la_CFLAGS) $(CFLAGS) -MT libprof_la-cmp.lo -MD -MP -MF $(DEPDIR)/libprof_la-cmp.Tpo -c -o libprof_la-cmp.lo `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libprof_la-cmp.Tpo $(DEPDIR)/libprof_la-cmp.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='libprof_la-cmp.lo' libtool=yes @AMDEPBACKSLASH@
+liboprof_a-cmp.obj: cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_a_CPPFLAGS) $(CPPFLAGS) $(liboprof_a_CFLAGS) $(CFLAGS) -MT liboprof_a-cmp.obj -MD -MP -MF $(DEPDIR)/liboprof_a-cmp.Tpo -c -o liboprof_a-cmp.obj `if test -f 'cmp.c'; then $(CYGPATH_W) 'cmp.c'; else $(CYGPATH_W) '$(srcdir)/cmp.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/liboprof_a-cmp.Tpo $(DEPDIR)/liboprof_a-cmp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='liboprof_a-cmp.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_la_CPPFLAGS) $(CPPFLAGS) $(libprof_la_CFLAGS) $(CFLAGS) -c -o libprof_la-cmp.lo `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_a_CPPFLAGS) $(CPPFLAGS) $(liboprof_a_CFLAGS) $(CFLAGS) -c -o liboprof_a-cmp.obj `if test -f 'cmp.c'; then $(CYGPATH_W) 'cmp.c'; else $(CYGPATH_W) '$(srcdir)/cmp.c'; fi`
 
-libprof_la-hilbert.lo: hilbert.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_la_CPPFLAGS) $(CPPFLAGS) $(libprof_la_CFLAGS) $(CFLAGS) -MT libprof_la-hilbert.lo -MD -MP -MF $(DEPDIR)/libprof_la-hilbert.Tpo -c -o libprof_la-hilbert.lo `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libprof_la-hilbert.Tpo $(DEPDIR)/libprof_la-hilbert.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='libprof_la-hilbert.lo' libtool=yes @AMDEPBACKSLASH@
+liboprof_a-hilbert.o: hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_a_CPPFLAGS) $(CPPFLAGS) $(liboprof_a_CFLAGS) $(CFLAGS) -MT liboprof_a-hilbert.o -MD -MP -MF $(DEPDIR)/liboprof_a-hilbert.Tpo -c -o liboprof_a-hilbert.o `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/liboprof_a-hilbert.Tpo $(DEPDIR)/liboprof_a-hilbert.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='liboprof_a-hilbert.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_la_CPPFLAGS) $(CPPFLAGS) $(libprof_la_CFLAGS) $(CFLAGS) -c -o libprof_la-hilbert.lo `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_a_CPPFLAGS) $(CPPFLAGS) $(liboprof_a_CFLAGS) $(CFLAGS) -c -o liboprof_a-hilbert.o `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
 
-libprof_la-morton.lo: morton.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_la_CPPFLAGS) $(CPPFLAGS) $(libprof_la_CFLAGS) $(CFLAGS) -MT libprof_la-morton.lo -MD -MP -MF $(DEPDIR)/libprof_la-morton.Tpo -c -o libprof_la-morton.lo `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libprof_la-morton.Tpo $(DEPDIR)/libprof_la-morton.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='libprof_la-morton.lo' libtool=yes @AMDEPBACKSLASH@
+liboprof_a-hilbert.obj: hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_a_CPPFLAGS) $(CPPFLAGS) $(liboprof_a_CFLAGS) $(CFLAGS) -MT liboprof_a-hilbert.obj -MD -MP -MF $(DEPDIR)/liboprof_a-hilbert.Tpo -c -o liboprof_a-hilbert.obj `if test -f 'hilbert.c'; then $(CYGPATH_W) 'hilbert.c'; else $(CYGPATH_W) '$(srcdir)/hilbert.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/liboprof_a-hilbert.Tpo $(DEPDIR)/liboprof_a-hilbert.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='liboprof_a-hilbert.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_la_CPPFLAGS) $(CPPFLAGS) $(libprof_la_CFLAGS) $(CFLAGS) -c -o libprof_la-morton.lo `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_a_CPPFLAGS) $(CPPFLAGS) $(liboprof_a_CFLAGS) $(CFLAGS) -c -o liboprof_a-hilbert.obj `if test -f 'hilbert.c'; then $(CYGPATH_W) 'hilbert.c'; else $(CYGPATH_W) '$(srcdir)/hilbert.c'; fi`
 
-mostlyclean-libtool:
-	-rm -f *.lo
+liboprof_a-morton.o: morton.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_a_CPPFLAGS) $(CPPFLAGS) $(liboprof_a_CFLAGS) $(CFLAGS) -MT liboprof_a-morton.o -MD -MP -MF $(DEPDIR)/liboprof_a-morton.Tpo -c -o liboprof_a-morton.o `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/liboprof_a-morton.Tpo $(DEPDIR)/liboprof_a-morton.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='liboprof_a-morton.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_a_CPPFLAGS) $(CPPFLAGS) $(liboprof_a_CFLAGS) $(CFLAGS) -c -o liboprof_a-morton.o `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
 
-clean-libtool:
-	-rm -rf .libs _libs
+liboprof_a-morton.obj: morton.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_a_CPPFLAGS) $(CPPFLAGS) $(liboprof_a_CFLAGS) $(CFLAGS) -MT liboprof_a-morton.obj -MD -MP -MF $(DEPDIR)/liboprof_a-morton.Tpo -c -o liboprof_a-morton.obj `if test -f 'morton.c'; then $(CYGPATH_W) 'morton.c'; else $(CYGPATH_W) '$(srcdir)/morton.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/liboprof_a-morton.Tpo $(DEPDIR)/liboprof_a-morton.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='liboprof_a-morton.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_a_CPPFLAGS) $(CPPFLAGS) $(liboprof_a_CFLAGS) $(CFLAGS) -c -o liboprof_a-morton.obj `if test -f 'morton.c'; then $(CYGPATH_W) 'morton.c'; else $(CYGPATH_W) '$(srcdir)/morton.c'; fi`
+
+libopt_a-cmp.o: cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_a_CPPFLAGS) $(CPPFLAGS) $(libopt_a_CFLAGS) $(CFLAGS) -MT libopt_a-cmp.o -MD -MP -MF $(DEPDIR)/libopt_a-cmp.Tpo -c -o libopt_a-cmp.o `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libopt_a-cmp.Tpo $(DEPDIR)/libopt_a-cmp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='libopt_a-cmp.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_a_CPPFLAGS) $(CPPFLAGS) $(libopt_a_CFLAGS) $(CFLAGS) -c -o libopt_a-cmp.o `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
+
+libopt_a-cmp.obj: cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_a_CPPFLAGS) $(CPPFLAGS) $(libopt_a_CFLAGS) $(CFLAGS) -MT libopt_a-cmp.obj -MD -MP -MF $(DEPDIR)/libopt_a-cmp.Tpo -c -o libopt_a-cmp.obj `if test -f 'cmp.c'; then $(CYGPATH_W) 'cmp.c'; else $(CYGPATH_W) '$(srcdir)/cmp.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libopt_a-cmp.Tpo $(DEPDIR)/libopt_a-cmp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='libopt_a-cmp.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_a_CPPFLAGS) $(CPPFLAGS) $(libopt_a_CFLAGS) $(CFLAGS) -c -o libopt_a-cmp.obj `if test -f 'cmp.c'; then $(CYGPATH_W) 'cmp.c'; else $(CYGPATH_W) '$(srcdir)/cmp.c'; fi`
+
+libopt_a-hilbert.o: hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_a_CPPFLAGS) $(CPPFLAGS) $(libopt_a_CFLAGS) $(CFLAGS) -MT libopt_a-hilbert.o -MD -MP -MF $(DEPDIR)/libopt_a-hilbert.Tpo -c -o libopt_a-hilbert.o `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libopt_a-hilbert.Tpo $(DEPDIR)/libopt_a-hilbert.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='libopt_a-hilbert.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_a_CPPFLAGS) $(CPPFLAGS) $(libopt_a_CFLAGS) $(CFLAGS) -c -o libopt_a-hilbert.o `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
+
+libopt_a-hilbert.obj: hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_a_CPPFLAGS) $(CPPFLAGS) $(libopt_a_CFLAGS) $(CFLAGS) -MT libopt_a-hilbert.obj -MD -MP -MF $(DEPDIR)/libopt_a-hilbert.Tpo -c -o libopt_a-hilbert.obj `if test -f 'hilbert.c'; then $(CYGPATH_W) 'hilbert.c'; else $(CYGPATH_W) '$(srcdir)/hilbert.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libopt_a-hilbert.Tpo $(DEPDIR)/libopt_a-hilbert.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='libopt_a-hilbert.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_a_CPPFLAGS) $(CPPFLAGS) $(libopt_a_CFLAGS) $(CFLAGS) -c -o libopt_a-hilbert.obj `if test -f 'hilbert.c'; then $(CYGPATH_W) 'hilbert.c'; else $(CYGPATH_W) '$(srcdir)/hilbert.c'; fi`
+
+libopt_a-morton.o: morton.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_a_CPPFLAGS) $(CPPFLAGS) $(libopt_a_CFLAGS) $(CFLAGS) -MT libopt_a-morton.o -MD -MP -MF $(DEPDIR)/libopt_a-morton.Tpo -c -o libopt_a-morton.o `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libopt_a-morton.Tpo $(DEPDIR)/libopt_a-morton.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='libopt_a-morton.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_a_CPPFLAGS) $(CPPFLAGS) $(libopt_a_CFLAGS) $(CFLAGS) -c -o libopt_a-morton.o `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
+
+libopt_a-morton.obj: morton.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_a_CPPFLAGS) $(CPPFLAGS) $(libopt_a_CFLAGS) $(CFLAGS) -MT libopt_a-morton.obj -MD -MP -MF $(DEPDIR)/libopt_a-morton.Tpo -c -o libopt_a-morton.obj `if test -f 'morton.c'; then $(CYGPATH_W) 'morton.c'; else $(CYGPATH_W) '$(srcdir)/morton.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libopt_a-morton.Tpo $(DEPDIR)/libopt_a-morton.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='libopt_a-morton.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_a_CPPFLAGS) $(CPPFLAGS) $(libopt_a_CFLAGS) $(CFLAGS) -c -o libopt_a-morton.obj `if test -f 'morton.c'; then $(CYGPATH_W) 'morton.c'; else $(CYGPATH_W) '$(srcdir)/morton.c'; fi`
+
+libprof_a-cmp.o: cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_a_CPPFLAGS) $(CPPFLAGS) $(libprof_a_CFLAGS) $(CFLAGS) -MT libprof_a-cmp.o -MD -MP -MF $(DEPDIR)/libprof_a-cmp.Tpo -c -o libprof_a-cmp.o `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libprof_a-cmp.Tpo $(DEPDIR)/libprof_a-cmp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='libprof_a-cmp.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_a_CPPFLAGS) $(CPPFLAGS) $(libprof_a_CFLAGS) $(CFLAGS) -c -o libprof_a-cmp.o `test -f 'cmp.c' || echo '$(srcdir)/'`cmp.c
+
+libprof_a-cmp.obj: cmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_a_CPPFLAGS) $(CPPFLAGS) $(libprof_a_CFLAGS) $(CFLAGS) -MT libprof_a-cmp.obj -MD -MP -MF $(DEPDIR)/libprof_a-cmp.Tpo -c -o libprof_a-cmp.obj `if test -f 'cmp.c'; then $(CYGPATH_W) 'cmp.c'; else $(CYGPATH_W) '$(srcdir)/cmp.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libprof_a-cmp.Tpo $(DEPDIR)/libprof_a-cmp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cmp.c' object='libprof_a-cmp.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_a_CPPFLAGS) $(CPPFLAGS) $(libprof_a_CFLAGS) $(CFLAGS) -c -o libprof_a-cmp.obj `if test -f 'cmp.c'; then $(CYGPATH_W) 'cmp.c'; else $(CYGPATH_W) '$(srcdir)/cmp.c'; fi`
+
+libprof_a-hilbert.o: hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_a_CPPFLAGS) $(CPPFLAGS) $(libprof_a_CFLAGS) $(CFLAGS) -MT libprof_a-hilbert.o -MD -MP -MF $(DEPDIR)/libprof_a-hilbert.Tpo -c -o libprof_a-hilbert.o `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libprof_a-hilbert.Tpo $(DEPDIR)/libprof_a-hilbert.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='libprof_a-hilbert.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_a_CPPFLAGS) $(CPPFLAGS) $(libprof_a_CFLAGS) $(CFLAGS) -c -o libprof_a-hilbert.o `test -f 'hilbert.c' || echo '$(srcdir)/'`hilbert.c
+
+libprof_a-hilbert.obj: hilbert.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_a_CPPFLAGS) $(CPPFLAGS) $(libprof_a_CFLAGS) $(CFLAGS) -MT libprof_a-hilbert.obj -MD -MP -MF $(DEPDIR)/libprof_a-hilbert.Tpo -c -o libprof_a-hilbert.obj `if test -f 'hilbert.c'; then $(CYGPATH_W) 'hilbert.c'; else $(CYGPATH_W) '$(srcdir)/hilbert.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libprof_a-hilbert.Tpo $(DEPDIR)/libprof_a-hilbert.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='hilbert.c' object='libprof_a-hilbert.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_a_CPPFLAGS) $(CPPFLAGS) $(libprof_a_CFLAGS) $(CFLAGS) -c -o libprof_a-hilbert.obj `if test -f 'hilbert.c'; then $(CYGPATH_W) 'hilbert.c'; else $(CYGPATH_W) '$(srcdir)/hilbert.c'; fi`
+
+libprof_a-morton.o: morton.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_a_CPPFLAGS) $(CPPFLAGS) $(libprof_a_CFLAGS) $(CFLAGS) -MT libprof_a-morton.o -MD -MP -MF $(DEPDIR)/libprof_a-morton.Tpo -c -o libprof_a-morton.o `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libprof_a-morton.Tpo $(DEPDIR)/libprof_a-morton.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='libprof_a-morton.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_a_CPPFLAGS) $(CPPFLAGS) $(libprof_a_CFLAGS) $(CFLAGS) -c -o libprof_a-morton.o `test -f 'morton.c' || echo '$(srcdir)/'`morton.c
+
+libprof_a-morton.obj: morton.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_a_CPPFLAGS) $(CPPFLAGS) $(libprof_a_CFLAGS) $(CFLAGS) -MT libprof_a-morton.obj -MD -MP -MF $(DEPDIR)/libprof_a-morton.Tpo -c -o libprof_a-morton.obj `if test -f 'morton.c'; then $(CYGPATH_W) 'morton.c'; else $(CYGPATH_W) '$(srcdir)/morton.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libprof_a-morton.Tpo $(DEPDIR)/libprof_a-morton.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='morton.c' object='libprof_a-morton.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_a_CPPFLAGS) $(CPPFLAGS) $(libprof_a_CFLAGS) $(CFLAGS) -c -o libprof_a-morton.obj `if test -f 'morton.c'; then $(CYGPATH_W) 'morton.c'; else $(CYGPATH_W) '$(srcdir)/morton.c'; fi`
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -857,7 +914,7 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(LTLIBRARIES)
+all-am: Makefile $(LIBRARIES)
 installdirs:
 install: install-am
 install-exec: install-exec-am
@@ -891,8 +948,7 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-generic clean-libtool clean-noinstLTLIBRARIES \
-	mostlyclean-am
+clean-am: clean-generic clean-noinstLIBRARIES mostlyclean-am
 
 distclean: distclean-am
 	-rm -rf ./$(DEPDIR)
@@ -947,8 +1003,7 @@ maintainer-clean-am: distclean-am maintainer-clean-generic
 
 mostlyclean: mostlyclean-am
 
-mostlyclean-am: mostlyclean-compile mostlyclean-generic \
-	mostlyclean-libtool
+mostlyclean-am: mostlyclean-compile mostlyclean-generic
 
 pdf: pdf-am
 
@@ -963,18 +1018,17 @@ uninstall-am:
 .MAKE: install-am install-strip
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
-	clean-libtool clean-noinstLTLIBRARIES cscopelist ctags \
-	distclean distclean-compile distclean-generic \
-	distclean-libtool distclean-tags distdir dvi dvi-am html \
-	html-am info info-am install install-am install-data \
-	install-data-am install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am install-info \
-	install-info-am install-man install-pdf install-pdf-am \
-	install-ps install-ps-am install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
+	clean-noinstLIBRARIES cscopelist ctags distclean \
+	distclean-compile distclean-generic distclean-tags distdir dvi \
+	dvi-am html html-am info info-am install install-am \
+	install-data install-data-am install-dvi install-dvi-am \
+	install-exec install-exec-am install-html install-html-am \
+	install-info install-info-am install-man install-pdf \
+	install-pdf-am install-ps install-ps-am install-strip \
+	installcheck installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags uninstall uninstall-am
+	mostlyclean-generic pdf pdf-am ps ps-am tags uninstall \
+	uninstall-am
 
 
 # Local Variables:

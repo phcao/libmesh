@@ -123,7 +123,14 @@ LIBMESH_SET_METHODS
 # Initialize libtool.  By default, we will build
 # only shared libraries on platforms that support them
 #-----------------------------------------------------
-LT_INIT([disable-static])
+#LT_INIT([disable-static])
+
+#-----------------------------------------------------
+# stuff we need that is usually otherwise invoked by
+# libtool
+#-----------------------------------------------------
+AC_PROG_RANLIB
+AM_PROG_CC_C_O
 
 #-----------------------------------------------------
 # See if the user requested --enable-all-static

@@ -1,10 +1,10 @@
 AM_CPPFLAGS = -I$(srcdir)/include
-AM_CFLAGS   = 
-AM_CXXFLAGS = 
+AM_CFLAGS   =
+AM_CXXFLAGS =
 
-noinst_LTLIBRARIES   = libtecio.la
-libtecio_la_SOURCES  = stub.C include/TECIO.h include/TECXXX.h
-libtecio_la_LIBADD   = -L$(abs_builddir) -ltecio_vendor
+noinst_LIBRARIES   = libtecio.a
+libtecio_a_SOURCES  = stub.C include/TECIO.h include/TECXXX.h
+libtecio_a_LIBADD   = -L$(abs_builddir) -ltecio_vendor
 
 
 BUILT_SOURCES = libtecio_vendor.a

@@ -91,14 +91,11 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/ac_cxx_rtti.m4 \
 	$(top_srcdir)/m4/libmesh_core_features.m4 \
 	$(top_srcdir)/m4/libmesh_method.m4 \
 	$(top_srcdir)/m4/libmesh_optional_packages.m4 \
-	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/locale.m4 \
-	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
-	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/metis.m4 $(top_srcdir)/m4/mpi.m4 \
-	$(top_srcdir)/m4/namespaces.m4 $(top_srcdir)/m4/nanoflann.m4 \
-	$(top_srcdir)/m4/nemesis.m4 $(top_srcdir)/m4/netcdf.m4 \
-	$(top_srcdir)/m4/parmetis.m4 $(top_srcdir)/m4/petsc.m4 \
-	$(top_srcdir)/m4/precision.m4 \
+	$(top_srcdir)/m4/locale.m4 $(top_srcdir)/m4/metis.m4 \
+	$(top_srcdir)/m4/mpi.m4 $(top_srcdir)/m4/namespaces.m4 \
+	$(top_srcdir)/m4/nanoflann.m4 $(top_srcdir)/m4/nemesis.m4 \
+	$(top_srcdir)/m4/netcdf.m4 $(top_srcdir)/m4/parmetis.m4 \
+	$(top_srcdir)/m4/petsc.m4 $(top_srcdir)/m4/precision.m4 \
 	$(top_srcdir)/m4/prefix_config.m4 $(top_srcdir)/m4/sfc.m4 \
 	$(top_srcdir)/m4/slepc.m4 $(top_srcdir)/m4/sstream.m4 \
 	$(top_srcdir)/m4/strstream.m4 $(top_srcdir)/m4/tbb.m4 \
@@ -113,16 +110,23 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/include/libmesh_config.h.tmp
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-LTLIBRARIES = $(noinst_LTLIBRARIES)
-libfparser_la_LIBADD =
-am__libfparser_la_SOURCES_DIST = fparser.cc lib/crc32.hh \
-	lib/autoptr.hh lib/functional.hh fpoptimizer/hash.hh \
-	fpoptimizer/codetree.hh fpoptimizer/grammar.hh \
-	fpoptimizer/consts.hh fpoptimizer/optimize.hh \
-	fpoptimizer/opcodename.hh fpoptimizer/opcodename.cc \
-	fpoptimizer/bytecodesynth.hh fpoptimizer/bytecodesynth.cc \
-	fpoptimizer/valuerange.hh fpoptimizer/rangeestimation.hh \
-	fpoptimizer/constantfolding.hh fpoptimizer/logic_boolgroups.hh \
+LIBRARIES = $(noinst_LIBRARIES)
+AR = ar
+ARFLAGS = cru
+AM_V_AR = $(am__v_AR_@AM_V@)
+am__v_AR_ = $(am__v_AR_@AM_DEFAULT_V@)
+am__v_AR_0 = @echo "  AR      " $@;
+am__v_AR_1 = 
+libfparser_a_AR = $(AR) $(ARFLAGS)
+libfparser_a_LIBADD =
+am__libfparser_a_SOURCES_DIST = fparser.cc lib/crc32.hh lib/autoptr.hh \
+	lib/functional.hh fpoptimizer/hash.hh fpoptimizer/codetree.hh \
+	fpoptimizer/grammar.hh fpoptimizer/consts.hh \
+	fpoptimizer/optimize.hh fpoptimizer/opcodename.hh \
+	fpoptimizer/opcodename.cc fpoptimizer/bytecodesynth.hh \
+	fpoptimizer/bytecodesynth.cc fpoptimizer/valuerange.hh \
+	fpoptimizer/rangeestimation.hh fpoptimizer/constantfolding.hh \
+	fpoptimizer/logic_boolgroups.hh \
 	fpoptimizer/logic_collections.hh \
 	fpoptimizer/logic_ifoperations.hh \
 	fpoptimizer/logic_powoperations.hh \
@@ -136,34 +140,30 @@ am__libfparser_la_SOURCES_DIST = fparser.cc lib/crc32.hh \
 	fpoptimizer/rangeestimation.cc fpoptimizer/transformations.cc \
 	fpoptimizer/cse.cc fpoptimizer/optimize_main.cc fpoptimizer.cc
 am__dirstamp = $(am__leading_dot)dirstamp
-am__objects_1 = fpoptimizer/libfparser_la-opcodename.lo \
-	fpoptimizer/libfparser_la-bytecodesynth.lo \
-	fpoptimizer/libfparser_la-codetree.lo \
-	fpoptimizer/libfparser_la-debug.lo \
-	fpoptimizer/libfparser_la-grammar.lo \
-	fpoptimizer/libfparser_la-grammar_data.lo \
-	fpoptimizer/libfparser_la-optimize.lo \
-	fpoptimizer/libfparser_la-optimize_match.lo \
-	fpoptimizer/libfparser_la-optimize_synth.lo \
-	fpoptimizer/libfparser_la-optimize_debug.lo \
-	fpoptimizer/libfparser_la-hash.lo \
-	fpoptimizer/libfparser_la-makebytecode.lo \
-	fpoptimizer/libfparser_la-readbytecode.lo \
-	fpoptimizer/libfparser_la-constantfolding.lo \
-	fpoptimizer/libfparser_la-valuerange.lo \
-	fpoptimizer/libfparser_la-rangeestimation.lo \
-	fpoptimizer/libfparser_la-transformations.lo \
-	fpoptimizer/libfparser_la-cse.lo \
-	fpoptimizer/libfparser_la-optimize_main.lo
+am__objects_1 = fpoptimizer/libfparser_a-opcodename.$(OBJEXT) \
+	fpoptimizer/libfparser_a-bytecodesynth.$(OBJEXT) \
+	fpoptimizer/libfparser_a-codetree.$(OBJEXT) \
+	fpoptimizer/libfparser_a-debug.$(OBJEXT) \
+	fpoptimizer/libfparser_a-grammar.$(OBJEXT) \
+	fpoptimizer/libfparser_a-grammar_data.$(OBJEXT) \
+	fpoptimizer/libfparser_a-optimize.$(OBJEXT) \
+	fpoptimizer/libfparser_a-optimize_match.$(OBJEXT) \
+	fpoptimizer/libfparser_a-optimize_synth.$(OBJEXT) \
+	fpoptimizer/libfparser_a-optimize_debug.$(OBJEXT) \
+	fpoptimizer/libfparser_a-hash.$(OBJEXT) \
+	fpoptimizer/libfparser_a-makebytecode.$(OBJEXT) \
+	fpoptimizer/libfparser_a-readbytecode.$(OBJEXT) \
+	fpoptimizer/libfparser_a-constantfolding.$(OBJEXT) \
+	fpoptimizer/libfparser_a-valuerange.$(OBJEXT) \
+	fpoptimizer/libfparser_a-rangeestimation.$(OBJEXT) \
+	fpoptimizer/libfparser_a-transformations.$(OBJEXT) \
+	fpoptimizer/libfparser_a-cse.$(OBJEXT) \
+	fpoptimizer/libfparser_a-optimize_main.$(OBJEXT)
 @FPARSER_DEVEL_TRUE@@FPARSER_SUPPORT_OPTIMIZER_TRUE@am__objects_2 = $(am__objects_1)
-@FPARSER_DEVEL_FALSE@@FPARSER_SUPPORT_OPTIMIZER_TRUE@am__objects_3 = libfparser_la-fpoptimizer.lo
-am_libfparser_la_OBJECTS = libfparser_la-fparser.lo $(am__objects_2) \
-	$(am__objects_3)
-libfparser_la_OBJECTS = $(am_libfparser_la_OBJECTS)
-AM_V_lt = $(am__v_lt_@AM_V@)
-am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
-am__v_lt_0 = --silent
-am__v_lt_1 = 
+@FPARSER_DEVEL_FALSE@@FPARSER_SUPPORT_OPTIMIZER_TRUE@am__objects_3 = libfparser_a-fpoptimizer.$(OBJEXT)
+am_libfparser_a_OBJECTS = libfparser_a-fparser.$(OBJEXT) \
+	$(am__objects_2) $(am__objects_3)
+libfparser_a_OBJECTS = $(am_libfparser_a_OBJECTS)
 @FPARSER_DEVEL_TRUE@am__EXEEXT_1 = util/tree_grammar_parser$(EXEEXT) \
 @FPARSER_DEVEL_TRUE@	util/bytecoderules_parser$(EXEEXT) \
 @FPARSER_DEVEL_TRUE@	util/cpp_compress$(EXEEXT)
@@ -173,8 +173,7 @@ am_util_bytecoderules_parser_OBJECTS =  \
 util_bytecoderules_parser_OBJECTS =  \
 	$(am_util_bytecoderules_parser_OBJECTS)
 util_bytecoderules_parser_LDADD = $(LDADD)
-util_bytecoderules_parser_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
+util_bytecoderules_parser_LINK = $(CXXLD) \
 	$(util_bytecoderules_parser_CXXFLAGS) $(CXXFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 am_util_cpp_compress_OBJECTS =  \
@@ -182,10 +181,8 @@ am_util_cpp_compress_OBJECTS =  \
 	util/util_cpp_compress-cpp_compress_main.$(OBJEXT)
 util_cpp_compress_OBJECTS = $(am_util_cpp_compress_OBJECTS)
 util_cpp_compress_LDADD = $(LDADD)
-util_cpp_compress_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
-	$(util_cpp_compress_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) \
-	$(LDFLAGS) -o $@
+util_cpp_compress_LINK = $(CXXLD) $(util_cpp_compress_CXXFLAGS) \
+	$(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 am_util_tree_grammar_parser_OBJECTS =  \
 	util/util_tree_grammar_parser-tree_grammar_parser.$(OBJEXT) \
 	fpoptimizer/util_tree_grammar_parser-opcodename.$(OBJEXT) \
@@ -193,8 +190,7 @@ am_util_tree_grammar_parser_OBJECTS =  \
 util_tree_grammar_parser_OBJECTS =  \
 	$(am_util_tree_grammar_parser_OBJECTS)
 util_tree_grammar_parser_LDADD = $(LDADD)
-util_tree_grammar_parser_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
+util_tree_grammar_parser_LINK = $(CXXLD) \
 	$(util_tree_grammar_parser_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
@@ -213,20 +209,19 @@ DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)/include
 depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
+AM_V_lt = $(am__v_lt_@AM_V@)
+am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+am__v_lt_0 = --silent
+am__v_lt_1 = 
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
-LTCXXCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) \
-	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
-	$(AM_CXXFLAGS) $(CXXFLAGS)
 AM_V_CXX = $(am__v_CXX_@AM_V@)
 am__v_CXX_ = $(am__v_CXX_@AM_DEFAULT_V@)
 am__v_CXX_0 = @echo "  CXX     " $@;
 am__v_CXX_1 = 
 CXXLD = $(CXX)
-CXXLINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
+	-o $@
 AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
@@ -235,8 +230,6 @@ am__v_CXXLD_1 =
 am__yacc_c2h = sed -e s/cc$$/hh/ -e s/cpp$$/hpp/ -e s/cxx$$/hxx/ \
 		   -e s/c++$$/h++/ -e s/c$$/h/
 YACCCOMPILE = $(YACC) $(AM_YFLAGS) $(YFLAGS)
-LTYACCCOMPILE = $(LIBTOOL) $(AM_V_lt) $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=compile $(YACC) $(AM_YFLAGS) $(YFLAGS)
 AM_V_YACC = $(am__v_YACC_@AM_V@)
 am__v_YACC_ = $(am__v_YACC_@AM_DEFAULT_V@)
 am__v_YACC_0 = @echo "  YACC    " $@;
@@ -244,27 +237,20 @@ am__v_YACC_1 =
 YLWRAP = $(top_srcdir)/build-aux/ylwrap
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
-	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
-	$(AM_CFLAGS) $(CFLAGS)
 AM_V_CC = $(am__v_CC_@AM_V@)
 am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
 am__v_CC_0 = @echo "  CC      " $@;
 am__v_CC_1 = 
 CCLD = $(CC)
-LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(libfparser_la_SOURCES) \
-	$(util_bytecoderules_parser_SOURCES) \
+SOURCES = $(libfparser_a_SOURCES) $(util_bytecoderules_parser_SOURCES) \
 	$(util_cpp_compress_SOURCES) \
 	$(util_tree_grammar_parser_SOURCES)
-DIST_SOURCES = $(am__libfparser_la_SOURCES_DIST) \
+DIST_SOURCES = $(am__libfparser_a_SOURCES_DIST) \
 	$(util_bytecoderules_parser_SOURCES) \
 	$(util_cpp_compress_SOURCES) \
 	$(util_tree_grammar_parser_SOURCES)
@@ -346,7 +332,6 @@ am__relativize = \
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
-AR = @AR@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
@@ -396,13 +381,10 @@ CXXSHAREDFLAG = @CXXSHAREDFLAG@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
-DLLTOOL = @DLLTOOL@
 DOT = @DOT@
 DOTPATH = @DOTPATH@
 DOXYGEN = @DOXYGEN@
-DSYMUTIL = @DSYMUTIL@
 DTK_MAKEFILE_EXPORT = @DTK_MAKEFILE_EXPORT@
-DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
@@ -415,7 +397,6 @@ F77 = @F77@
 FC = @FC@
 FCFLAGS = @FCFLAGS@
 FFLAGS = @FFLAGS@
-FGREP = @FGREP@
 FLIBS = @FLIBS@
 FPARSER_INCLUDE = @FPARSER_INCLUDE@
 FPARSER_LIBRARY = @FPARSER_LIBRARY@
@@ -445,19 +426,15 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LASPACK_INCLUDE = @LASPACK_INCLUDE@
 LASPACK_LIB = @LASPACK_LIB@
-LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBHILBERT_INCLUDE = @LIBHILBERT_INCLUDE@
 LIBHILBERT_LIBRARY = @LIBHILBERT_LIBRARY@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
-LIBTOOL = @LIBTOOL@
-LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
-MANIFEST_TOOL = @MANIFEST_TOOL@
 METHOD = @METHOD@
 METHODS = @METHODS@
 METIS_INCLUDE = @METIS_INCLUDE@
@@ -477,20 +454,15 @@ MPI_LIBS_PATHS = @MPI_LIBS_PATHS@
 NANOFLANN_INCLUDE = @NANOFLANN_INCLUDE@
 NEMESIS_INCLUDE = @NEMESIS_INCLUDE@
 NETCDF_INCLUDE = @NETCDF_INCLUDE@
-NM = @NM@
-NMEDIT = @NMEDIT@
 NODEPRECATEDFLAG = @NODEPRECATEDFLAG@
 NOX_INCLUDES = @NOX_INCLUDES@
 NOX_LIBS = @NOX_LIBS@
 NOX_MAKEFILE_EXPORT = @NOX_MAKEFILE_EXPORT@
-OBJDUMP = @OBJDUMP@
 OBJEXT = @OBJEXT@
 OPENMP_CFLAGS = @OPENMP_CFLAGS@
 OPENMP_CXXFLAGS = @OPENMP_CXXFLAGS@
 OPENMP_FFLAGS = @OPENMP_FFLAGS@
 OPROFILE_FLAGS = @OPROFILE_FLAGS@
-OTOOL = @OTOOL@
-OTOOL64 = @OTOOL64@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
@@ -552,10 +524,8 @@ abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
-ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
-ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
 ac_ct_F77 = @ac_ct_F77@
 ac_ct_FC = @ac_ct_FC@
 am__include = @am__include@
@@ -634,7 +604,7 @@ top_srcdir = @top_srcdir@
 vtkbuild = @vtkbuild@
 vtkmajor = @vtkmajor@
 vtkversion = @vtkversion@
-AUTOMAKE_OPTIONS = subdir-objects 
+AUTOMAKE_OPTIONS = subdir-objects
 AM_CPPFLAGS = $(CPPFLAGS_OPT) -I$(srcdir)/fpoptimizer
 AM_CFLAGS = $(CFLAGS_OPT)
 AM_CXXFLAGS = $(CXXFLAGS_OPT)
@@ -703,11 +673,11 @@ FPOPTIMIZER_CC_FILES = \
 	    fpoptimizer/cse.cc \
 	    fpoptimizer/optimize_main.cc
 
-noinst_LTLIBRARIES = libfparser.la
-libfparser_la_SOURCES = fparser.cc $(am__append_4) $(am__append_6)
-libfparser_la_CPPFLAGS = $(AM_CPPFLAGS) $(FEATURE_FLAGS)
+noinst_LIBRARIES = libfparser.a
+libfparser_a_SOURCES = fparser.cc $(am__append_4) $(am__append_6)
+libfparser_a_CPPFLAGS = $(AM_CPPFLAGS) $(FEATURE_FLAGS)
 
-# util/tree_grammar_parser is a utility which is required to build 
+# util/tree_grammar_parser is a utility which is required to build
 # fpoptimizer/grammar_data.cc.  But this file itself is only needed
 # when we are compiling with optimization support enabled.
 #
@@ -754,7 +724,7 @@ all: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
 .SUFFIXES:
-.SUFFIXES: .cc .lo .o .obj .yy
+.SUFFIXES: .cc .o .obj .yy
 $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -786,82 +756,75 @@ $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 
-clean-noinstLTLIBRARIES:
-	-test -z "$(noinst_LTLIBRARIES)" || rm -f $(noinst_LTLIBRARIES)
-	@list='$(noinst_LTLIBRARIES)'; \
-	locs=`for p in $$list; do echo $$p; done | \
-	      sed 's|^[^/]*$$|.|; s|/[^/]*$$||; s|$$|/so_locations|' | \
-	      sort -u`; \
-	test -z "$$locs" || { \
-	  echo rm -f $${locs}; \
-	  rm -f $${locs}; \
-	}
+clean-noinstLIBRARIES:
+	-test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
 fpoptimizer/$(am__dirstamp):
 	@$(MKDIR_P) fpoptimizer
 	@: > fpoptimizer/$(am__dirstamp)
 fpoptimizer/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) fpoptimizer/$(DEPDIR)
 	@: > fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-opcodename.lo: fpoptimizer/$(am__dirstamp) \
-	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-bytecodesynth.lo:  \
+fpoptimizer/libfparser_a-opcodename.$(OBJEXT):  \
 	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-codetree.lo: fpoptimizer/$(am__dirstamp) \
-	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-debug.lo: fpoptimizer/$(am__dirstamp) \
-	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-grammar.lo: fpoptimizer/$(am__dirstamp) \
-	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-grammar_data.lo:  \
+fpoptimizer/libfparser_a-bytecodesynth.$(OBJEXT):  \
 	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-optimize.lo: fpoptimizer/$(am__dirstamp) \
-	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-optimize_match.lo:  \
+fpoptimizer/libfparser_a-codetree.$(OBJEXT):  \
 	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-optimize_synth.lo:  \
+fpoptimizer/libfparser_a-debug.$(OBJEXT): fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+fpoptimizer/libfparser_a-grammar.$(OBJEXT):  \
 	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-optimize_debug.lo:  \
+fpoptimizer/libfparser_a-grammar_data.$(OBJEXT):  \
 	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-hash.lo: fpoptimizer/$(am__dirstamp) \
-	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-makebytecode.lo:  \
+fpoptimizer/libfparser_a-optimize.$(OBJEXT):  \
 	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-readbytecode.lo:  \
+fpoptimizer/libfparser_a-optimize_match.$(OBJEXT):  \
 	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-constantfolding.lo:  \
+fpoptimizer/libfparser_a-optimize_synth.$(OBJEXT):  \
 	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-valuerange.lo: fpoptimizer/$(am__dirstamp) \
-	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-rangeestimation.lo:  \
+fpoptimizer/libfparser_a-optimize_debug.$(OBJEXT):  \
 	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-transformations.lo:  \
+fpoptimizer/libfparser_a-hash.$(OBJEXT): fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+fpoptimizer/libfparser_a-makebytecode.$(OBJEXT):  \
 	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-cse.lo: fpoptimizer/$(am__dirstamp) \
-	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-fpoptimizer/libfparser_la-optimize_main.lo:  \
+fpoptimizer/libfparser_a-readbytecode.$(OBJEXT):  \
 	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
-libfparser.la: $(libfparser_la_OBJECTS) $(libfparser_la_DEPENDENCIES) $(EXTRA_libfparser_la_DEPENDENCIES) 
-	$(AM_V_CXXLD)$(CXXLINK)  $(libfparser_la_OBJECTS) $(libfparser_la_LIBADD) $(LIBS)
+fpoptimizer/libfparser_a-constantfolding.$(OBJEXT):  \
+	fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+fpoptimizer/libfparser_a-valuerange.$(OBJEXT):  \
+	fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+fpoptimizer/libfparser_a-rangeestimation.$(OBJEXT):  \
+	fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+fpoptimizer/libfparser_a-transformations.$(OBJEXT):  \
+	fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+fpoptimizer/libfparser_a-cse.$(OBJEXT): fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+fpoptimizer/libfparser_a-optimize_main.$(OBJEXT):  \
+	fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+libfparser.a: $(libfparser_a_OBJECTS) $(libfparser_a_DEPENDENCIES) $(EXTRA_libfparser_a_DEPENDENCIES) 
+	$(AM_V_at)-rm -f libfparser.a
+	$(AM_V_AR)$(libfparser_a_AR) libfparser.a $(libfparser_a_OBJECTS) $(libfparser_a_LIBADD)
+	$(AM_V_at)$(RANLIB) libfparser.a
 
 clean-noinstPROGRAMS:
-	@list='$(noinst_PROGRAMS)'; test -n "$$list" || exit 0; \
-	echo " rm -f" $$list; \
-	rm -f $$list || exit $$?; \
-	test -n "$(EXEEXT)" || exit 0; \
-	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
-	echo " rm -f" $$list; \
-	rm -f $$list
+	-test -z "$(noinst_PROGRAMS)" || rm -f $(noinst_PROGRAMS)
 util/$(am__dirstamp):
 	@$(MKDIR_P) util
 	@: > util/$(am__dirstamp)
@@ -892,34 +855,33 @@ util/tree_grammar_parser$(EXEEXT): $(util_tree_grammar_parser_OBJECTS) $(util_tr
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f fpoptimizer/*.$(OBJEXT)
-	-rm -f fpoptimizer/*.lo
 	-rm -f util/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfparser_la-fparser.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfparser_la-fpoptimizer.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfparser_a-fparser.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfparser_a-fpoptimizer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/util_tree_grammar_parser-fparser.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-bytecodesynth.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-codetree.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-constantfolding.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-cse.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-debug.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-grammar.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-grammar_data.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-hash.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-makebytecode.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-opcodename.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-optimize.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-optimize_debug.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-optimize_main.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-optimize_match.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-optimize_synth.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-rangeestimation.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-readbytecode.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-transformations.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_la-valuerange.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-bytecodesynth.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-codetree.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-constantfolding.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-cse.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-debug.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-grammar.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-grammar_data.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-hash.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-makebytecode.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-opcodename.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-optimize.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-optimize_debug.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-optimize_main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-optimize_match.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-optimize_synth.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-rangeestimation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-readbytecode.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-transformations.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libfparser_a-valuerange.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/util_tree_grammar_parser-opcodename.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@util/$(DEPDIR)/util_bytecoderules_parser-bytecoderules_parser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@util/$(DEPDIR)/util_cpp_compress-cpp_compress.Po@am__quote@
@@ -942,160 +904,299 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
-.cc.lo:
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
-@am__fastdepCXX_TRUE@	$(LTCXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
-@am__fastdepCXX_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+libfparser_a-fparser.o: fparser.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libfparser_a-fparser.o -MD -MP -MF $(DEPDIR)/libfparser_a-fparser.Tpo -c -o libfparser_a-fparser.o `test -f 'fparser.cc' || echo '$(srcdir)/'`fparser.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfparser_a-fparser.Tpo $(DEPDIR)/libfparser_a-fparser.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fparser.cc' object='libfparser_a-fparser.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LTCXXCOMPILE) -c -o $@ $<
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libfparser_a-fparser.o `test -f 'fparser.cc' || echo '$(srcdir)/'`fparser.cc
 
-libfparser_la-fparser.lo: fparser.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libfparser_la-fparser.lo -MD -MP -MF $(DEPDIR)/libfparser_la-fparser.Tpo -c -o libfparser_la-fparser.lo `test -f 'fparser.cc' || echo '$(srcdir)/'`fparser.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfparser_la-fparser.Tpo $(DEPDIR)/libfparser_la-fparser.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fparser.cc' object='libfparser_la-fparser.lo' libtool=yes @AMDEPBACKSLASH@
+libfparser_a-fparser.obj: fparser.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libfparser_a-fparser.obj -MD -MP -MF $(DEPDIR)/libfparser_a-fparser.Tpo -c -o libfparser_a-fparser.obj `if test -f 'fparser.cc'; then $(CYGPATH_W) 'fparser.cc'; else $(CYGPATH_W) '$(srcdir)/fparser.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfparser_a-fparser.Tpo $(DEPDIR)/libfparser_a-fparser.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fparser.cc' object='libfparser_a-fparser.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libfparser_la-fparser.lo `test -f 'fparser.cc' || echo '$(srcdir)/'`fparser.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libfparser_a-fparser.obj `if test -f 'fparser.cc'; then $(CYGPATH_W) 'fparser.cc'; else $(CYGPATH_W) '$(srcdir)/fparser.cc'; fi`
 
-fpoptimizer/libfparser_la-opcodename.lo: fpoptimizer/opcodename.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-opcodename.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-opcodename.Tpo -c -o fpoptimizer/libfparser_la-opcodename.lo `test -f 'fpoptimizer/opcodename.cc' || echo '$(srcdir)/'`fpoptimizer/opcodename.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-opcodename.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-opcodename.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/opcodename.cc' object='fpoptimizer/libfparser_la-opcodename.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-opcodename.o: fpoptimizer/opcodename.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-opcodename.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-opcodename.Tpo -c -o fpoptimizer/libfparser_a-opcodename.o `test -f 'fpoptimizer/opcodename.cc' || echo '$(srcdir)/'`fpoptimizer/opcodename.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-opcodename.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-opcodename.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/opcodename.cc' object='fpoptimizer/libfparser_a-opcodename.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-opcodename.lo `test -f 'fpoptimizer/opcodename.cc' || echo '$(srcdir)/'`fpoptimizer/opcodename.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-opcodename.o `test -f 'fpoptimizer/opcodename.cc' || echo '$(srcdir)/'`fpoptimizer/opcodename.cc
 
-fpoptimizer/libfparser_la-bytecodesynth.lo: fpoptimizer/bytecodesynth.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-bytecodesynth.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-bytecodesynth.Tpo -c -o fpoptimizer/libfparser_la-bytecodesynth.lo `test -f 'fpoptimizer/bytecodesynth.cc' || echo '$(srcdir)/'`fpoptimizer/bytecodesynth.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-bytecodesynth.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-bytecodesynth.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/bytecodesynth.cc' object='fpoptimizer/libfparser_la-bytecodesynth.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-opcodename.obj: fpoptimizer/opcodename.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-opcodename.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-opcodename.Tpo -c -o fpoptimizer/libfparser_a-opcodename.obj `if test -f 'fpoptimizer/opcodename.cc'; then $(CYGPATH_W) 'fpoptimizer/opcodename.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/opcodename.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-opcodename.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-opcodename.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/opcodename.cc' object='fpoptimizer/libfparser_a-opcodename.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-bytecodesynth.lo `test -f 'fpoptimizer/bytecodesynth.cc' || echo '$(srcdir)/'`fpoptimizer/bytecodesynth.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-opcodename.obj `if test -f 'fpoptimizer/opcodename.cc'; then $(CYGPATH_W) 'fpoptimizer/opcodename.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/opcodename.cc'; fi`
 
-fpoptimizer/libfparser_la-codetree.lo: fpoptimizer/codetree.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-codetree.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-codetree.Tpo -c -o fpoptimizer/libfparser_la-codetree.lo `test -f 'fpoptimizer/codetree.cc' || echo '$(srcdir)/'`fpoptimizer/codetree.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-codetree.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-codetree.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/codetree.cc' object='fpoptimizer/libfparser_la-codetree.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-bytecodesynth.o: fpoptimizer/bytecodesynth.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-bytecodesynth.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-bytecodesynth.Tpo -c -o fpoptimizer/libfparser_a-bytecodesynth.o `test -f 'fpoptimizer/bytecodesynth.cc' || echo '$(srcdir)/'`fpoptimizer/bytecodesynth.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-bytecodesynth.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-bytecodesynth.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/bytecodesynth.cc' object='fpoptimizer/libfparser_a-bytecodesynth.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-codetree.lo `test -f 'fpoptimizer/codetree.cc' || echo '$(srcdir)/'`fpoptimizer/codetree.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-bytecodesynth.o `test -f 'fpoptimizer/bytecodesynth.cc' || echo '$(srcdir)/'`fpoptimizer/bytecodesynth.cc
 
-fpoptimizer/libfparser_la-debug.lo: fpoptimizer/debug.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-debug.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-debug.Tpo -c -o fpoptimizer/libfparser_la-debug.lo `test -f 'fpoptimizer/debug.cc' || echo '$(srcdir)/'`fpoptimizer/debug.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-debug.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-debug.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/debug.cc' object='fpoptimizer/libfparser_la-debug.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-bytecodesynth.obj: fpoptimizer/bytecodesynth.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-bytecodesynth.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-bytecodesynth.Tpo -c -o fpoptimizer/libfparser_a-bytecodesynth.obj `if test -f 'fpoptimizer/bytecodesynth.cc'; then $(CYGPATH_W) 'fpoptimizer/bytecodesynth.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/bytecodesynth.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-bytecodesynth.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-bytecodesynth.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/bytecodesynth.cc' object='fpoptimizer/libfparser_a-bytecodesynth.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-debug.lo `test -f 'fpoptimizer/debug.cc' || echo '$(srcdir)/'`fpoptimizer/debug.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-bytecodesynth.obj `if test -f 'fpoptimizer/bytecodesynth.cc'; then $(CYGPATH_W) 'fpoptimizer/bytecodesynth.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/bytecodesynth.cc'; fi`
 
-fpoptimizer/libfparser_la-grammar.lo: fpoptimizer/grammar.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-grammar.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-grammar.Tpo -c -o fpoptimizer/libfparser_la-grammar.lo `test -f 'fpoptimizer/grammar.cc' || echo '$(srcdir)/'`fpoptimizer/grammar.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-grammar.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-grammar.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/grammar.cc' object='fpoptimizer/libfparser_la-grammar.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-codetree.o: fpoptimizer/codetree.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-codetree.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-codetree.Tpo -c -o fpoptimizer/libfparser_a-codetree.o `test -f 'fpoptimizer/codetree.cc' || echo '$(srcdir)/'`fpoptimizer/codetree.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-codetree.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-codetree.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/codetree.cc' object='fpoptimizer/libfparser_a-codetree.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-grammar.lo `test -f 'fpoptimizer/grammar.cc' || echo '$(srcdir)/'`fpoptimizer/grammar.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-codetree.o `test -f 'fpoptimizer/codetree.cc' || echo '$(srcdir)/'`fpoptimizer/codetree.cc
 
-fpoptimizer/libfparser_la-grammar_data.lo: fpoptimizer/grammar_data.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-grammar_data.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-grammar_data.Tpo -c -o fpoptimizer/libfparser_la-grammar_data.lo `test -f 'fpoptimizer/grammar_data.cc' || echo '$(srcdir)/'`fpoptimizer/grammar_data.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-grammar_data.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-grammar_data.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/grammar_data.cc' object='fpoptimizer/libfparser_la-grammar_data.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-codetree.obj: fpoptimizer/codetree.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-codetree.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-codetree.Tpo -c -o fpoptimizer/libfparser_a-codetree.obj `if test -f 'fpoptimizer/codetree.cc'; then $(CYGPATH_W) 'fpoptimizer/codetree.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/codetree.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-codetree.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-codetree.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/codetree.cc' object='fpoptimizer/libfparser_a-codetree.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-grammar_data.lo `test -f 'fpoptimizer/grammar_data.cc' || echo '$(srcdir)/'`fpoptimizer/grammar_data.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-codetree.obj `if test -f 'fpoptimizer/codetree.cc'; then $(CYGPATH_W) 'fpoptimizer/codetree.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/codetree.cc'; fi`
 
-fpoptimizer/libfparser_la-optimize.lo: fpoptimizer/optimize.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-optimize.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-optimize.Tpo -c -o fpoptimizer/libfparser_la-optimize.lo `test -f 'fpoptimizer/optimize.cc' || echo '$(srcdir)/'`fpoptimizer/optimize.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-optimize.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-optimize.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize.cc' object='fpoptimizer/libfparser_la-optimize.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-debug.o: fpoptimizer/debug.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-debug.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-debug.Tpo -c -o fpoptimizer/libfparser_a-debug.o `test -f 'fpoptimizer/debug.cc' || echo '$(srcdir)/'`fpoptimizer/debug.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-debug.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-debug.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/debug.cc' object='fpoptimizer/libfparser_a-debug.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-optimize.lo `test -f 'fpoptimizer/optimize.cc' || echo '$(srcdir)/'`fpoptimizer/optimize.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-debug.o `test -f 'fpoptimizer/debug.cc' || echo '$(srcdir)/'`fpoptimizer/debug.cc
 
-fpoptimizer/libfparser_la-optimize_match.lo: fpoptimizer/optimize_match.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-optimize_match.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-optimize_match.Tpo -c -o fpoptimizer/libfparser_la-optimize_match.lo `test -f 'fpoptimizer/optimize_match.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_match.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-optimize_match.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-optimize_match.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_match.cc' object='fpoptimizer/libfparser_la-optimize_match.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-debug.obj: fpoptimizer/debug.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-debug.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-debug.Tpo -c -o fpoptimizer/libfparser_a-debug.obj `if test -f 'fpoptimizer/debug.cc'; then $(CYGPATH_W) 'fpoptimizer/debug.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/debug.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-debug.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-debug.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/debug.cc' object='fpoptimizer/libfparser_a-debug.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-optimize_match.lo `test -f 'fpoptimizer/optimize_match.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_match.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-debug.obj `if test -f 'fpoptimizer/debug.cc'; then $(CYGPATH_W) 'fpoptimizer/debug.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/debug.cc'; fi`
 
-fpoptimizer/libfparser_la-optimize_synth.lo: fpoptimizer/optimize_synth.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-optimize_synth.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-optimize_synth.Tpo -c -o fpoptimizer/libfparser_la-optimize_synth.lo `test -f 'fpoptimizer/optimize_synth.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_synth.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-optimize_synth.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-optimize_synth.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_synth.cc' object='fpoptimizer/libfparser_la-optimize_synth.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-grammar.o: fpoptimizer/grammar.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-grammar.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-grammar.Tpo -c -o fpoptimizer/libfparser_a-grammar.o `test -f 'fpoptimizer/grammar.cc' || echo '$(srcdir)/'`fpoptimizer/grammar.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-grammar.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-grammar.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/grammar.cc' object='fpoptimizer/libfparser_a-grammar.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-optimize_synth.lo `test -f 'fpoptimizer/optimize_synth.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_synth.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-grammar.o `test -f 'fpoptimizer/grammar.cc' || echo '$(srcdir)/'`fpoptimizer/grammar.cc
 
-fpoptimizer/libfparser_la-optimize_debug.lo: fpoptimizer/optimize_debug.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-optimize_debug.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-optimize_debug.Tpo -c -o fpoptimizer/libfparser_la-optimize_debug.lo `test -f 'fpoptimizer/optimize_debug.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_debug.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-optimize_debug.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-optimize_debug.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_debug.cc' object='fpoptimizer/libfparser_la-optimize_debug.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-grammar.obj: fpoptimizer/grammar.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-grammar.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-grammar.Tpo -c -o fpoptimizer/libfparser_a-grammar.obj `if test -f 'fpoptimizer/grammar.cc'; then $(CYGPATH_W) 'fpoptimizer/grammar.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/grammar.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-grammar.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-grammar.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/grammar.cc' object='fpoptimizer/libfparser_a-grammar.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-optimize_debug.lo `test -f 'fpoptimizer/optimize_debug.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_debug.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-grammar.obj `if test -f 'fpoptimizer/grammar.cc'; then $(CYGPATH_W) 'fpoptimizer/grammar.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/grammar.cc'; fi`
 
-fpoptimizer/libfparser_la-hash.lo: fpoptimizer/hash.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-hash.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-hash.Tpo -c -o fpoptimizer/libfparser_la-hash.lo `test -f 'fpoptimizer/hash.cc' || echo '$(srcdir)/'`fpoptimizer/hash.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-hash.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-hash.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/hash.cc' object='fpoptimizer/libfparser_la-hash.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-grammar_data.o: fpoptimizer/grammar_data.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-grammar_data.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-grammar_data.Tpo -c -o fpoptimizer/libfparser_a-grammar_data.o `test -f 'fpoptimizer/grammar_data.cc' || echo '$(srcdir)/'`fpoptimizer/grammar_data.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-grammar_data.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-grammar_data.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/grammar_data.cc' object='fpoptimizer/libfparser_a-grammar_data.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-hash.lo `test -f 'fpoptimizer/hash.cc' || echo '$(srcdir)/'`fpoptimizer/hash.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-grammar_data.o `test -f 'fpoptimizer/grammar_data.cc' || echo '$(srcdir)/'`fpoptimizer/grammar_data.cc
 
-fpoptimizer/libfparser_la-makebytecode.lo: fpoptimizer/makebytecode.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-makebytecode.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-makebytecode.Tpo -c -o fpoptimizer/libfparser_la-makebytecode.lo `test -f 'fpoptimizer/makebytecode.cc' || echo '$(srcdir)/'`fpoptimizer/makebytecode.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-makebytecode.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-makebytecode.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/makebytecode.cc' object='fpoptimizer/libfparser_la-makebytecode.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-grammar_data.obj: fpoptimizer/grammar_data.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-grammar_data.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-grammar_data.Tpo -c -o fpoptimizer/libfparser_a-grammar_data.obj `if test -f 'fpoptimizer/grammar_data.cc'; then $(CYGPATH_W) 'fpoptimizer/grammar_data.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/grammar_data.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-grammar_data.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-grammar_data.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/grammar_data.cc' object='fpoptimizer/libfparser_a-grammar_data.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-makebytecode.lo `test -f 'fpoptimizer/makebytecode.cc' || echo '$(srcdir)/'`fpoptimizer/makebytecode.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-grammar_data.obj `if test -f 'fpoptimizer/grammar_data.cc'; then $(CYGPATH_W) 'fpoptimizer/grammar_data.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/grammar_data.cc'; fi`
 
-fpoptimizer/libfparser_la-readbytecode.lo: fpoptimizer/readbytecode.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-readbytecode.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-readbytecode.Tpo -c -o fpoptimizer/libfparser_la-readbytecode.lo `test -f 'fpoptimizer/readbytecode.cc' || echo '$(srcdir)/'`fpoptimizer/readbytecode.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-readbytecode.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-readbytecode.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/readbytecode.cc' object='fpoptimizer/libfparser_la-readbytecode.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-optimize.o: fpoptimizer/optimize.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-optimize.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-optimize.Tpo -c -o fpoptimizer/libfparser_a-optimize.o `test -f 'fpoptimizer/optimize.cc' || echo '$(srcdir)/'`fpoptimizer/optimize.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-optimize.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-optimize.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize.cc' object='fpoptimizer/libfparser_a-optimize.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-readbytecode.lo `test -f 'fpoptimizer/readbytecode.cc' || echo '$(srcdir)/'`fpoptimizer/readbytecode.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-optimize.o `test -f 'fpoptimizer/optimize.cc' || echo '$(srcdir)/'`fpoptimizer/optimize.cc
 
-fpoptimizer/libfparser_la-constantfolding.lo: fpoptimizer/constantfolding.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-constantfolding.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-constantfolding.Tpo -c -o fpoptimizer/libfparser_la-constantfolding.lo `test -f 'fpoptimizer/constantfolding.cc' || echo '$(srcdir)/'`fpoptimizer/constantfolding.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-constantfolding.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-constantfolding.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/constantfolding.cc' object='fpoptimizer/libfparser_la-constantfolding.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-optimize.obj: fpoptimizer/optimize.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-optimize.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-optimize.Tpo -c -o fpoptimizer/libfparser_a-optimize.obj `if test -f 'fpoptimizer/optimize.cc'; then $(CYGPATH_W) 'fpoptimizer/optimize.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/optimize.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-optimize.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-optimize.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize.cc' object='fpoptimizer/libfparser_a-optimize.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-constantfolding.lo `test -f 'fpoptimizer/constantfolding.cc' || echo '$(srcdir)/'`fpoptimizer/constantfolding.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-optimize.obj `if test -f 'fpoptimizer/optimize.cc'; then $(CYGPATH_W) 'fpoptimizer/optimize.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/optimize.cc'; fi`
 
-fpoptimizer/libfparser_la-valuerange.lo: fpoptimizer/valuerange.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-valuerange.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-valuerange.Tpo -c -o fpoptimizer/libfparser_la-valuerange.lo `test -f 'fpoptimizer/valuerange.cc' || echo '$(srcdir)/'`fpoptimizer/valuerange.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-valuerange.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-valuerange.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/valuerange.cc' object='fpoptimizer/libfparser_la-valuerange.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-optimize_match.o: fpoptimizer/optimize_match.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-optimize_match.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-optimize_match.Tpo -c -o fpoptimizer/libfparser_a-optimize_match.o `test -f 'fpoptimizer/optimize_match.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_match.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-optimize_match.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-optimize_match.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_match.cc' object='fpoptimizer/libfparser_a-optimize_match.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-valuerange.lo `test -f 'fpoptimizer/valuerange.cc' || echo '$(srcdir)/'`fpoptimizer/valuerange.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-optimize_match.o `test -f 'fpoptimizer/optimize_match.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_match.cc
 
-fpoptimizer/libfparser_la-rangeestimation.lo: fpoptimizer/rangeestimation.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-rangeestimation.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-rangeestimation.Tpo -c -o fpoptimizer/libfparser_la-rangeestimation.lo `test -f 'fpoptimizer/rangeestimation.cc' || echo '$(srcdir)/'`fpoptimizer/rangeestimation.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-rangeestimation.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-rangeestimation.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/rangeestimation.cc' object='fpoptimizer/libfparser_la-rangeestimation.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-optimize_match.obj: fpoptimizer/optimize_match.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-optimize_match.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-optimize_match.Tpo -c -o fpoptimizer/libfparser_a-optimize_match.obj `if test -f 'fpoptimizer/optimize_match.cc'; then $(CYGPATH_W) 'fpoptimizer/optimize_match.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/optimize_match.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-optimize_match.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-optimize_match.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_match.cc' object='fpoptimizer/libfparser_a-optimize_match.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-rangeestimation.lo `test -f 'fpoptimizer/rangeestimation.cc' || echo '$(srcdir)/'`fpoptimizer/rangeestimation.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-optimize_match.obj `if test -f 'fpoptimizer/optimize_match.cc'; then $(CYGPATH_W) 'fpoptimizer/optimize_match.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/optimize_match.cc'; fi`
 
-fpoptimizer/libfparser_la-transformations.lo: fpoptimizer/transformations.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-transformations.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-transformations.Tpo -c -o fpoptimizer/libfparser_la-transformations.lo `test -f 'fpoptimizer/transformations.cc' || echo '$(srcdir)/'`fpoptimizer/transformations.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-transformations.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-transformations.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/transformations.cc' object='fpoptimizer/libfparser_la-transformations.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-optimize_synth.o: fpoptimizer/optimize_synth.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-optimize_synth.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-optimize_synth.Tpo -c -o fpoptimizer/libfparser_a-optimize_synth.o `test -f 'fpoptimizer/optimize_synth.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_synth.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-optimize_synth.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-optimize_synth.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_synth.cc' object='fpoptimizer/libfparser_a-optimize_synth.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-transformations.lo `test -f 'fpoptimizer/transformations.cc' || echo '$(srcdir)/'`fpoptimizer/transformations.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-optimize_synth.o `test -f 'fpoptimizer/optimize_synth.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_synth.cc
 
-fpoptimizer/libfparser_la-cse.lo: fpoptimizer/cse.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-cse.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-cse.Tpo -c -o fpoptimizer/libfparser_la-cse.lo `test -f 'fpoptimizer/cse.cc' || echo '$(srcdir)/'`fpoptimizer/cse.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-cse.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-cse.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/cse.cc' object='fpoptimizer/libfparser_la-cse.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-optimize_synth.obj: fpoptimizer/optimize_synth.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-optimize_synth.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-optimize_synth.Tpo -c -o fpoptimizer/libfparser_a-optimize_synth.obj `if test -f 'fpoptimizer/optimize_synth.cc'; then $(CYGPATH_W) 'fpoptimizer/optimize_synth.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/optimize_synth.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-optimize_synth.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-optimize_synth.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_synth.cc' object='fpoptimizer/libfparser_a-optimize_synth.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-cse.lo `test -f 'fpoptimizer/cse.cc' || echo '$(srcdir)/'`fpoptimizer/cse.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-optimize_synth.obj `if test -f 'fpoptimizer/optimize_synth.cc'; then $(CYGPATH_W) 'fpoptimizer/optimize_synth.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/optimize_synth.cc'; fi`
 
-fpoptimizer/libfparser_la-optimize_main.lo: fpoptimizer/optimize_main.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_la-optimize_main.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_la-optimize_main.Tpo -c -o fpoptimizer/libfparser_la-optimize_main.lo `test -f 'fpoptimizer/optimize_main.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_main.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_la-optimize_main.Tpo fpoptimizer/$(DEPDIR)/libfparser_la-optimize_main.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_main.cc' object='fpoptimizer/libfparser_la-optimize_main.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-optimize_debug.o: fpoptimizer/optimize_debug.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-optimize_debug.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-optimize_debug.Tpo -c -o fpoptimizer/libfparser_a-optimize_debug.o `test -f 'fpoptimizer/optimize_debug.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_debug.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-optimize_debug.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-optimize_debug.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_debug.cc' object='fpoptimizer/libfparser_a-optimize_debug.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_la-optimize_main.lo `test -f 'fpoptimizer/optimize_main.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_main.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-optimize_debug.o `test -f 'fpoptimizer/optimize_debug.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_debug.cc
 
-libfparser_la-fpoptimizer.lo: fpoptimizer.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libfparser_la-fpoptimizer.lo -MD -MP -MF $(DEPDIR)/libfparser_la-fpoptimizer.Tpo -c -o libfparser_la-fpoptimizer.lo `test -f 'fpoptimizer.cc' || echo '$(srcdir)/'`fpoptimizer.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfparser_la-fpoptimizer.Tpo $(DEPDIR)/libfparser_la-fpoptimizer.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer.cc' object='libfparser_la-fpoptimizer.lo' libtool=yes @AMDEPBACKSLASH@
+fpoptimizer/libfparser_a-optimize_debug.obj: fpoptimizer/optimize_debug.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-optimize_debug.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-optimize_debug.Tpo -c -o fpoptimizer/libfparser_a-optimize_debug.obj `if test -f 'fpoptimizer/optimize_debug.cc'; then $(CYGPATH_W) 'fpoptimizer/optimize_debug.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/optimize_debug.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-optimize_debug.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-optimize_debug.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_debug.cc' object='fpoptimizer/libfparser_a-optimize_debug.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libfparser_la-fpoptimizer.lo `test -f 'fpoptimizer.cc' || echo '$(srcdir)/'`fpoptimizer.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-optimize_debug.obj `if test -f 'fpoptimizer/optimize_debug.cc'; then $(CYGPATH_W) 'fpoptimizer/optimize_debug.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/optimize_debug.cc'; fi`
+
+fpoptimizer/libfparser_a-hash.o: fpoptimizer/hash.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-hash.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-hash.Tpo -c -o fpoptimizer/libfparser_a-hash.o `test -f 'fpoptimizer/hash.cc' || echo '$(srcdir)/'`fpoptimizer/hash.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-hash.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-hash.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/hash.cc' object='fpoptimizer/libfparser_a-hash.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-hash.o `test -f 'fpoptimizer/hash.cc' || echo '$(srcdir)/'`fpoptimizer/hash.cc
+
+fpoptimizer/libfparser_a-hash.obj: fpoptimizer/hash.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-hash.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-hash.Tpo -c -o fpoptimizer/libfparser_a-hash.obj `if test -f 'fpoptimizer/hash.cc'; then $(CYGPATH_W) 'fpoptimizer/hash.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/hash.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-hash.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-hash.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/hash.cc' object='fpoptimizer/libfparser_a-hash.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-hash.obj `if test -f 'fpoptimizer/hash.cc'; then $(CYGPATH_W) 'fpoptimizer/hash.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/hash.cc'; fi`
+
+fpoptimizer/libfparser_a-makebytecode.o: fpoptimizer/makebytecode.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-makebytecode.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-makebytecode.Tpo -c -o fpoptimizer/libfparser_a-makebytecode.o `test -f 'fpoptimizer/makebytecode.cc' || echo '$(srcdir)/'`fpoptimizer/makebytecode.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-makebytecode.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-makebytecode.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/makebytecode.cc' object='fpoptimizer/libfparser_a-makebytecode.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-makebytecode.o `test -f 'fpoptimizer/makebytecode.cc' || echo '$(srcdir)/'`fpoptimizer/makebytecode.cc
+
+fpoptimizer/libfparser_a-makebytecode.obj: fpoptimizer/makebytecode.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-makebytecode.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-makebytecode.Tpo -c -o fpoptimizer/libfparser_a-makebytecode.obj `if test -f 'fpoptimizer/makebytecode.cc'; then $(CYGPATH_W) 'fpoptimizer/makebytecode.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/makebytecode.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-makebytecode.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-makebytecode.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/makebytecode.cc' object='fpoptimizer/libfparser_a-makebytecode.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-makebytecode.obj `if test -f 'fpoptimizer/makebytecode.cc'; then $(CYGPATH_W) 'fpoptimizer/makebytecode.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/makebytecode.cc'; fi`
+
+fpoptimizer/libfparser_a-readbytecode.o: fpoptimizer/readbytecode.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-readbytecode.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-readbytecode.Tpo -c -o fpoptimizer/libfparser_a-readbytecode.o `test -f 'fpoptimizer/readbytecode.cc' || echo '$(srcdir)/'`fpoptimizer/readbytecode.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-readbytecode.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-readbytecode.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/readbytecode.cc' object='fpoptimizer/libfparser_a-readbytecode.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-readbytecode.o `test -f 'fpoptimizer/readbytecode.cc' || echo '$(srcdir)/'`fpoptimizer/readbytecode.cc
+
+fpoptimizer/libfparser_a-readbytecode.obj: fpoptimizer/readbytecode.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-readbytecode.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-readbytecode.Tpo -c -o fpoptimizer/libfparser_a-readbytecode.obj `if test -f 'fpoptimizer/readbytecode.cc'; then $(CYGPATH_W) 'fpoptimizer/readbytecode.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/readbytecode.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-readbytecode.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-readbytecode.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/readbytecode.cc' object='fpoptimizer/libfparser_a-readbytecode.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-readbytecode.obj `if test -f 'fpoptimizer/readbytecode.cc'; then $(CYGPATH_W) 'fpoptimizer/readbytecode.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/readbytecode.cc'; fi`
+
+fpoptimizer/libfparser_a-constantfolding.o: fpoptimizer/constantfolding.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-constantfolding.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-constantfolding.Tpo -c -o fpoptimizer/libfparser_a-constantfolding.o `test -f 'fpoptimizer/constantfolding.cc' || echo '$(srcdir)/'`fpoptimizer/constantfolding.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-constantfolding.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-constantfolding.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/constantfolding.cc' object='fpoptimizer/libfparser_a-constantfolding.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-constantfolding.o `test -f 'fpoptimizer/constantfolding.cc' || echo '$(srcdir)/'`fpoptimizer/constantfolding.cc
+
+fpoptimizer/libfparser_a-constantfolding.obj: fpoptimizer/constantfolding.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-constantfolding.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-constantfolding.Tpo -c -o fpoptimizer/libfparser_a-constantfolding.obj `if test -f 'fpoptimizer/constantfolding.cc'; then $(CYGPATH_W) 'fpoptimizer/constantfolding.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/constantfolding.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-constantfolding.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-constantfolding.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/constantfolding.cc' object='fpoptimizer/libfparser_a-constantfolding.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-constantfolding.obj `if test -f 'fpoptimizer/constantfolding.cc'; then $(CYGPATH_W) 'fpoptimizer/constantfolding.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/constantfolding.cc'; fi`
+
+fpoptimizer/libfparser_a-valuerange.o: fpoptimizer/valuerange.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-valuerange.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-valuerange.Tpo -c -o fpoptimizer/libfparser_a-valuerange.o `test -f 'fpoptimizer/valuerange.cc' || echo '$(srcdir)/'`fpoptimizer/valuerange.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-valuerange.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-valuerange.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/valuerange.cc' object='fpoptimizer/libfparser_a-valuerange.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-valuerange.o `test -f 'fpoptimizer/valuerange.cc' || echo '$(srcdir)/'`fpoptimizer/valuerange.cc
+
+fpoptimizer/libfparser_a-valuerange.obj: fpoptimizer/valuerange.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-valuerange.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-valuerange.Tpo -c -o fpoptimizer/libfparser_a-valuerange.obj `if test -f 'fpoptimizer/valuerange.cc'; then $(CYGPATH_W) 'fpoptimizer/valuerange.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/valuerange.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-valuerange.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-valuerange.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/valuerange.cc' object='fpoptimizer/libfparser_a-valuerange.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-valuerange.obj `if test -f 'fpoptimizer/valuerange.cc'; then $(CYGPATH_W) 'fpoptimizer/valuerange.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/valuerange.cc'; fi`
+
+fpoptimizer/libfparser_a-rangeestimation.o: fpoptimizer/rangeestimation.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-rangeestimation.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-rangeestimation.Tpo -c -o fpoptimizer/libfparser_a-rangeestimation.o `test -f 'fpoptimizer/rangeestimation.cc' || echo '$(srcdir)/'`fpoptimizer/rangeestimation.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-rangeestimation.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-rangeestimation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/rangeestimation.cc' object='fpoptimizer/libfparser_a-rangeestimation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-rangeestimation.o `test -f 'fpoptimizer/rangeestimation.cc' || echo '$(srcdir)/'`fpoptimizer/rangeestimation.cc
+
+fpoptimizer/libfparser_a-rangeestimation.obj: fpoptimizer/rangeestimation.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-rangeestimation.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-rangeestimation.Tpo -c -o fpoptimizer/libfparser_a-rangeestimation.obj `if test -f 'fpoptimizer/rangeestimation.cc'; then $(CYGPATH_W) 'fpoptimizer/rangeestimation.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/rangeestimation.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-rangeestimation.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-rangeestimation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/rangeestimation.cc' object='fpoptimizer/libfparser_a-rangeestimation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-rangeestimation.obj `if test -f 'fpoptimizer/rangeestimation.cc'; then $(CYGPATH_W) 'fpoptimizer/rangeestimation.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/rangeestimation.cc'; fi`
+
+fpoptimizer/libfparser_a-transformations.o: fpoptimizer/transformations.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-transformations.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-transformations.Tpo -c -o fpoptimizer/libfparser_a-transformations.o `test -f 'fpoptimizer/transformations.cc' || echo '$(srcdir)/'`fpoptimizer/transformations.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-transformations.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-transformations.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/transformations.cc' object='fpoptimizer/libfparser_a-transformations.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-transformations.o `test -f 'fpoptimizer/transformations.cc' || echo '$(srcdir)/'`fpoptimizer/transformations.cc
+
+fpoptimizer/libfparser_a-transformations.obj: fpoptimizer/transformations.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-transformations.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-transformations.Tpo -c -o fpoptimizer/libfparser_a-transformations.obj `if test -f 'fpoptimizer/transformations.cc'; then $(CYGPATH_W) 'fpoptimizer/transformations.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/transformations.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-transformations.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-transformations.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/transformations.cc' object='fpoptimizer/libfparser_a-transformations.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-transformations.obj `if test -f 'fpoptimizer/transformations.cc'; then $(CYGPATH_W) 'fpoptimizer/transformations.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/transformations.cc'; fi`
+
+fpoptimizer/libfparser_a-cse.o: fpoptimizer/cse.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-cse.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-cse.Tpo -c -o fpoptimizer/libfparser_a-cse.o `test -f 'fpoptimizer/cse.cc' || echo '$(srcdir)/'`fpoptimizer/cse.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-cse.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-cse.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/cse.cc' object='fpoptimizer/libfparser_a-cse.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-cse.o `test -f 'fpoptimizer/cse.cc' || echo '$(srcdir)/'`fpoptimizer/cse.cc
+
+fpoptimizer/libfparser_a-cse.obj: fpoptimizer/cse.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-cse.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-cse.Tpo -c -o fpoptimizer/libfparser_a-cse.obj `if test -f 'fpoptimizer/cse.cc'; then $(CYGPATH_W) 'fpoptimizer/cse.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/cse.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-cse.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-cse.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/cse.cc' object='fpoptimizer/libfparser_a-cse.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-cse.obj `if test -f 'fpoptimizer/cse.cc'; then $(CYGPATH_W) 'fpoptimizer/cse.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/cse.cc'; fi`
+
+fpoptimizer/libfparser_a-optimize_main.o: fpoptimizer/optimize_main.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-optimize_main.o -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-optimize_main.Tpo -c -o fpoptimizer/libfparser_a-optimize_main.o `test -f 'fpoptimizer/optimize_main.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_main.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-optimize_main.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-optimize_main.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_main.cc' object='fpoptimizer/libfparser_a-optimize_main.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-optimize_main.o `test -f 'fpoptimizer/optimize_main.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_main.cc
+
+fpoptimizer/libfparser_a-optimize_main.obj: fpoptimizer/optimize_main.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libfparser_a-optimize_main.obj -MD -MP -MF fpoptimizer/$(DEPDIR)/libfparser_a-optimize_main.Tpo -c -o fpoptimizer/libfparser_a-optimize_main.obj `if test -f 'fpoptimizer/optimize_main.cc'; then $(CYGPATH_W) 'fpoptimizer/optimize_main.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/optimize_main.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libfparser_a-optimize_main.Tpo fpoptimizer/$(DEPDIR)/libfparser_a-optimize_main.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_main.cc' object='fpoptimizer/libfparser_a-optimize_main.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libfparser_a-optimize_main.obj `if test -f 'fpoptimizer/optimize_main.cc'; then $(CYGPATH_W) 'fpoptimizer/optimize_main.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer/optimize_main.cc'; fi`
+
+libfparser_a-fpoptimizer.o: fpoptimizer.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libfparser_a-fpoptimizer.o -MD -MP -MF $(DEPDIR)/libfparser_a-fpoptimizer.Tpo -c -o libfparser_a-fpoptimizer.o `test -f 'fpoptimizer.cc' || echo '$(srcdir)/'`fpoptimizer.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfparser_a-fpoptimizer.Tpo $(DEPDIR)/libfparser_a-fpoptimizer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer.cc' object='libfparser_a-fpoptimizer.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libfparser_a-fpoptimizer.o `test -f 'fpoptimizer.cc' || echo '$(srcdir)/'`fpoptimizer.cc
+
+libfparser_a-fpoptimizer.obj: fpoptimizer.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libfparser_a-fpoptimizer.obj -MD -MP -MF $(DEPDIR)/libfparser_a-fpoptimizer.Tpo -c -o libfparser_a-fpoptimizer.obj `if test -f 'fpoptimizer.cc'; then $(CYGPATH_W) 'fpoptimizer.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfparser_a-fpoptimizer.Tpo $(DEPDIR)/libfparser_a-fpoptimizer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer.cc' object='libfparser_a-fpoptimizer.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfparser_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libfparser_a-fpoptimizer.obj `if test -f 'fpoptimizer.cc'; then $(CYGPATH_W) 'fpoptimizer.cc'; else $(CYGPATH_W) '$(srcdir)/fpoptimizer.cc'; fi`
 
 util/util_bytecoderules_parser-bytecoderules_parser.o: util/bytecoderules_parser.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(util_bytecoderules_parser_CXXFLAGS) $(CXXFLAGS) -MT util/util_bytecoderules_parser-bytecoderules_parser.o -MD -MP -MF util/$(DEPDIR)/util_bytecoderules_parser-bytecoderules_parser.Tpo -c -o util/util_bytecoderules_parser-bytecoderules_parser.o `test -f 'util/bytecoderules_parser.cc' || echo '$(srcdir)/'`util/bytecoderules_parser.cc
@@ -1183,14 +1284,6 @@ util_tree_grammar_parser-fparser.obj: fparser.cc
 
 .yy.cc:
 	$(AM_V_YACC)$(am__skipyacc) $(SHELL) $(YLWRAP) $< y.tab.c $@ y.tab.h `echo $@ | $(am__yacc_c2h)` y.output $*.output -- $(YACCCOMPILE)
-
-mostlyclean-libtool:
-	-rm -f *.lo
-
-clean-libtool:
-	-rm -rf .libs _libs
-	-rm -rf fpoptimizer/.libs fpoptimizer/_libs
-	-rm -rf util/.libs util/_libs
 install-includeHEADERS: $(include_HEADERS)
 	@$(NORMAL_INSTALL)
 	@list='$(include_HEADERS)'; test -n "$(includedir)" || list=; \
@@ -1397,7 +1490,7 @@ distdir: $(DISTFILES)
 check-am: all-am
 check: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) check-recursive
-all-am: Makefile $(LTLIBRARIES) $(PROGRAMS) $(HEADERS)
+all-am: Makefile $(LIBRARIES) $(PROGRAMS) $(HEADERS)
 installdirs: installdirs-recursive
 installdirs-am:
 	for dir in "$(DESTDIR)$(includedir)"; do \
@@ -1444,8 +1537,8 @@ maintainer-clean-generic:
 	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 clean: clean-recursive
 
-clean-am: clean-generic clean-libtool clean-noinstLTLIBRARIES \
-	clean-noinstPROGRAMS mostlyclean-am
+clean-am: clean-generic clean-noinstLIBRARIES clean-noinstPROGRAMS \
+	mostlyclean-am
 
 distclean: distclean-recursive
 	-rm -rf ./$(DEPDIR) fpoptimizer/$(DEPDIR) util/$(DEPDIR)
@@ -1500,8 +1593,7 @@ maintainer-clean-am: distclean-am maintainer-clean-generic
 
 mostlyclean: mostlyclean-recursive
 
-mostlyclean-am: mostlyclean-compile mostlyclean-generic \
-	mostlyclean-libtool
+mostlyclean-am: mostlyclean-compile mostlyclean-generic
 
 pdf: pdf-recursive
 
@@ -1518,21 +1610,20 @@ uninstall-am: uninstall-includeHEADERS
 	install-strip tags-recursive
 
 .PHONY: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) CTAGS GTAGS \
-	all all-am check check-am clean clean-generic clean-libtool \
-	clean-noinstLTLIBRARIES clean-noinstPROGRAMS cscopelist \
+	all all-am check check-am clean clean-generic \
+	clean-noinstLIBRARIES clean-noinstPROGRAMS cscopelist \
 	cscopelist-recursive ctags ctags-recursive distclean \
-	distclean-compile distclean-generic distclean-libtool \
-	distclean-tags distdir dvi dvi-am html html-am info info-am \
-	install install-am install-data install-data-am install-dvi \
-	install-dvi-am install-exec install-exec-am install-html \
-	install-html-am install-includeHEADERS install-info \
-	install-info-am install-man install-pdf install-pdf-am \
-	install-ps install-ps-am install-strip installcheck \
-	installcheck-am installdirs installdirs-am maintainer-clean \
+	distclean-compile distclean-generic distclean-tags distdir dvi \
+	dvi-am html html-am info info-am install install-am \
+	install-data install-data-am install-dvi install-dvi-am \
+	install-exec install-exec-am install-html install-html-am \
+	install-includeHEADERS install-info install-info-am \
+	install-man install-pdf install-pdf-am install-ps \
+	install-ps-am install-strip installcheck installcheck-am \
+	installdirs installdirs-am maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-recursive uninstall uninstall-am \
-	uninstall-includeHEADERS
+	mostlyclean-generic pdf pdf-am ps ps-am tags tags-recursive \
+	uninstall uninstall-am uninstall-includeHEADERS
 
 
 # fpoptimizer/grammar_data.cc is a generated source, and this rule specifies how we build it.
@@ -1545,7 +1636,7 @@ fpoptimizer/grammar_data.cc: \
   # 'util/make_function_name_parser' is used to create extrasrc/fp_identifier_parser.inc,
   # but it seems to only define a snippet.  So for now we use the distributed version
   # of that file rather than treating it as a built source.
-  # util_make_function_name_parser_SOURCES  = util/make_function_name_parser.cc util/cpp_compress.cc 
+  # util_make_function_name_parser_SOURCES  = util/make_function_name_parser.cc util/cpp_compress.cc
 
 # extrasrc/fp_opcode_add.inc is a generated source, and this rule specifies how we build it.
 @FPARSER_DEVEL_TRUE@extrasrc/fp_opcode_add.inc: \

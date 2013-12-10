@@ -437,10 +437,6 @@
 /* libMesh version number */
 #undef LIB_VERSION
 
-/* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
-#undef LT_OBJDIR
-
 /* libMesh major version number */
 #undef MAJOR_VERSION
 
@@ -449,6 +445,9 @@
 
 /* libMesh minor version number */
 #undef MINOR_VERSION
+
+/* Define to 1 if your C compiler doesn't accept -c and -o together. */
+#undef NO_MINUS_C_MINUS_O
 
 /* Name of package */
 #undef PACKAGE

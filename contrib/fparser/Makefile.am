@@ -1,4 +1,4 @@
-AUTOMAKE_OPTIONS = subdir-objects 
+AUTOMAKE_OPTIONS = subdir-objects
 
 AM_CPPFLAGS = $(CPPFLAGS_OPT)
 AM_CFLAGS   = $(CFLAGS_OPT)
@@ -103,12 +103,12 @@ EXTRA_DIST += $(FPOPTIMIZER_CC_FILES) fpoptimizer/fpoptimizer_header.txt fpoptim
 
 
 
-noinst_LTLIBRARIES     = libfparser.la
-libfparser_la_SOURCES  = fparser.cc
-libfparser_la_CPPFLAGS = $(AM_CPPFLAGS) $(FEATURE_FLAGS)
+noinst_LIBRARIES     = libfparser.a
+libfparser_a_SOURCES  = fparser.cc
+libfparser_a_CPPFLAGS = $(AM_CPPFLAGS) $(FEATURE_FLAGS)
 
 
-# util/tree_grammar_parser is a utility which is required to build 
+# util/tree_grammar_parser is a utility which is required to build
 # fpoptimizer/grammar_data.cc.  But this file itself is only needed
 # when we are compiling with optimization support enabled.
 #
@@ -152,7 +152,7 @@ util_tree_grammar_parser_SOURCES   = \
   # 'util/make_function_name_parser' is used to create extrasrc/fp_identifier_parser.inc,
   # but it seems to only define a snippet.  So for now we use the distributed version
   # of that file rather than treating it as a built source.
-  # util_make_function_name_parser_SOURCES  = util/make_function_name_parser.cc util/cpp_compress.cc 
+  # util_make_function_name_parser_SOURCES  = util/make_function_name_parser.cc util/cpp_compress.cc
 
   util_cpp_compress_CXXFLAGS = # nothing fancy - don't use our compile flags for this utility code lest it be horribly slow
   util_cpp_compress_SOURCES  = util/cpp_compress.hh util/cpp_compress.cc util/cpp_compress_main.cc
@@ -191,8 +191,8 @@ fparser.cc: extrasrc/fp_opcode_add.inc
   BUILT_SOURCES += extrasrc/fp_opcode_add.inc
   BUILT_SOURCES += fpoptimizer/grammar_data.cc
 
-if FPARSER_SUPPORT_OPTIMIZER 
-    libfparser_la_SOURCES += $(FPOPTIMIZER_CC_FILES)
+if FPARSER_SUPPORT_OPTIMIZER
+    libfparser_a_SOURCES += $(FPOPTIMIZER_CC_FILES)
 endif
 
    # when doing 'make clean' we need to remove the generated sources
@@ -202,6 +202,6 @@ else !FPARSER_DEVEL
   SUBDIRS = extrasrc
 
 if FPARSER_SUPPORT_OPTIMIZER
-  libfparser_la_SOURCES += fpoptimizer.cc
+  libfparser_a_SOURCES += fpoptimizer.cc
 endif
 endif
