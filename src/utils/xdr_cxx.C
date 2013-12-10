@@ -22,6 +22,7 @@
 #include <iomanip>
 #include <sstream>
 #include <fstream>
+#include <unistd.h> // getpid()
 
 // Local includes
 #include "libmesh/xdr_cxx.h"
