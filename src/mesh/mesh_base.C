@@ -35,7 +35,6 @@
 #include "libmesh/point_locator_base.h"
 #include "libmesh/threads.h"
 
-
 namespace libMesh
 {
 
@@ -169,13 +168,13 @@ void MeshBase::prepare_for_use (const bool skip_renumber_nodes_and_elements)
   // If we're using ParallelMesh, we'll want it parallelized.
   this->delete_remote_elements();
 
-  if(!_skip_renumber_nodes_and_elements)
-    this->renumber_nodes_and_elements();
-
 #ifdef LIBMESH_ENABLE_UNIQUE_ID
   // Assign DOF object unique ids
   this->assign_unique_ids();
 #endif
+
+  if(!_skip_renumber_nodes_and_elements)
+    this->renumber_nodes_and_elements();
 
   // Reset our PointLocator.  This needs to happen any time the elements
   // in the underlying elements in the mesh have changed, so we do it here.

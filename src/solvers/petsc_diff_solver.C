@@ -62,19 +62,19 @@ __libmesh_petsc_diff_solver_monitor (SNES snes, PetscInt its,
     Vec petsc_delta_u;
     ierr = SNESGetSolutionUpdate(snes, &petsc_delta_u);
     CHKERRABORT(libMesh::COMM_WORLD, ierr);
-    PetscVector<Number> delta_u(petsc_delta_u);
+    PetscVector<Number> delta_u(petsc_delta_u, solver.comm());
     delta_u.close();
 
     Vec petsc_u;
     ierr = SNESGetSolution(snes, &petsc_u);
     CHKERRABORT(libMesh::COMM_WORLD, ierr);
-    PetscVector<Number> u(petsc_u);
+    PetscVector<Number> u(petsc_u, solver.comm());
     u.close();
 
     Vec petsc_res;
     ierr = SNESGetFunction(snes, &petsc_res, NULL, NULL);
     CHKERRABORT(libMesh::COMM_WORLD, ierr);
-    PetscVector<Number> res(petsc_res);
+    PetscVector<Number> res(petsc_res, solver.comm());
     res.close();
 
     (*solver.linear_solution_monitor)(
@@ -256,43 +256,56 @@ void PetscDiffSolver::reinit()
   Parent::reinit();
 }
 
-DiffSolver::SolveResult convert_solve_result(SNESConvergedReason r) {
-	switch (r) {
-		case SNES_CONVERGED_FNORM_ABS:
-			return DiffSolver::CONVERGED_ABSOLUTE_RESIDUAL;
-		case SNES_CONVERGED_FNORM_RELATIVE:
-			return DiffSolver::CONVERGED_RELATIVE_RESIDUAL;
+
+
+DiffSolver::SolveResult convert_solve_result(SNESConvergedReason r)
+{
+  switch (r)
+    {
+    case SNES_CONVERGED_FNORM_ABS:
+      return DiffSolver::CONVERGED_ABSOLUTE_RESIDUAL;
+    case SNES_CONVERGED_FNORM_RELATIVE:
+      return DiffSolver::CONVERGED_RELATIVE_RESIDUAL;
 #if PETSC_VERSION_LESS_THAN(3,2,1)
-		case SNES_CONVERGED_PNORM_RELATIVE:
+    case SNES_CONVERGED_PNORM_RELATIVE:
 #else
-		case SNES_CONVERGED_SNORM_RELATIVE:
+    case SNES_CONVERGED_SNORM_RELATIVE:
 #endif
-			return DiffSolver::CONVERGED_RELATIVE_STEP;
+      return DiffSolver::CONVERGED_RELATIVE_STEP;
 #if !PETSC_VERSION_LESS_THAN(2,3,3)
-		case SNES_CONVERGED_ITS:
+    case SNES_CONVERGED_ITS:
 #endif
-		case SNES_CONVERGED_TR_DELTA:
-			return DiffSolver::CONVERGED_NO_REASON;
-		case SNES_DIVERGED_FUNCTION_DOMAIN:
-		case SNES_DIVERGED_FUNCTION_COUNT:
-		case SNES_DIVERGED_FNORM_NAN:
+    case SNES_CONVERGED_TR_DELTA:
+      return DiffSolver::CONVERGED_NO_REASON;
+    case SNES_DIVERGED_FUNCTION_DOMAIN:
+    case SNES_DIVERGED_FUNCTION_COUNT:
+    case SNES_DIVERGED_FNORM_NAN:
 #if !PETSC_VERSION_LESS_THAN(3,3,0)
-		case SNES_DIVERGED_INNER:
+    case SNES_DIVERGED_INNER:
 #endif
 #if !PETSC_VERSION_LESS_THAN(2,3,2)
-		case SNES_DIVERGED_LINEAR_SOLVE:
+    case SNES_DIVERGED_LINEAR_SOLVE:
 #endif
-		case SNES_DIVERGED_LOCAL_MIN:
-			return DiffSolver::DIVERGED_NO_REASON;
-		case SNES_DIVERGED_MAX_IT:
-			return DiffSolver::DIVERGED_MAX_NONLINEAR_ITERATIONS;
+    case SNES_DIVERGED_LOCAL_MIN:
+      return DiffSolver::DIVERGED_NO_REASON;
+    case SNES_DIVERGED_MAX_IT:
+      return DiffSolver::DIVERGED_MAX_NONLINEAR_ITERATIONS;
 #if !PETSC_VERSION_LESS_THAN(3,2,0)
-		case SNES_DIVERGED_LINE_SEARCH:
-			return DiffSolver::DIVERGED_BACKTRACKING_FAILURE;
+    case SNES_DIVERGED_LINE_SEARCH:
+      return DiffSolver::DIVERGED_BACKTRACKING_FAILURE;
 #endif
-	}
-	return DiffSolver::INVALID_SOLVE_RESULT;
+      // In PETSc, SNES_CONVERGED_ITERATING means
+      // the solve is still iterating, but by the
+      // time we get here, we must have either
+      // converged or diverged, so
+      // SNES_CONVERGED_ITERATING is invalid.
+    case SNES_CONVERGED_ITERATING:
+      return DiffSolver::INVALID_SOLVE_RESULT;
+    }
+  return DiffSolver::INVALID_SOLVE_RESULT;
 }
+
+
 
 unsigned int PetscDiffSolver::solve()
 {

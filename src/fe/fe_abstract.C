@@ -641,7 +641,37 @@ void FEAbstract::get_refspace_nodes(const ElemType itemType, std::vector<Point>&
        nodes[1] = Point (1.,-1.,0.);
        nodes[2] = Point (1.,1.,0.);
        nodes[3] = Point (-1.,1.,0.);
-       nodes[4] = Point (-1.,-1.,1.);
+       nodes[4] = Point (0.,0.,1.);
+       return;
+    }
+    case PYRAMID14:
+    {
+       nodes.resize(14);
+
+       // base corners
+       nodes[0] = Point (-1.,-1.,0.);
+       nodes[1] = Point (1.,-1.,0.);
+       nodes[2] = Point (1.,1.,0.);
+       nodes[3] = Point (-1.,1.,0.);
+
+       // apex
+       nodes[4] = Point (0.,0.,1.);
+
+       // base midedge
+       nodes[5] = Point (0.,-1.,0.);
+       nodes[6] = Point (1.,0.,0.);
+       nodes[7] = Point (0.,1.,0.);
+       nodes[8] = Point (-1,0.,0.);
+
+       // lateral midedge
+       nodes[9] = Point (-.5,-.5,.5);
+       nodes[10] = Point (.5,-.5,.5);
+       nodes[11] = Point (.5,.5,.5);
+       nodes[12] = Point (-.5,.5,.5);
+
+       // base center
+       nodes[13] = Point (0.,0.,0.);
+
        return;
     }
     default:
@@ -781,10 +811,22 @@ bool FEAbstract::on_reference_element(const Point& p, const ElemType t, const Re
 
 
     case PYRAMID5:
+    case PYRAMID14:
       {
-	libMesh::err << "BEN: Implement this you lazy bastard!"
-		      << std::endl;
-	libmesh_error();
+        // Check that the point is on the same side of all the faces
+        // by testing whether:
+        //
+        // n_i.(x - x_i) <= 0
+        //
+        // for each i, where:
+        //   n_i is the outward normal of face i,
+        //   x_i is a point on face i.
+        if ((-eta - 1. + zeta <= 0.+eps) &&
+            (  xi - 1. + zeta <= 0.+eps) &&
+            ( eta - 1. + zeta <= 0.+eps) &&
+            ( -xi - 1. + zeta <= 0.+eps) &&
+            (            zeta >= 0.-eps))
+          return true;
 
 	return false;
       }

@@ -68,6 +68,13 @@ int main (int argc, char** argv)
   // default MPI communicator.
   Mesh mesh(init.comm());
 
+  // We may need XDR support compiled in to read binary .xdr files
+  std::string input_filename = argv[3];
+#ifndef LIBMESH_HAVE_XDR
+  libmesh_example_assert(input_filename.rfind(".xdr") >=
+                         input_filename.size(), "XDR support");
+#endif
+
   // Read the input mesh.
   mesh.read (argv[3]);
 
@@ -77,7 +84,16 @@ int main (int argc, char** argv)
   // Write the output mesh if the user specified an
   // output file name.
   if (argc >= 6 && std::string("-o") == argv[4])
-    mesh.write (argv[5]);
+    {
+      // We may need XDR support compiled in to read binary .xdr files
+      std::string output_filename = argv[5];
+#ifndef LIBMESH_HAVE_XDR
+      libmesh_example_assert(output_filename.rfind(".xdr") >=
+                             output_filename.size(), "XDR support");
+#endif
+
+      mesh.write (argv[5]);
+    }
 
   // All done.  libMesh objects are destroyed here.  Because the
   // LibMeshInit object was created first, its destruction occurs

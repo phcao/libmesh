@@ -130,6 +130,7 @@ libmesh_SOURCES =  \
         src/geom/cell_prism18.C \
         src/geom/cell_prism6.C \
         src/geom/cell_pyramid.C \
+        src/geom/cell_pyramid14.C \
         src/geom/cell_pyramid5.C \
         src/geom/cell_tet.C \
         src/geom/cell_tet10.C \
@@ -166,6 +167,7 @@ libmesh_SOURCES =  \
         src/mesh/abaqus_io.C \
         src/mesh/boundary_info.C \
         src/mesh/boundary_mesh.C \
+        src/mesh/checkpoint_io.C \
         src/mesh/diva_io.C \
         src/mesh/ensight_io.C \
         src/mesh/exodusII_io.C \

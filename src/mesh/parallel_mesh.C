@@ -419,6 +419,14 @@ Elem* ParallelMesh::add_elem (Elem *e)
       elem_procid == DofObject::invalid_processor_id)
     _n_elem++;
 
+#ifdef LIBMESH_ENABLE_UNIQUE_ID
+  if (!e->valid_unique_id() && libMesh::processor_id() == e->processor_id())
+    {
+      e->set_unique_id() = _next_unique_id;
+      _next_unique_id += this->n_processors();
+    }
+#endif
+
 // Unpartitioned elems should be added on every processor
 // And shouldn't be added in the same batch as ghost elems
 // But we might be just adding on processor 0 to
@@ -575,6 +583,15 @@ Node* ParallelMesh::add_node (Node *n)
       node_procid == DofObject::invalid_processor_id)
     _n_nodes++;
 
+#ifdef LIBMESH_ENABLE_UNIQUE_ID
+  if (!n->valid_unique_id() && libMesh::processor_id() == n->processor_id())
+    {
+      n->set_unique_id() = _next_unique_id;
+      _next_unique_id += this->n_processors();
+    }
+#endif
+
+
 // Unpartitioned nodes should be added on every processor
 // And shouldn't be added in the same batch as ghost nodes
 // But we might be just adding on processor 0 to
@@ -595,28 +612,9 @@ Node* ParallelMesh::add_node (Node *n)
 
 
 
-Node* ParallelMesh::insert_node (Node* n)
+Node* ParallelMesh::insert_node(Node* n)
 {
-  // If we already have this node we cannot
-  // simply delete it, because we may have elements
-  // which are attached to its address.
-  //
-  // Instead, call the Node = Point assignment operator
-  // to overwrite the spatial coordinates (but keep its
-  // address), delete the provided node, and return the
-  // address of the one we already had.
-  if (_nodes.count(n->id()))
-    {
-      Node *my_n = _nodes[n->id()];
-
-      *my_n = static_cast<Point>(*n);
-      delete n;
-      n = my_n;
-    }
-  else
-    _nodes[n->id()] = n;
-
-  return n;
+  return ParallelMesh::add_node(n);
 }
 
 
@@ -906,11 +904,21 @@ dof_id_type ParallelMesh::renumber_dof_objects
   std::vector<std::vector<dof_id_type> >
     requested_ids(this->n_processors());
 
+#ifdef LIBMESH_ENABLE_UNIQUE_ID
+  std::vector<std::vector<unique_id_type> >
+    requested_unique_ids(this->n_processors());
+#endif
+
   // We know how many objects live on each processor, so reseve() space for
   // each.
   for (processor_id_type p=0; p != this->n_processors(); ++p)
     if (p != this->processor_id())
+    {
       requested_ids[p].reserve(ghost_objects_from_proc[p]);
+#ifdef LIBMESH_ENABLE_UNIQUE_ID
+      requested_unique_ids[p].reserve(ghost_objects_from_proc[p]);
+#endif
+    }
 
   end = objects.end();
   for (it = objects.begin(); it != end; ++it)
@@ -919,7 +927,14 @@ dof_id_type ParallelMesh::renumber_dof_objects
       if (obj->processor_id() == this->processor_id())
         obj->set_id(next_id++);
       else if (obj->processor_id() != DofObject::invalid_processor_id)
+      {
         requested_ids[obj->processor_id()].push_back(obj->id());
+#ifdef LIBMESH_ENABLE_UNIQUE_ID
+        // It's possible to have an invalid id for dofs not owned by this process.
+        // We'll assert that they match on the receiving end.
+        requested_unique_ids[obj->processor_id()].push_back(obj->valid_unique_id() ? obj-> unique_id() : DofObject::invalid_unique_id);
+#endif
+      }
     }
 
   // Next set ghost object ids from other processors
@@ -937,6 +952,13 @@ dof_id_type ParallelMesh::renumber_dof_objects
           this->comm().send_receive(procup, requested_ids[procup],
 					    procdown, request_to_fill);
 
+#ifdef LIBMESH_ENABLE_UNIQUE_ID
+          std::vector<unique_id_type> unique_request_to_fill;
+          this->comm().send_receive(procup, requested_unique_ids[procup],
+                                    procdown, unique_request_to_fill);
+          std::vector<unique_id_type> new_unique_ids(unique_request_to_fill.size());
+#endif
+
           // Fill those requests
           std::vector<dof_id_type> new_ids(request_to_fill.size());
           for (std::size_t i=0; i != request_to_fill.size(); ++i)
@@ -945,6 +967,10 @@ dof_id_type ParallelMesh::renumber_dof_objects
               libmesh_assert(obj);
               libmesh_assert_equal_to (obj->processor_id(), this->processor_id());
               new_ids[i] = obj->id();
+#ifdef LIBMESH_ENABLE_UNIQUE_ID
+              new_unique_ids[i] = obj->valid_unique_id() ? obj->unique_id() : DofObject::invalid_unique_id;
+#endif
+
               libmesh_assert_greater_equal (new_ids[i],
                      first_object_on_proc[this->processor_id()]);
               libmesh_assert_less (new_ids[i],
@@ -956,6 +982,12 @@ dof_id_type ParallelMesh::renumber_dof_objects
           std::vector<dof_id_type> filled_request;
           this->comm().send_receive(procdown, new_ids,
 					    procup, filled_request);
+
+#ifdef LIBMESH_ENABLE_UNIQUE_ID
+          std::vector<unique_id_type> unique_filled_request;
+          this->comm().send_receive(procdown, new_unique_ids,
+					    procup, unique_filled_request);
+#endif
 
           // And copy the id changes we've now been informed of
           for (std::size_t i=0; i != filled_request.size(); ++i)
@@ -969,6 +1001,11 @@ dof_id_type ParallelMesh::renumber_dof_objects
                      first_object_on_proc[procup] +
                      objects_on_proc[procup]);
               obj->set_id(filled_request[i]);
+
+#ifdef LIBMESH_ENABLE_UNIQUE_ID
+              if (!obj->valid_unique_id() && unique_filled_request[i] != DofObject::invalid_unique_id)
+                obj->set_unique_id() = unique_filled_request[i];
+#endif
             }
         }
     }

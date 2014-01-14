@@ -33,6 +33,11 @@
 namespace libMesh
 {
 
+  // Constructor (empty)
+FEMap::FEMap() {}
+
+
+
 AutoPtr<FEMap> FEMap::build( FEType fe_type )
 {
   switch( fe_type.family )
@@ -53,6 +58,8 @@ AutoPtr<FEMap> FEMap::build( FEType fe_type )
   libmesh_error();
   return AutoPtr<FEMap>();
 }
+
+
 
 template<unsigned int Dim>
 void FEMap::init_reference_to_physical_map( const std::vector<Point>& qp,
@@ -254,7 +261,7 @@ void FEMap::init_reference_to_physical_map( const std::vector<Point>& qp,
                 this->d2phidxi2_map[i][0] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 0, qp[0]);
                 this->d2phidxideta_map[i][0] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 1, qp[0]);
                 this->d2phideta2_map[i][0] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 2, qp[0]);
-                this->d2phidxideta_map[i][0] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 3, qp[0]);
+                this->d2phidxidzeta_map[i][0] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 3, qp[0]);
                 this->d2phidetadzeta_map[i][0] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 4, qp[0]);
                 this->d2phidzeta2_map[i][0] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 5, qp[0]);
 #endif // ifdef LIBMESH_ENABLE_SECOND_DERIVATIVES
@@ -268,7 +275,7 @@ void FEMap::init_reference_to_physical_map( const std::vector<Point>& qp,
                     this->d2phidxi2_map[i][p] = this->d2phidxi2_map[i][0];
                     this->d2phidxideta_map[i][p] = this->d2phidxideta_map[i][0];
                     this->d2phideta2_map[i][p] = this->d2phideta2_map[i][0];
-                    this->d2phidxideta_map[i][p] = this->d2phidxideta_map[i][0];
+                    this->d2phidxidzeta_map[i][p] = this->d2phidxidzeta_map[i][0];
                     this->d2phidetadzeta_map[i][p] = this->d2phidetadzeta_map[i][0];
                     this->d2phidzeta2_map[i][p] = this->d2phidzeta2_map[i][0];
 #endif // ifdef LIBMESH_ENABLE_SECOND_DERIVATIVES
@@ -287,7 +294,7 @@ void FEMap::init_reference_to_physical_map( const std::vector<Point>& qp,
                 this->d2phidxi2_map[i][p] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 0, qp[p]);
                 this->d2phidxideta_map[i][p] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 1, qp[p]);
                 this->d2phideta2_map[i][p] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 2, qp[p]);
-                this->d2phidxideta_map[i][p] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 3, qp[p]);
+                this->d2phidxidzeta_map[i][p] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 3, qp[p]);
                 this->d2phidetadzeta_map[i][p] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 4, qp[p]);
                 this->d2phidzeta2_map[i][p] = FE<Dim,LAGRANGE>::shape_second_deriv (mapping_elem_type, mapping_order, i, 5, qp[p]);
 #endif // ifdef LIBMESH_ENABLE_SECOND_DERIVATIVES
@@ -304,6 +311,8 @@ void FEMap::init_reference_to_physical_map( const std::vector<Point>& qp,
   STOP_LOG("init_reference_to_physical_map()", "FEMap");
   return;
 }
+
+
 
 void FEMap::compute_single_point_map(const unsigned int dim,
 				     const std::vector<Real>& qw,
@@ -662,6 +671,7 @@ void FEMap::compute_single_point_map(const unsigned int dim,
 }
 
 
+
 void FEMap::resize_quadrature_map_vectors(const unsigned int dim, unsigned int n_qp)
 {
   // Resize the vectors to hold data at the quadrature points
@@ -700,6 +710,8 @@ void FEMap::resize_quadrature_map_vectors(const unsigned int dim, unsigned int n
   jac.resize(n_qp);
   JxW.resize(n_qp);
 }
+
+
 
 void FEMap::compute_affine_map( const unsigned int dim,
 				const std::vector<Real>& qw,
@@ -798,6 +810,7 @@ void FEMap::compute_map(const unsigned int dim,
 }
 
 
+
 void FEMap::print_JxW(std::ostream& os) const
 {
   for (unsigned int i=0; i<JxW.size(); ++i)
@@ -811,6 +824,7 @@ void FEMap::print_xyz(std::ostream& os) const
   for (unsigned int i=0; i<xyz.size(); ++i)
     os << " [" << i << "]: " << xyz[i];
 }
+
 
 
 // TODO: PB: We should consider moving this to the FEMap class
@@ -1203,6 +1217,8 @@ Point FE<Dim,T>::inverse_map (const Elem* elem,
   return p;
 }
 
+
+
 // TODO: PB: We should consider moving this to the FEMap class
 template <unsigned int Dim, FEFamily T>
 void FE<Dim,T>::inverse_map (const Elem* elem,
@@ -1225,6 +1241,8 @@ void FE<Dim,T>::inverse_map (const Elem* elem,
     reference_points[p] =
       FE<Dim,T>::inverse_map (elem, physical_points[p], tolerance, secure);
 }
+
+
 
 // TODO: PB: We should consider moving this to the FEMap class
 template <unsigned int Dim, FEFamily T>
@@ -1250,6 +1268,7 @@ Point FE<Dim,T>::map (const Elem* elem,
 
   return p;
 }
+
 
 
 // TODO: PB: We should consider moving this to the FEMap class
@@ -1278,6 +1297,8 @@ Point FE<Dim,T>::map_xi (const Elem* elem,
   return p;
 }
 
+
+
 // TODO: PB: We should consider moving this to the FEMap class
 template <unsigned int Dim, FEFamily T>
 Point FE<Dim,T>::map_eta (const Elem* elem,
@@ -1304,6 +1325,8 @@ Point FE<Dim,T>::map_eta (const Elem* elem,
   return p;
 }
 
+
+
 // TODO: PB: We should consider moving this to the FEMap class
 template <unsigned int Dim, FEFamily T>
 Point FE<Dim,T>::map_zeta (const Elem* elem,
@@ -1329,6 +1352,8 @@ Point FE<Dim,T>::map_zeta (const Elem* elem,
 
   return p;
 }
+
+
 
 // Explicit instantiation of FEMap member functions
 template void FEMap::init_reference_to_physical_map<0>( const std::vector<Point>&, const Elem*);

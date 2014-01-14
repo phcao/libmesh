@@ -882,7 +882,21 @@ void FEInterface::compute_constraints (DofConstraints &constraints,
 						     variable_number,
 						     elem); return;
 
+        
+#ifdef LIBMESH_ENABLE_HIGHER_ORDER_SHAPES
+	  case SZABAB:
+	    FE<2,SZABAB>::compute_constraints (constraints,
+					       dof_map,
+					       variable_number,
+					       elem); return;
 
+	  case BERNSTEIN:
+	    FE<2,BERNSTEIN>::compute_constraints (constraints,
+						  dof_map,
+						  variable_number,
+						  elem); return;
+
+#endif
 	  default:
 	    return;
 	  }
@@ -922,6 +936,20 @@ void FEInterface::compute_constraints (DofConstraints &constraints,
 						     dof_map,
 						     variable_number,
 						     elem); return;
+#ifdef LIBMESH_ENABLE_HIGHER_ORDER_SHAPES
+	  case SZABAB:
+	    FE<3,SZABAB>::compute_constraints (constraints,
+					       dof_map,
+					       variable_number,
+					       elem); return;
+
+	  case BERNSTEIN:
+	    FE<3,BERNSTEIN>::compute_constraints (constraints,
+						  dof_map,
+						  variable_number,
+						  elem); return;
+
+#endif
 	  default:
 	    return;
 	  }
@@ -1004,12 +1032,14 @@ unsigned int FEInterface::max_order(const FEType& fe_t,
 	    case HEX27:
 	      return 2;
 	    case PRISM6:
-	    case PRISM15:
 	      return 1;
+	    case PRISM15:
 	    case PRISM18:
 	      return 2;
 	    case PYRAMID5:
 	      return 1;
+            case PYRAMID14:
+              return 2;
 	    default:
 	      return unknown;
 	  }
@@ -1034,6 +1064,7 @@ unsigned int FEInterface::max_order(const FEType& fe_t,
 	    case PRISM15:
 	    case PRISM18:
 	    case PYRAMID5:
+            case PYRAMID14:
 	      return unlimited;
 	    default:
 	      return unknown;
@@ -1070,6 +1101,7 @@ unsigned int FEInterface::max_order(const FEType& fe_t,
 	    case PRISM15:
 	    case PRISM18:
 	    case PYRAMID5:
+            case PYRAMID14:
 	      return 0;
 	    default:
 	      return unknown;
@@ -1100,6 +1132,7 @@ unsigned int FEInterface::max_order(const FEType& fe_t,
 	    case PRISM15:
 	    case PRISM18:
 	    case PYRAMID5:
+            case PYRAMID14:
 	      return 0;
 	    default:
 	      return unknown;
@@ -1126,6 +1159,7 @@ unsigned int FEInterface::max_order(const FEType& fe_t,
 	    case PRISM15:
 	    case PRISM18:
 	    case PYRAMID5:
+            case PYRAMID14:
 	      return unlimited;
 	    default:
 	      return unknown;
@@ -1154,6 +1188,7 @@ unsigned int FEInterface::max_order(const FEType& fe_t,
 	    case PRISM15:
 	    case PRISM18:
 	    case PYRAMID5:
+            case PYRAMID14:
 	      return 0;
 	    default:
 	      return unknown;
@@ -1186,6 +1221,7 @@ unsigned int FEInterface::max_order(const FEType& fe_t,
 	    case PRISM15:
 	    case PRISM18:
 	    case PYRAMID5:
+            case PYRAMID14:
 	      return 0;
 	    default:
 	      return unknown;
@@ -1219,6 +1255,7 @@ unsigned int FEInterface::max_order(const FEType& fe_t,
 	    case PRISM15:
 	    case PRISM18:
 	    case PYRAMID5:
+	    case PYRAMID14:
 	      return 0;
 	    default:
 	      return unknown;
@@ -1252,6 +1289,7 @@ unsigned int FEInterface::max_order(const FEType& fe_t,
 	    case PRISM15:
 	    case PRISM18:
 	    case PYRAMID5:
+	    case PYRAMID14:
 	      return 0;
 	    default:
 	      return unknown;
@@ -1286,10 +1324,6 @@ bool FEInterface::extra_hanging_dofs(const FEType& fe_t)
     case L2_LAGRANGE:
     case MONOMIAL:
     case L2_HIERARCHIC:
-#ifdef LIBMESH_ENABLE_HIGHER_ORDER_SHAPES
-    case BERNSTEIN:
-    case SZABAB:
-#endif
     case XYZ:
     case LAGRANGE_VEC:
     case NEDELEC_ONE:
@@ -1297,6 +1331,10 @@ bool FEInterface::extra_hanging_dofs(const FEType& fe_t)
     case CLOUGH:
     case HERMITE:
     case HIERARCHIC:
+#ifdef LIBMESH_ENABLE_HIGHER_ORDER_SHAPES
+    case BERNSTEIN:
+    case SZABAB:
+#endif
     default:
       return true;
     }

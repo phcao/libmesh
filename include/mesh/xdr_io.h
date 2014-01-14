@@ -52,8 +52,12 @@ class XdrIO : public MeshInput<MeshBase>,
 	      public MeshOutput<MeshBase>,
 	      public ParallelObject
 {
-
  public:
+  // The size used for encoding all id types in this file
+  typedef largest_id_type xdr_id_type;
+
+  // The size type used to read header sizes (meta data information)
+  typedef uint32_t header_id_type;
 
   /**
    * Constructor.  Takes a writeable reference to a mesh object.
@@ -164,6 +168,11 @@ class XdrIO : public MeshInput<MeshBase>,
   //---------------------------------------------------------------------------
   // Write Implementation
   /**
+   * Write subdomain name information - NEW in 0.9.2 format
+   */
+  void write_serialized_subdomain_names(Xdr &io) const;
+
+  /**
    * Write the connectivity for a parallel, distributed mesh
    */
   void write_serialized_connectivity (Xdr &io, const dof_id_type n_elem) const;
@@ -178,14 +187,29 @@ class XdrIO : public MeshInput<MeshBase>,
    */
   void write_serialized_bcs (Xdr &io, const std::size_t n_bcs) const;
 
+  /**
+   * Write the boundary conditions for a parallel, distributed mesh
+   */
+  void write_serialized_nodesets (Xdr &io, const std::size_t n_nodesets) const;
+
+  /**
+   * Write boundary names information (sideset and nodeset) - NEW in 0.9.2 format
+   */
+  void write_serialized_bc_names (Xdr &io, const BoundaryInfo & info, bool is_sideset) const;
 
 
   //---------------------------------------------------------------------------
   // Read Implementation
   /**
+   * Read subdomain name information - NEW in 0.9.2 format
+   */
+  void read_serialized_subdomain_names(Xdr &io);
+
+  /**
    * Read the connectivity for a parallel, distributed mesh
    */
-  void read_serialized_connectivity (Xdr &io, const dof_id_type n_elem);
+  template <typename T>
+  void read_serialized_connectivity (Xdr &io, const dof_id_type n_elem, std::vector<header_id_type> & sizes, T);
 
   /**
    * Read the nodal locations for a parallel, distributed mesh
@@ -194,14 +218,28 @@ class XdrIO : public MeshInput<MeshBase>,
 
   /**
    * Read the boundary conditions for a parallel, distributed mesh
+   * @return the number of bcs read
    */
-  void read_serialized_bcs (Xdr &io);
+  template <typename T>
+  void read_serialized_bcs (Xdr &io, T);
+
+  /**
+   * Read the nodeset conditions for a parallel, distributed mesh
+   * @return the number of nodesets read
+   */
+  template <typename T>
+  void read_serialized_nodesets (Xdr &io, T);
+
+  /**
+   * Read boundary names information (sideset and nodeset) - NEW in 0.9.2 format
+   */
+  void read_serialized_bc_names(Xdr &io, BoundaryInfo & info, bool is_sideset);
 
   //-------------------------------------------------------------------------
   /**
    * Pack an element into a transfer buffer for parallel communication.
    */
-  void pack_element (std::vector<dof_id_type> &conn,
+  void pack_element (std::vector<xdr_id_type> &conn,
 		     const Elem *elem,
 		     const dof_id_type parent_id  = DofObject::invalid_id,
 		     const dof_id_type parent_pid = DofObject::invalid_id) const;
@@ -210,6 +248,8 @@ class XdrIO : public MeshInput<MeshBase>,
   bool _legacy;
   bool _write_serial;
   bool _write_parallel;
+  bool _write_unique_id;
+  header_id_type _field_width;
   std::string _version;
   std::string _bc_file_name;
   std::string _partition_map_file;

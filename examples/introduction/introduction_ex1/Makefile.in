@@ -502,6 +502,7 @@ dvidir = @dvidir@
 enabledefaultcommworld = @enabledefaultcommworld@
 enablelegacyincludepaths = @enablelegacyincludepaths@
 enablepetsc = @enablepetsc@
+enablewarnings = @enablewarnings@
 exec_prefix = @exec_prefix@
 gitquery = @gitquery@
 have_gcov = @have_gcov@
@@ -563,7 +564,7 @@ check_SCRIPTS = run.sh
 #
 # how to make documentation
 #
-CLEANFILES = output.xda $(example_name).php stdout.log
+CLEANFILES = output.xda output.xdr $(example_name).php stdout.log
 
 ######################################################################
 #

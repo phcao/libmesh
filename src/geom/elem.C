@@ -53,6 +53,7 @@
 #include "libmesh/cell_inf_prism6.h"
 #include "libmesh/cell_inf_prism12.h"
 #include "libmesh/cell_pyramid5.h"
+#include "libmesh/cell_pyramid14.h"
 #include "libmesh/fe_base.h"
 #include "libmesh/mesh_base.h"
 #include "libmesh/quadrature_gauss.h"
@@ -95,6 +96,7 @@ const unsigned int Elem::type_to_n_nodes_map [] =
     18, // PRISM18
 
     5,  // PYRAMID5
+    14, // PYRAMID14
 
     2,  // INFEDGE2
 
@@ -136,6 +138,7 @@ const unsigned int Elem::type_to_n_sides_map [] =
     5,  // PRISM18
 
     5,  // PYRAMID5
+    5,  // PYRAMID14
 
     2,  // INFEDGE2
 
@@ -152,6 +155,47 @@ const unsigned int Elem::type_to_n_sides_map [] =
     0,  // NODEELEM
   };
 
+const unsigned int Elem::type_to_n_edges_map [] =
+  {
+    0,  // EDGE2
+    0,  // EDGE3
+    0,  // EDGE4
+
+    3,  // TRI3
+    3,  // TRI6
+
+    4,  // QUAD4
+    4,  // QUAD8
+    4,  // QUAD9
+
+    6,  // TET4
+    6,  // TET10
+
+    12, // HEX8
+    12, // HEX20
+    12, // HEX27
+
+    9,  // PRISM6
+    9,  // PRISM15
+    9,  // PRISM18
+
+    8,  // PYRAMID5
+    8,  // PYRAMID14
+
+    0,  // INFEDGE2
+
+    4,  // INFQUAD4
+    4,  // INFQUAD6
+
+    8,  // INFHEX8
+    8,  // INFHEX16
+    8,  // INFHEX18
+
+    6,  // INFPRISM6
+    6,  // INFPRISM12
+
+    0,  // NODEELEM
+  };
 
 // ------------------------------------------------------------
 // Elem class member funcions
@@ -253,6 +297,11 @@ AutoPtr<Elem> Elem::build(const ElemType type,
     case PYRAMID5:
       {
 	elem = new Pyramid5(p);
+	break;
+      }
+    case PYRAMID14:
+      {
+	elem = new Pyramid14(p);
 	break;
       }
 
@@ -1267,13 +1316,13 @@ Real Elem::quality (const ElemQuality q) const
        */
     default:
       {
-	libmesh_here();
+	 libmesh_do_once( libmesh_here();
 
-	libMesh::err << "ERROR:  unknown quality metric: "
-		      << q
+         libMesh::err << "ERROR:  unknown quality metric: "
+		      << Utility::enum_to_string(q)
 		      << std::endl
 		      << "Cowardly returning 1."
-		      << std::endl;
+		      << std::endl; );
 
 	return 1.;
       }
@@ -1981,6 +2030,9 @@ ElemType Elem::first_order_equivalent_type (const ElemType et)
     case PRISM15:
     case PRISM18:
       return PRISM6;
+    case PYRAMID5:
+    case PYRAMID14:
+      return PYRAMID5;
 
 #ifdef LIBMESH_ENABLE_INFINITE_ELEMENTS
 
@@ -2060,7 +2112,11 @@ ElemType Elem::second_order_equivalent_type (const ElemType et,
 
     case PYRAMID5:
       {
-	// libmesh_error();
+	if (full_ordered)
+	  return PYRAMID14;
+	else // PYRAMID13 to be added...
+	  libmesh_error();
+
 	return INVALID_ELEM;
       }
 
