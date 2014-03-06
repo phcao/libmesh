@@ -733,7 +733,7 @@ void FEMap::compute_affine_map( const unsigned int dim,
 
   // Resize the vectors to hold data at the quadrature points
   this->resize_quadrature_map_vectors(dim, n_qp);
-  
+
   // Determine the nodes contributing to element elem
   std::vector<Node*> elem_nodes(elem->n_nodes(), NULL);
   for (unsigned int i=0; i<elem->n_nodes(); i++)
@@ -812,7 +812,7 @@ void FEMap::compute_map(const unsigned int dim,
 
   // Resize the vectors to hold data at the quadrature points
   this->resize_quadrature_map_vectors(dim, n_qp);
-  
+
   // Determine the nodes contributing to element elem
   std::vector<Node*> elem_nodes;
   if (elem->type() == TRI3SD)
@@ -1397,7 +1397,8 @@ INSTANTIATE_ALL_MAPS(1);
 INSTANTIATE_ALL_MAPS(2);
 INSTANTIATE_ALL_MAPS(3);
 
-// subdivision elements are implemented only for 2D meshes
-INSTANTIATE_MAPS(2,SUBDIV);
+// subdivision elements are implemented only for 2D meshes & reimplement
+// the inverse_maps method separately
+INSTANTIATE_SUBDIV_MAPS;
 
 } // namespace libMesh
