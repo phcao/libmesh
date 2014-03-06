@@ -42,6 +42,7 @@
 #include "libmesh/sparsity_pattern.h"
 #include "libmesh/string_to_enum.h"
 #include "libmesh/threads.h"
+#include "libmesh/mesh_subdiv_support.h"
 
 
 
@@ -1660,6 +1661,17 @@ void DofMap::dof_indices (const Elem* const elem,
 
   libmesh_assert(elem);
 
+  // Clear the DOF indices vector
+  di.clear();
+
+  // Ghost subdivision elements have no real dofs
+  if (elem->type() == TRI3SD)
+  {
+    const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+    if (sd_elem->is_ghost())
+      return;
+  }
+
   const unsigned int n_vars  = this->n_variables();
 
 #ifdef DEBUG
@@ -1667,13 +1679,26 @@ void DofMap::dof_indices (const Elem* const elem,
   unsigned int tot_size = 0;
 #endif
 
-  // Clear the DOF indices vector
-  di.clear();
-
   // Create a vector to indicate which
   // SCALAR variables have been requested
   std::vector<unsigned int> SCALAR_var_numbers;
   SCALAR_var_numbers.clear();
+
+  // Determine the nodes contributing to element elem
+  std::vector<Node*> elem_nodes;
+  if (elem->type() == TRI3SD)
+  {
+    // Subdivision surface FE require the 1-ring around elem
+    const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+    MeshTools::Subdiv::find_one_ring(sd_elem, elem_nodes);
+  }
+  else
+  {
+    // All other FE use only the nodes of elem itself
+    elem_nodes.resize(elem->n_nodes(), NULL);
+    for (unsigned int i=0; i<elem->n_nodes(); i++)
+      elem_nodes[i] = elem->get_node(i);
+  }
 
   // Get the dof numbers
   for (unsigned int v=0; v<n_vars; v++)
@@ -1690,7 +1715,7 @@ void DofMap::dof_indices (const Elem* const elem,
 
         }
       else
-        _dof_indices(elem, di, v
+        _dof_indices(elem, di, v, elem_nodes
 #ifdef DEBUG
                      , tot_size
 #endif
@@ -1726,6 +1751,14 @@ void DofMap::dof_indices (const Elem* const elem,
   // Clear the DOF indices vector
   di.clear();
 
+  // Ghost subdivision elements have no real dofs
+  if (elem->type() == TRI3SD)
+  {
+    const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+    if (sd_elem->is_ghost())
+      return;
+  }
+
 #ifdef DEBUG
   // Check that sizes match in DEBUG mode
   unsigned int tot_size = 0;
@@ -1735,6 +1768,22 @@ void DofMap::dof_indices (const Elem* const elem,
   // SCALAR variables have been requested
   std::vector<unsigned int> SCALAR_var_numbers;
   SCALAR_var_numbers.clear();
+
+  // Determine the nodes contributing to element elem
+  std::vector<Node*> elem_nodes;
+  if (elem->type() == TRI3SD)
+  {
+    // Subdivision surface FE require the 1-ring around elem
+    const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+    MeshTools::Subdiv::find_one_ring(sd_elem, elem_nodes);
+  }
+  else
+  {
+    // All other FE use only the nodes of elem itself
+    elem_nodes.resize(elem->n_nodes(), NULL);
+    for (unsigned int i=0; i<elem->n_nodes(); i++)
+      elem_nodes[i] = elem->get_node(i);
+  }
 
   // Get the dof numbers
   if(this->variable(vn).type().family == SCALAR)
@@ -1747,7 +1796,7 @@ void DofMap::dof_indices (const Elem* const elem,
 #endif
     }
   else
-    _dof_indices(elem, di, vn
+    _dof_indices(elem, di, vn, elem_nodes
 #ifdef DEBUG
                  , tot_size
 #endif
@@ -1773,13 +1822,13 @@ void DofMap::dof_indices (const Elem* const elem,
 
 void DofMap::_dof_indices (const Elem* const elem,
                            std::vector<dof_id_type>& di,
-                           const unsigned int v
+                           const unsigned int v,
+                           const std::vector<Node*>& elem_nodes
 #ifdef DEBUG
                            ,unsigned int & tot_size
 #endif
                            ) const
 {
-  const unsigned int n_nodes = elem->n_nodes();
   const ElemType type        = elem->type();
   const unsigned int sys_num = this->sys_number();
   const unsigned int dim     = elem->dim();
@@ -1797,13 +1846,17 @@ void DofMap::_dof_indices (const Elem* const elem,
         FEInterface::extra_hanging_dofs(fe_type);
 
 #ifdef DEBUG
-      tot_size += FEInterface::n_dofs(dim,fe_type,type);
+      // The number of dofs per element is non-static for subdivision FE
+      if (this->variable(v).type().family == SUBDIV)
+        tot_size += elem_nodes.size();
+      else
+        tot_size += FEInterface::n_dofs(dim,fe_type,type);
 #endif
 
       // Get the node-based DOF numbers
-      for (unsigned int n=0; n<n_nodes; n++)
+      for (unsigned int n=0; n<elem_nodes.size(); n++)
         {
-          const Node* node      = elem->get_node(n);
+          const Node* node      = elem_nodes[n];
 
           // There is a potential problem with h refinement.  Imagine a
           // quad9 that has a linear FE on it.  Then, on the hanging side,
@@ -1872,7 +1925,7 @@ void DofMap::_dof_indices (const Elem* const elem,
             }
           else
             {
-              libmesh_assert(!elem->active() || fe_type.family == LAGRANGE);
+              libmesh_assert(!elem->active() || fe_type.family == LAGRANGE || fe_type.family == SUBDIV);
               di.resize(di.size() + nc, DofObject::invalid_id);
             }
         }
@@ -1979,7 +2032,6 @@ void DofMap::old_dof_indices (const Elem* const elem,
   libmesh_assert(elem->old_dof_object);
 
 
-  const unsigned int n_nodes = elem->n_nodes();
   const ElemType type        = elem->type();
   const unsigned int sys_num = this->sys_number();
   const unsigned int n_vars  = this->n_variables();
@@ -1992,6 +2044,22 @@ void DofMap::old_dof_indices (const Elem* const elem,
   // SCALAR variables have been requested
   std::vector<unsigned int> SCALAR_var_numbers;
   SCALAR_var_numbers.clear();
+
+  // Determine the nodes contributing to element elem
+  std::vector<Node*> elem_nodes;
+  if (elem->type() == TRI3SD)
+  {
+    // Subdivision surface FE require the 1-ring around elem
+    const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+    MeshTools::Subdiv::find_one_ring(sd_elem, elem_nodes);
+  }
+  else
+  {
+    // All other FE use only the nodes of elem itself
+    elem_nodes.resize(elem->n_nodes(), NULL);
+    for (unsigned int i=0; i<elem->n_nodes(); i++)
+      elem_nodes[i] = elem->get_node(i);
+  }
 
   // Get the dof numbers
   for (unsigned int v=0; v<n_vars; v++)
@@ -2029,9 +2097,9 @@ void DofMap::old_dof_indices (const Elem* const elem,
                 FEInterface::extra_hanging_dofs(fe_type);
 
               // Get the node-based DOF numbers
-              for (unsigned int n=0; n<n_nodes; n++)
+              for (unsigned int n=0; n<elem_nodes.size(); n++)
                 {
-                  const Node* node      = elem->get_node(n);
+                  const Node* node      = elem_nodes[n];
 
                   // There is a potential problem with h refinement.  Imagine a
                   // quad9 that has a linear FE on it.  Then, on the hanging side,
