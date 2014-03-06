@@ -17,7 +17,7 @@
 
 
 
- // <h1>Miscellaneous Example 10 - Using Loop Subdivision Shell Elements</h1>
+ // <h1>Miscellaneous Example 11 - Using Loop Subdivision Shell Elements</h1>
  //
  // This example demonstrates how subdivision surface shell elements
  // are used, and how boundary conditions can be applied to them.  To
@@ -72,10 +72,10 @@ int main (int argc, char** argv)
 {
   // Initialize libMesh.
   LibMeshInit init (argc, argv);
-  
+
   // Skip this 3D example if libMesh was compiled as 1D/2D-only.
-  libmesh_example_assert (3 == LIBMESH_DIM, "3D support");      
-  
+  libmesh_example_assert (3 == LIBMESH_DIM, "3D support");
+
   // Create a 2D mesh distributed across the default MPI communicator.
   Mesh mesh (init.comm(), 2);
 
@@ -108,11 +108,11 @@ int main (int argc, char** argv)
   // and add an additional row of "ghost" elements around
   // it in order to complete the extended local support of
   // the triangles at the boundaries.  If the second
-  // argument is set to true, the outhermost existing
+  // argument is set to true, the outermost existing
   // elements are converted into ghost elements, and the
   // actual physical mesh is thus getting smaller.
   MeshTools::Subdiv::prepare_subdiv_mesh (mesh, false);
-  
+
   // Print information about the subdivision mesh to the screen.
   mesh.print_info();
 
@@ -124,10 +124,10 @@ int main (int argc, char** argv)
 #if defined(LIBMESH_HAVE_EXODUS_API)
   ExodusII_IO(mesh).write ("with_ghosts.e");
 #endif
-  
+
   // Create an equation systems object.
   EquationSystems equation_systems (mesh);
-  
+
   // Declare the system and its variables.
   // Create a linear implicit system named "Shell".
   LinearImplicitSystem & system = equation_systems.add_system<LinearImplicitSystem> ("Shell");
@@ -158,10 +158,10 @@ int main (int argc, char** argv)
   equation_systems.parameters.set<Real> ("young's modulus") = E;
   equation_systems.parameters.set<Real> ("poisson ratio")   = nu;
   equation_systems.parameters.set<Real> ("uniform load")    = q;
-  
+
   // Initialize the data structures for the equation system.
   equation_systems.init();
-  
+
   // Print information about the system to the screen.
   equation_systems.print_info();
 
@@ -197,7 +197,7 @@ int main (int argc, char** argv)
   std::vector<Real> soln;
   system.current_local_solution->localize_to_one(soln);
   Real w = soln[w_dof];
-  
+
   // The analytic solution for the maximum displacement of
   // a clamped square plate in pure bending, from Taylor,
   // Govindjee, Commun. Numer. Meth. Eng. 20, 757-765, 2004.
@@ -209,7 +209,7 @@ int main (int argc, char** argv)
   // square plate to the screen.
   std::cout << "z-displacement of the center point: " << w << std::endl;
   std::cout << "Analytic solution for pure bending: " << w_analytic << std::endl;
-  
+
   // All done.
   return 0;
 }
@@ -253,7 +253,7 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
 
   // Build a Finite Element object of the specified type.
   AutoPtr<FEBase> fe (FEBase::build(2, fe_type));
-  
+
   // A Gauss quadrature rule for numerical integration.
   // For subdivision shell elements, a single Gauss point per
   // element is sufficient, hence we use extraorder = 0.
@@ -263,10 +263,10 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
   // Tell the finite element object to use our quadrature rule.
   fe->attach_quadrature_rule (qrule.get());
 
-  // The element Jacobian * quadrature weight at each integration point.   
+  // The element Jacobian * quadrature weight at each integration point.
   const std::vector<Real>& JxW = fe->get_JxW();
 
-  // The surface tangents in both directions at the quadrature points. 
+  // The surface tangents in both directions at the quadrature points.
   const std::vector<RealGradient>& dxyzdxi  = fe->get_dxyzdxi();
   const std::vector<RealGradient>& dxyzdeta = fe->get_dxyzdeta();
 
@@ -356,7 +356,7 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
     // the last element.
     Ke.resize (n_dofs, n_dofs);
     Fe.resize (n_dofs);
-  
+
     // Reposition the submatrices...  The idea is this:
     //
     //         -           -          -  -
@@ -367,7 +367,7 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
     //
     // The \p DenseSubMatrix.repostition () member takes the
     // (row_offset, column_offset, row_size, column_size).
-    // 
+    //
     // Similarly, the \p DenseSubVector.reposition () member
     // takes the (row_offset, row_size)
     Kuu.reposition (u_var*n_u_dofs, u_var*n_u_dofs, n_u_dofs, n_u_dofs);
@@ -395,11 +395,11 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
       // it affects the z-direction, i.e. the "w" variable.
       for (unsigned int i=0; i<n_u_dofs; ++i)
         Fw(i) += JxW[qp] * phi[i][qp] * q;
-      
+
       // Next, we assemble the stiffness matrix.  This is only valid
       // for the linear theory, i.e., for small deformations, where
       // reference and deformed surface metrics are indistinguishable.
-      
+
       // Get the three surface basis vectors.
       const RealVectorValue & a1 = dxyzdxi[qp];
       const RealVectorValue & a2 = dxyzdeta[qp];
@@ -407,7 +407,7 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
       const Real jac = a3.size(); // the surface Jacobian
       libmesh_assert_greater (jac, 0);
       a3 /= jac; // the shell director a3 is normalized to unit length
-      
+
       // Get the derivatives of the surface tangents.
       const RealVectorValue & a11 = d2xyzdxi2[qp];
       const RealVectorValue & a22 = d2xyzdeta2[qp];
@@ -510,11 +510,11 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
           Kuu(i,j) += KIJ(0,0);
           Kuv(i,j) += KIJ(0,1);
           Kuw(i,j) += KIJ(0,2);
-          
+
           Kvu(i,j) += KIJ(1,0);
           Kvv(i,j) += KIJ(1,1);
           Kvw(i,j) += KIJ(1,2);
-          
+
           Kwu(i,j) += KIJ(2,0);
           Kwv(i,j) += KIJ(2,1);
           Kww(i,j) += KIJ(2,2);
@@ -530,7 +530,7 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
     system.matrix->add_matrix (Ke, dof_indices);
     system.rhs->add_vector    (Fe, dof_indices);
   } // end of non-ghost element loop
-  
+
   // Next, we apply the boundary conditions.  In this case,
   // all boundaries are clamped by the penalty method, using
   // the special "ghost" nodes along the boundaries.  Note
@@ -567,7 +567,7 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
        * namespace provides lookup tables \p next and \p prev
        * for an efficient determination of the next and previous
        * nodes of an element, respectively.
-       * 
+       *
        *      n4
        *     /  \
        *    / gh \
