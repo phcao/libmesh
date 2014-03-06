@@ -237,16 +237,16 @@ am__libmesh_dbg_la_SOURCES_DIST = src/base/dof_map.C \
 	src/fe/fe_nedelec_one_shape_3D.C src/fe/fe_scalar.C \
 	src/fe/fe_scalar_shape_0D.C src/fe/fe_scalar_shape_1D.C \
 	src/fe/fe_scalar_shape_2D.C src/fe/fe_scalar_shape_3D.C \
-	src/fe/fe_szabab.C src/fe/fe_szabab_shape_0D.C \
-	src/fe/fe_szabab_shape_1D.C src/fe/fe_szabab_shape_2D.C \
-	src/fe/fe_szabab_shape_3D.C src/fe/fe_transformation_base.C \
-	src/fe/fe_type.C src/fe/fe_xyz.C src/fe/fe_xyz_boundary.C \
-	src/fe/fe_xyz_map.C src/fe/fe_xyz_shape_0D.C \
-	src/fe/fe_xyz_shape_1D.C src/fe/fe_xyz_shape_2D.C \
-	src/fe/fe_xyz_shape_3D.C src/fe/h1_fe_transformation.C \
-	src/fe/hcurl_fe_transformation.C src/fe/inf_fe.C \
-	src/fe/inf_fe_base_radial.C src/fe/inf_fe_boundary.C \
-	src/fe/inf_fe_jacobi_20_00_eval.C \
+	src/fe/fe_subdiv_2D.C src/fe/fe_szabab.C \
+	src/fe/fe_szabab_shape_0D.C src/fe/fe_szabab_shape_1D.C \
+	src/fe/fe_szabab_shape_2D.C src/fe/fe_szabab_shape_3D.C \
+	src/fe/fe_transformation_base.C src/fe/fe_type.C \
+	src/fe/fe_xyz.C src/fe/fe_xyz_boundary.C src/fe/fe_xyz_map.C \
+	src/fe/fe_xyz_shape_0D.C src/fe/fe_xyz_shape_1D.C \
+	src/fe/fe_xyz_shape_2D.C src/fe/fe_xyz_shape_3D.C \
+	src/fe/h1_fe_transformation.C src/fe/hcurl_fe_transformation.C \
+	src/fe/inf_fe.C src/fe/inf_fe_base_radial.C \
+	src/fe/inf_fe_boundary.C src/fe/inf_fe_jacobi_20_00_eval.C \
 	src/fe/inf_fe_jacobi_30_00_eval.C \
 	src/fe/inf_fe_lagrange_eval.C src/fe/inf_fe_legendre_eval.C \
 	src/fe/inf_fe_map.C src/fe/inf_fe_map_eval.C \
@@ -270,18 +270,19 @@ am__libmesh_dbg_la_SOURCES_DIST = src/base/dof_map.C \
 	src/geom/face_inf_quad4.C src/geom/face_inf_quad6.C \
 	src/geom/face_quad.C src/geom/face_quad4.C \
 	src/geom/face_quad8.C src/geom/face_quad9.C \
-	src/geom/face_tri.C src/geom/face_tri3.C src/geom/face_tri6.C \
-	src/geom/node.C src/geom/node_elem.C src/geom/plane.C \
-	src/geom/point.C src/geom/reference_elem.C \
-	src/geom/reference_elem.data src/geom/remote_elem.C \
-	src/geom/sphere.C src/geom/surface.C src/mesh/abaqus_io.C \
-	src/mesh/boundary_info.C src/mesh/boundary_mesh.C \
-	src/mesh/checkpoint_io.C src/mesh/diva_io.C \
-	src/mesh/ensight_io.C src/mesh/exodusII_io.C \
-	src/mesh/exodusII_io_helper.C src/mesh/fro_io.C \
-	src/mesh/gmsh_io.C src/mesh/gmv_io.C src/mesh/gnuplot_io.C \
-	src/mesh/inf_elem_builder.C src/mesh/legacy_xdr_io.C \
-	src/mesh/matlab_io.C src/mesh/medit_io.C src/mesh/mesh_base.C \
+	src/geom/face_tri.C src/geom/face_tri3.C \
+	src/geom/face_tri3_sd.C src/geom/face_tri6.C src/geom/node.C \
+	src/geom/node_elem.C src/geom/plane.C src/geom/point.C \
+	src/geom/reference_elem.C src/geom/reference_elem.data \
+	src/geom/remote_elem.C src/geom/sphere.C src/geom/surface.C \
+	src/mesh/abaqus_io.C src/mesh/boundary_info.C \
+	src/mesh/boundary_mesh.C src/mesh/checkpoint_io.C \
+	src/mesh/diva_io.C src/mesh/ensight_io.C \
+	src/mesh/exodusII_io.C src/mesh/exodusII_io_helper.C \
+	src/mesh/fro_io.C src/mesh/gmsh_io.C src/mesh/gmv_io.C \
+	src/mesh/gnuplot_io.C src/mesh/inf_elem_builder.C \
+	src/mesh/legacy_xdr_io.C src/mesh/matlab_io.C \
+	src/mesh/medit_io.C src/mesh/mesh_base.C \
 	src/mesh/mesh_communication.C \
 	src/mesh/mesh_communication_global_indices.C \
 	src/mesh/mesh_data.C src/mesh/mesh_data_tetgen_support.C \
@@ -294,6 +295,7 @@ am__libmesh_dbg_la_SOURCES_DIST = src/base/dof_map.C \
 	src/mesh/mesh_serializer.C src/mesh/mesh_smoother.C \
 	src/mesh/mesh_smoother_laplace.C \
 	src/mesh/mesh_smoother_vsmoother.C \
+	src/mesh/mesh_subdiv_support.C \
 	src/mesh/mesh_tetgen_interface.C \
 	src/mesh/mesh_tetgen_wrapper.C src/mesh/mesh_tools.C \
 	src/mesh/mesh_triangle_holes.C \
@@ -536,6 +538,7 @@ am__objects_1 = src/base/libmesh_dbg_la-dof_map.lo \
 	src/fe/libmesh_dbg_la-fe_scalar_shape_1D.lo \
 	src/fe/libmesh_dbg_la-fe_scalar_shape_2D.lo \
 	src/fe/libmesh_dbg_la-fe_scalar_shape_3D.lo \
+	src/fe/libmesh_dbg_la-fe_subdiv_2D.lo \
 	src/fe/libmesh_dbg_la-fe_szabab.lo \
 	src/fe/libmesh_dbg_la-fe_szabab_shape_0D.lo \
 	src/fe/libmesh_dbg_la-fe_szabab_shape_1D.lo \
@@ -605,6 +608,7 @@ am__objects_1 = src/base/libmesh_dbg_la-dof_map.lo \
 	src/geom/libmesh_dbg_la-face_quad9.lo \
 	src/geom/libmesh_dbg_la-face_tri.lo \
 	src/geom/libmesh_dbg_la-face_tri3.lo \
+	src/geom/libmesh_dbg_la-face_tri3_sd.lo \
 	src/geom/libmesh_dbg_la-face_tri6.lo \
 	src/geom/libmesh_dbg_la-node.lo \
 	src/geom/libmesh_dbg_la-node_elem.lo \
@@ -648,6 +652,7 @@ am__objects_1 = src/base/libmesh_dbg_la-dof_map.lo \
 	src/mesh/libmesh_dbg_la-mesh_smoother.lo \
 	src/mesh/libmesh_dbg_la-mesh_smoother_laplace.lo \
 	src/mesh/libmesh_dbg_la-mesh_smoother_vsmoother.lo \
+	src/mesh/libmesh_dbg_la-mesh_subdiv_support.lo \
 	src/mesh/libmesh_dbg_la-mesh_tetgen_interface.lo \
 	src/mesh/libmesh_dbg_la-mesh_tetgen_wrapper.lo \
 	src/mesh/libmesh_dbg_la-mesh_tools.lo \
@@ -923,16 +928,16 @@ am__libmesh_devel_la_SOURCES_DIST = src/base/dof_map.C \
 	src/fe/fe_nedelec_one_shape_3D.C src/fe/fe_scalar.C \
 	src/fe/fe_scalar_shape_0D.C src/fe/fe_scalar_shape_1D.C \
 	src/fe/fe_scalar_shape_2D.C src/fe/fe_scalar_shape_3D.C \
-	src/fe/fe_szabab.C src/fe/fe_szabab_shape_0D.C \
-	src/fe/fe_szabab_shape_1D.C src/fe/fe_szabab_shape_2D.C \
-	src/fe/fe_szabab_shape_3D.C src/fe/fe_transformation_base.C \
-	src/fe/fe_type.C src/fe/fe_xyz.C src/fe/fe_xyz_boundary.C \
-	src/fe/fe_xyz_map.C src/fe/fe_xyz_shape_0D.C \
-	src/fe/fe_xyz_shape_1D.C src/fe/fe_xyz_shape_2D.C \
-	src/fe/fe_xyz_shape_3D.C src/fe/h1_fe_transformation.C \
-	src/fe/hcurl_fe_transformation.C src/fe/inf_fe.C \
-	src/fe/inf_fe_base_radial.C src/fe/inf_fe_boundary.C \
-	src/fe/inf_fe_jacobi_20_00_eval.C \
+	src/fe/fe_subdiv_2D.C src/fe/fe_szabab.C \
+	src/fe/fe_szabab_shape_0D.C src/fe/fe_szabab_shape_1D.C \
+	src/fe/fe_szabab_shape_2D.C src/fe/fe_szabab_shape_3D.C \
+	src/fe/fe_transformation_base.C src/fe/fe_type.C \
+	src/fe/fe_xyz.C src/fe/fe_xyz_boundary.C src/fe/fe_xyz_map.C \
+	src/fe/fe_xyz_shape_0D.C src/fe/fe_xyz_shape_1D.C \
+	src/fe/fe_xyz_shape_2D.C src/fe/fe_xyz_shape_3D.C \
+	src/fe/h1_fe_transformation.C src/fe/hcurl_fe_transformation.C \
+	src/fe/inf_fe.C src/fe/inf_fe_base_radial.C \
+	src/fe/inf_fe_boundary.C src/fe/inf_fe_jacobi_20_00_eval.C \
 	src/fe/inf_fe_jacobi_30_00_eval.C \
 	src/fe/inf_fe_lagrange_eval.C src/fe/inf_fe_legendre_eval.C \
 	src/fe/inf_fe_map.C src/fe/inf_fe_map_eval.C \
@@ -956,18 +961,19 @@ am__libmesh_devel_la_SOURCES_DIST = src/base/dof_map.C \
 	src/geom/face_inf_quad4.C src/geom/face_inf_quad6.C \
 	src/geom/face_quad.C src/geom/face_quad4.C \
 	src/geom/face_quad8.C src/geom/face_quad9.C \
-	src/geom/face_tri.C src/geom/face_tri3.C src/geom/face_tri6.C \
-	src/geom/node.C src/geom/node_elem.C src/geom/plane.C \
-	src/geom/point.C src/geom/reference_elem.C \
-	src/geom/reference_elem.data src/geom/remote_elem.C \
-	src/geom/sphere.C src/geom/surface.C src/mesh/abaqus_io.C \
-	src/mesh/boundary_info.C src/mesh/boundary_mesh.C \
-	src/mesh/checkpoint_io.C src/mesh/diva_io.C \
-	src/mesh/ensight_io.C src/mesh/exodusII_io.C \
-	src/mesh/exodusII_io_helper.C src/mesh/fro_io.C \
-	src/mesh/gmsh_io.C src/mesh/gmv_io.C src/mesh/gnuplot_io.C \
-	src/mesh/inf_elem_builder.C src/mesh/legacy_xdr_io.C \
-	src/mesh/matlab_io.C src/mesh/medit_io.C src/mesh/mesh_base.C \
+	src/geom/face_tri.C src/geom/face_tri3.C \
+	src/geom/face_tri3_sd.C src/geom/face_tri6.C src/geom/node.C \
+	src/geom/node_elem.C src/geom/plane.C src/geom/point.C \
+	src/geom/reference_elem.C src/geom/reference_elem.data \
+	src/geom/remote_elem.C src/geom/sphere.C src/geom/surface.C \
+	src/mesh/abaqus_io.C src/mesh/boundary_info.C \
+	src/mesh/boundary_mesh.C src/mesh/checkpoint_io.C \
+	src/mesh/diva_io.C src/mesh/ensight_io.C \
+	src/mesh/exodusII_io.C src/mesh/exodusII_io_helper.C \
+	src/mesh/fro_io.C src/mesh/gmsh_io.C src/mesh/gmv_io.C \
+	src/mesh/gnuplot_io.C src/mesh/inf_elem_builder.C \
+	src/mesh/legacy_xdr_io.C src/mesh/matlab_io.C \
+	src/mesh/medit_io.C src/mesh/mesh_base.C \
 	src/mesh/mesh_communication.C \
 	src/mesh/mesh_communication_global_indices.C \
 	src/mesh/mesh_data.C src/mesh/mesh_data_tetgen_support.C \
@@ -980,6 +986,7 @@ am__libmesh_devel_la_SOURCES_DIST = src/base/dof_map.C \
 	src/mesh/mesh_serializer.C src/mesh/mesh_smoother.C \
 	src/mesh/mesh_smoother_laplace.C \
 	src/mesh/mesh_smoother_vsmoother.C \
+	src/mesh/mesh_subdiv_support.C \
 	src/mesh/mesh_tetgen_interface.C \
 	src/mesh/mesh_tetgen_wrapper.C src/mesh/mesh_tools.C \
 	src/mesh/mesh_triangle_holes.C \
@@ -1221,6 +1228,7 @@ am__objects_2 = src/base/libmesh_devel_la-dof_map.lo \
 	src/fe/libmesh_devel_la-fe_scalar_shape_1D.lo \
 	src/fe/libmesh_devel_la-fe_scalar_shape_2D.lo \
 	src/fe/libmesh_devel_la-fe_scalar_shape_3D.lo \
+	src/fe/libmesh_devel_la-fe_subdiv_2D.lo \
 	src/fe/libmesh_devel_la-fe_szabab.lo \
 	src/fe/libmesh_devel_la-fe_szabab_shape_0D.lo \
 	src/fe/libmesh_devel_la-fe_szabab_shape_1D.lo \
@@ -1290,6 +1298,7 @@ am__objects_2 = src/base/libmesh_devel_la-dof_map.lo \
 	src/geom/libmesh_devel_la-face_quad9.lo \
 	src/geom/libmesh_devel_la-face_tri.lo \
 	src/geom/libmesh_devel_la-face_tri3.lo \
+	src/geom/libmesh_devel_la-face_tri3_sd.lo \
 	src/geom/libmesh_devel_la-face_tri6.lo \
 	src/geom/libmesh_devel_la-node.lo \
 	src/geom/libmesh_devel_la-node_elem.lo \
@@ -1333,6 +1342,7 @@ am__objects_2 = src/base/libmesh_devel_la-dof_map.lo \
 	src/mesh/libmesh_devel_la-mesh_smoother.lo \
 	src/mesh/libmesh_devel_la-mesh_smoother_laplace.lo \
 	src/mesh/libmesh_devel_la-mesh_smoother_vsmoother.lo \
+	src/mesh/libmesh_devel_la-mesh_subdiv_support.lo \
 	src/mesh/libmesh_devel_la-mesh_tetgen_interface.lo \
 	src/mesh/libmesh_devel_la-mesh_tetgen_wrapper.lo \
 	src/mesh/libmesh_devel_la-mesh_tools.lo \
@@ -1605,16 +1615,16 @@ am__libmesh_oprof_la_SOURCES_DIST = src/base/dof_map.C \
 	src/fe/fe_nedelec_one_shape_3D.C src/fe/fe_scalar.C \
 	src/fe/fe_scalar_shape_0D.C src/fe/fe_scalar_shape_1D.C \
 	src/fe/fe_scalar_shape_2D.C src/fe/fe_scalar_shape_3D.C \
-	src/fe/fe_szabab.C src/fe/fe_szabab_shape_0D.C \
-	src/fe/fe_szabab_shape_1D.C src/fe/fe_szabab_shape_2D.C \
-	src/fe/fe_szabab_shape_3D.C src/fe/fe_transformation_base.C \
-	src/fe/fe_type.C src/fe/fe_xyz.C src/fe/fe_xyz_boundary.C \
-	src/fe/fe_xyz_map.C src/fe/fe_xyz_shape_0D.C \
-	src/fe/fe_xyz_shape_1D.C src/fe/fe_xyz_shape_2D.C \
-	src/fe/fe_xyz_shape_3D.C src/fe/h1_fe_transformation.C \
-	src/fe/hcurl_fe_transformation.C src/fe/inf_fe.C \
-	src/fe/inf_fe_base_radial.C src/fe/inf_fe_boundary.C \
-	src/fe/inf_fe_jacobi_20_00_eval.C \
+	src/fe/fe_subdiv_2D.C src/fe/fe_szabab.C \
+	src/fe/fe_szabab_shape_0D.C src/fe/fe_szabab_shape_1D.C \
+	src/fe/fe_szabab_shape_2D.C src/fe/fe_szabab_shape_3D.C \
+	src/fe/fe_transformation_base.C src/fe/fe_type.C \
+	src/fe/fe_xyz.C src/fe/fe_xyz_boundary.C src/fe/fe_xyz_map.C \
+	src/fe/fe_xyz_shape_0D.C src/fe/fe_xyz_shape_1D.C \
+	src/fe/fe_xyz_shape_2D.C src/fe/fe_xyz_shape_3D.C \
+	src/fe/h1_fe_transformation.C src/fe/hcurl_fe_transformation.C \
+	src/fe/inf_fe.C src/fe/inf_fe_base_radial.C \
+	src/fe/inf_fe_boundary.C src/fe/inf_fe_jacobi_20_00_eval.C \
 	src/fe/inf_fe_jacobi_30_00_eval.C \
 	src/fe/inf_fe_lagrange_eval.C src/fe/inf_fe_legendre_eval.C \
 	src/fe/inf_fe_map.C src/fe/inf_fe_map_eval.C \
@@ -1638,18 +1648,19 @@ am__libmesh_oprof_la_SOURCES_DIST = src/base/dof_map.C \
 	src/geom/face_inf_quad4.C src/geom/face_inf_quad6.C \
 	src/geom/face_quad.C src/geom/face_quad4.C \
 	src/geom/face_quad8.C src/geom/face_quad9.C \
-	src/geom/face_tri.C src/geom/face_tri3.C src/geom/face_tri6.C \
-	src/geom/node.C src/geom/node_elem.C src/geom/plane.C \
-	src/geom/point.C src/geom/reference_elem.C \
-	src/geom/reference_elem.data src/geom/remote_elem.C \
-	src/geom/sphere.C src/geom/surface.C src/mesh/abaqus_io.C \
-	src/mesh/boundary_info.C src/mesh/boundary_mesh.C \
-	src/mesh/checkpoint_io.C src/mesh/diva_io.C \
-	src/mesh/ensight_io.C src/mesh/exodusII_io.C \
-	src/mesh/exodusII_io_helper.C src/mesh/fro_io.C \
-	src/mesh/gmsh_io.C src/mesh/gmv_io.C src/mesh/gnuplot_io.C \
-	src/mesh/inf_elem_builder.C src/mesh/legacy_xdr_io.C \
-	src/mesh/matlab_io.C src/mesh/medit_io.C src/mesh/mesh_base.C \
+	src/geom/face_tri.C src/geom/face_tri3.C \
+	src/geom/face_tri3_sd.C src/geom/face_tri6.C src/geom/node.C \
+	src/geom/node_elem.C src/geom/plane.C src/geom/point.C \
+	src/geom/reference_elem.C src/geom/reference_elem.data \
+	src/geom/remote_elem.C src/geom/sphere.C src/geom/surface.C \
+	src/mesh/abaqus_io.C src/mesh/boundary_info.C \
+	src/mesh/boundary_mesh.C src/mesh/checkpoint_io.C \
+	src/mesh/diva_io.C src/mesh/ensight_io.C \
+	src/mesh/exodusII_io.C src/mesh/exodusII_io_helper.C \
+	src/mesh/fro_io.C src/mesh/gmsh_io.C src/mesh/gmv_io.C \
+	src/mesh/gnuplot_io.C src/mesh/inf_elem_builder.C \
+	src/mesh/legacy_xdr_io.C src/mesh/matlab_io.C \
+	src/mesh/medit_io.C src/mesh/mesh_base.C \
 	src/mesh/mesh_communication.C \
 	src/mesh/mesh_communication_global_indices.C \
 	src/mesh/mesh_data.C src/mesh/mesh_data_tetgen_support.C \
@@ -1662,6 +1673,7 @@ am__libmesh_oprof_la_SOURCES_DIST = src/base/dof_map.C \
 	src/mesh/mesh_serializer.C src/mesh/mesh_smoother.C \
 	src/mesh/mesh_smoother_laplace.C \
 	src/mesh/mesh_smoother_vsmoother.C \
+	src/mesh/mesh_subdiv_support.C \
 	src/mesh/mesh_tetgen_interface.C \
 	src/mesh/mesh_tetgen_wrapper.C src/mesh/mesh_tools.C \
 	src/mesh/mesh_triangle_holes.C \
@@ -1903,6 +1915,7 @@ am__objects_3 = src/base/libmesh_oprof_la-dof_map.lo \
 	src/fe/libmesh_oprof_la-fe_scalar_shape_1D.lo \
 	src/fe/libmesh_oprof_la-fe_scalar_shape_2D.lo \
 	src/fe/libmesh_oprof_la-fe_scalar_shape_3D.lo \
+	src/fe/libmesh_oprof_la-fe_subdiv_2D.lo \
 	src/fe/libmesh_oprof_la-fe_szabab.lo \
 	src/fe/libmesh_oprof_la-fe_szabab_shape_0D.lo \
 	src/fe/libmesh_oprof_la-fe_szabab_shape_1D.lo \
@@ -1972,6 +1985,7 @@ am__objects_3 = src/base/libmesh_oprof_la-dof_map.lo \
 	src/geom/libmesh_oprof_la-face_quad9.lo \
 	src/geom/libmesh_oprof_la-face_tri.lo \
 	src/geom/libmesh_oprof_la-face_tri3.lo \
+	src/geom/libmesh_oprof_la-face_tri3_sd.lo \
 	src/geom/libmesh_oprof_la-face_tri6.lo \
 	src/geom/libmesh_oprof_la-node.lo \
 	src/geom/libmesh_oprof_la-node_elem.lo \
@@ -2015,6 +2029,7 @@ am__objects_3 = src/base/libmesh_oprof_la-dof_map.lo \
 	src/mesh/libmesh_oprof_la-mesh_smoother.lo \
 	src/mesh/libmesh_oprof_la-mesh_smoother_laplace.lo \
 	src/mesh/libmesh_oprof_la-mesh_smoother_vsmoother.lo \
+	src/mesh/libmesh_oprof_la-mesh_subdiv_support.lo \
 	src/mesh/libmesh_oprof_la-mesh_tetgen_interface.lo \
 	src/mesh/libmesh_oprof_la-mesh_tetgen_wrapper.lo \
 	src/mesh/libmesh_oprof_la-mesh_tools.lo \
@@ -2287,16 +2302,16 @@ am__libmesh_opt_la_SOURCES_DIST = src/base/dof_map.C \
 	src/fe/fe_nedelec_one_shape_3D.C src/fe/fe_scalar.C \
 	src/fe/fe_scalar_shape_0D.C src/fe/fe_scalar_shape_1D.C \
 	src/fe/fe_scalar_shape_2D.C src/fe/fe_scalar_shape_3D.C \
-	src/fe/fe_szabab.C src/fe/fe_szabab_shape_0D.C \
-	src/fe/fe_szabab_shape_1D.C src/fe/fe_szabab_shape_2D.C \
-	src/fe/fe_szabab_shape_3D.C src/fe/fe_transformation_base.C \
-	src/fe/fe_type.C src/fe/fe_xyz.C src/fe/fe_xyz_boundary.C \
-	src/fe/fe_xyz_map.C src/fe/fe_xyz_shape_0D.C \
-	src/fe/fe_xyz_shape_1D.C src/fe/fe_xyz_shape_2D.C \
-	src/fe/fe_xyz_shape_3D.C src/fe/h1_fe_transformation.C \
-	src/fe/hcurl_fe_transformation.C src/fe/inf_fe.C \
-	src/fe/inf_fe_base_radial.C src/fe/inf_fe_boundary.C \
-	src/fe/inf_fe_jacobi_20_00_eval.C \
+	src/fe/fe_subdiv_2D.C src/fe/fe_szabab.C \
+	src/fe/fe_szabab_shape_0D.C src/fe/fe_szabab_shape_1D.C \
+	src/fe/fe_szabab_shape_2D.C src/fe/fe_szabab_shape_3D.C \
+	src/fe/fe_transformation_base.C src/fe/fe_type.C \
+	src/fe/fe_xyz.C src/fe/fe_xyz_boundary.C src/fe/fe_xyz_map.C \
+	src/fe/fe_xyz_shape_0D.C src/fe/fe_xyz_shape_1D.C \
+	src/fe/fe_xyz_shape_2D.C src/fe/fe_xyz_shape_3D.C \
+	src/fe/h1_fe_transformation.C src/fe/hcurl_fe_transformation.C \
+	src/fe/inf_fe.C src/fe/inf_fe_base_radial.C \
+	src/fe/inf_fe_boundary.C src/fe/inf_fe_jacobi_20_00_eval.C \
 	src/fe/inf_fe_jacobi_30_00_eval.C \
 	src/fe/inf_fe_lagrange_eval.C src/fe/inf_fe_legendre_eval.C \
 	src/fe/inf_fe_map.C src/fe/inf_fe_map_eval.C \
@@ -2320,18 +2335,19 @@ am__libmesh_opt_la_SOURCES_DIST = src/base/dof_map.C \
 	src/geom/face_inf_quad4.C src/geom/face_inf_quad6.C \
 	src/geom/face_quad.C src/geom/face_quad4.C \
 	src/geom/face_quad8.C src/geom/face_quad9.C \
-	src/geom/face_tri.C src/geom/face_tri3.C src/geom/face_tri6.C \
-	src/geom/node.C src/geom/node_elem.C src/geom/plane.C \
-	src/geom/point.C src/geom/reference_elem.C \
-	src/geom/reference_elem.data src/geom/remote_elem.C \
-	src/geom/sphere.C src/geom/surface.C src/mesh/abaqus_io.C \
-	src/mesh/boundary_info.C src/mesh/boundary_mesh.C \
-	src/mesh/checkpoint_io.C src/mesh/diva_io.C \
-	src/mesh/ensight_io.C src/mesh/exodusII_io.C \
-	src/mesh/exodusII_io_helper.C src/mesh/fro_io.C \
-	src/mesh/gmsh_io.C src/mesh/gmv_io.C src/mesh/gnuplot_io.C \
-	src/mesh/inf_elem_builder.C src/mesh/legacy_xdr_io.C \
-	src/mesh/matlab_io.C src/mesh/medit_io.C src/mesh/mesh_base.C \
+	src/geom/face_tri.C src/geom/face_tri3.C \
+	src/geom/face_tri3_sd.C src/geom/face_tri6.C src/geom/node.C \
+	src/geom/node_elem.C src/geom/plane.C src/geom/point.C \
+	src/geom/reference_elem.C src/geom/reference_elem.data \
+	src/geom/remote_elem.C src/geom/sphere.C src/geom/surface.C \
+	src/mesh/abaqus_io.C src/mesh/boundary_info.C \
+	src/mesh/boundary_mesh.C src/mesh/checkpoint_io.C \
+	src/mesh/diva_io.C src/mesh/ensight_io.C \
+	src/mesh/exodusII_io.C src/mesh/exodusII_io_helper.C \
+	src/mesh/fro_io.C src/mesh/gmsh_io.C src/mesh/gmv_io.C \
+	src/mesh/gnuplot_io.C src/mesh/inf_elem_builder.C \
+	src/mesh/legacy_xdr_io.C src/mesh/matlab_io.C \
+	src/mesh/medit_io.C src/mesh/mesh_base.C \
 	src/mesh/mesh_communication.C \
 	src/mesh/mesh_communication_global_indices.C \
 	src/mesh/mesh_data.C src/mesh/mesh_data_tetgen_support.C \
@@ -2344,6 +2360,7 @@ am__libmesh_opt_la_SOURCES_DIST = src/base/dof_map.C \
 	src/mesh/mesh_serializer.C src/mesh/mesh_smoother.C \
 	src/mesh/mesh_smoother_laplace.C \
 	src/mesh/mesh_smoother_vsmoother.C \
+	src/mesh/mesh_subdiv_support.C \
 	src/mesh/mesh_tetgen_interface.C \
 	src/mesh/mesh_tetgen_wrapper.C src/mesh/mesh_tools.C \
 	src/mesh/mesh_triangle_holes.C \
@@ -2585,6 +2602,7 @@ am__objects_4 = src/base/libmesh_opt_la-dof_map.lo \
 	src/fe/libmesh_opt_la-fe_scalar_shape_1D.lo \
 	src/fe/libmesh_opt_la-fe_scalar_shape_2D.lo \
 	src/fe/libmesh_opt_la-fe_scalar_shape_3D.lo \
+	src/fe/libmesh_opt_la-fe_subdiv_2D.lo \
 	src/fe/libmesh_opt_la-fe_szabab.lo \
 	src/fe/libmesh_opt_la-fe_szabab_shape_0D.lo \
 	src/fe/libmesh_opt_la-fe_szabab_shape_1D.lo \
@@ -2654,6 +2672,7 @@ am__objects_4 = src/base/libmesh_opt_la-dof_map.lo \
 	src/geom/libmesh_opt_la-face_quad9.lo \
 	src/geom/libmesh_opt_la-face_tri.lo \
 	src/geom/libmesh_opt_la-face_tri3.lo \
+	src/geom/libmesh_opt_la-face_tri3_sd.lo \
 	src/geom/libmesh_opt_la-face_tri6.lo \
 	src/geom/libmesh_opt_la-node.lo \
 	src/geom/libmesh_opt_la-node_elem.lo \
@@ -2697,6 +2716,7 @@ am__objects_4 = src/base/libmesh_opt_la-dof_map.lo \
 	src/mesh/libmesh_opt_la-mesh_smoother.lo \
 	src/mesh/libmesh_opt_la-mesh_smoother_laplace.lo \
 	src/mesh/libmesh_opt_la-mesh_smoother_vsmoother.lo \
+	src/mesh/libmesh_opt_la-mesh_subdiv_support.lo \
 	src/mesh/libmesh_opt_la-mesh_tetgen_interface.lo \
 	src/mesh/libmesh_opt_la-mesh_tetgen_wrapper.lo \
 	src/mesh/libmesh_opt_la-mesh_tools.lo \
@@ -2968,16 +2988,16 @@ am__libmesh_prof_la_SOURCES_DIST = src/base/dof_map.C \
 	src/fe/fe_nedelec_one_shape_3D.C src/fe/fe_scalar.C \
 	src/fe/fe_scalar_shape_0D.C src/fe/fe_scalar_shape_1D.C \
 	src/fe/fe_scalar_shape_2D.C src/fe/fe_scalar_shape_3D.C \
-	src/fe/fe_szabab.C src/fe/fe_szabab_shape_0D.C \
-	src/fe/fe_szabab_shape_1D.C src/fe/fe_szabab_shape_2D.C \
-	src/fe/fe_szabab_shape_3D.C src/fe/fe_transformation_base.C \
-	src/fe/fe_type.C src/fe/fe_xyz.C src/fe/fe_xyz_boundary.C \
-	src/fe/fe_xyz_map.C src/fe/fe_xyz_shape_0D.C \
-	src/fe/fe_xyz_shape_1D.C src/fe/fe_xyz_shape_2D.C \
-	src/fe/fe_xyz_shape_3D.C src/fe/h1_fe_transformation.C \
-	src/fe/hcurl_fe_transformation.C src/fe/inf_fe.C \
-	src/fe/inf_fe_base_radial.C src/fe/inf_fe_boundary.C \
-	src/fe/inf_fe_jacobi_20_00_eval.C \
+	src/fe/fe_subdiv_2D.C src/fe/fe_szabab.C \
+	src/fe/fe_szabab_shape_0D.C src/fe/fe_szabab_shape_1D.C \
+	src/fe/fe_szabab_shape_2D.C src/fe/fe_szabab_shape_3D.C \
+	src/fe/fe_transformation_base.C src/fe/fe_type.C \
+	src/fe/fe_xyz.C src/fe/fe_xyz_boundary.C src/fe/fe_xyz_map.C \
+	src/fe/fe_xyz_shape_0D.C src/fe/fe_xyz_shape_1D.C \
+	src/fe/fe_xyz_shape_2D.C src/fe/fe_xyz_shape_3D.C \
+	src/fe/h1_fe_transformation.C src/fe/hcurl_fe_transformation.C \
+	src/fe/inf_fe.C src/fe/inf_fe_base_radial.C \
+	src/fe/inf_fe_boundary.C src/fe/inf_fe_jacobi_20_00_eval.C \
 	src/fe/inf_fe_jacobi_30_00_eval.C \
 	src/fe/inf_fe_lagrange_eval.C src/fe/inf_fe_legendre_eval.C \
 	src/fe/inf_fe_map.C src/fe/inf_fe_map_eval.C \
@@ -3001,18 +3021,19 @@ am__libmesh_prof_la_SOURCES_DIST = src/base/dof_map.C \
 	src/geom/face_inf_quad4.C src/geom/face_inf_quad6.C \
 	src/geom/face_quad.C src/geom/face_quad4.C \
 	src/geom/face_quad8.C src/geom/face_quad9.C \
-	src/geom/face_tri.C src/geom/face_tri3.C src/geom/face_tri6.C \
-	src/geom/node.C src/geom/node_elem.C src/geom/plane.C \
-	src/geom/point.C src/geom/reference_elem.C \
-	src/geom/reference_elem.data src/geom/remote_elem.C \
-	src/geom/sphere.C src/geom/surface.C src/mesh/abaqus_io.C \
-	src/mesh/boundary_info.C src/mesh/boundary_mesh.C \
-	src/mesh/checkpoint_io.C src/mesh/diva_io.C \
-	src/mesh/ensight_io.C src/mesh/exodusII_io.C \
-	src/mesh/exodusII_io_helper.C src/mesh/fro_io.C \
-	src/mesh/gmsh_io.C src/mesh/gmv_io.C src/mesh/gnuplot_io.C \
-	src/mesh/inf_elem_builder.C src/mesh/legacy_xdr_io.C \
-	src/mesh/matlab_io.C src/mesh/medit_io.C src/mesh/mesh_base.C \
+	src/geom/face_tri.C src/geom/face_tri3.C \
+	src/geom/face_tri3_sd.C src/geom/face_tri6.C src/geom/node.C \
+	src/geom/node_elem.C src/geom/plane.C src/geom/point.C \
+	src/geom/reference_elem.C src/geom/reference_elem.data \
+	src/geom/remote_elem.C src/geom/sphere.C src/geom/surface.C \
+	src/mesh/abaqus_io.C src/mesh/boundary_info.C \
+	src/mesh/boundary_mesh.C src/mesh/checkpoint_io.C \
+	src/mesh/diva_io.C src/mesh/ensight_io.C \
+	src/mesh/exodusII_io.C src/mesh/exodusII_io_helper.C \
+	src/mesh/fro_io.C src/mesh/gmsh_io.C src/mesh/gmv_io.C \
+	src/mesh/gnuplot_io.C src/mesh/inf_elem_builder.C \
+	src/mesh/legacy_xdr_io.C src/mesh/matlab_io.C \
+	src/mesh/medit_io.C src/mesh/mesh_base.C \
 	src/mesh/mesh_communication.C \
 	src/mesh/mesh_communication_global_indices.C \
 	src/mesh/mesh_data.C src/mesh/mesh_data_tetgen_support.C \
@@ -3025,6 +3046,7 @@ am__libmesh_prof_la_SOURCES_DIST = src/base/dof_map.C \
 	src/mesh/mesh_serializer.C src/mesh/mesh_smoother.C \
 	src/mesh/mesh_smoother_laplace.C \
 	src/mesh/mesh_smoother_vsmoother.C \
+	src/mesh/mesh_subdiv_support.C \
 	src/mesh/mesh_tetgen_interface.C \
 	src/mesh/mesh_tetgen_wrapper.C src/mesh/mesh_tools.C \
 	src/mesh/mesh_triangle_holes.C \
@@ -3266,6 +3288,7 @@ am__objects_5 = src/base/libmesh_prof_la-dof_map.lo \
 	src/fe/libmesh_prof_la-fe_scalar_shape_1D.lo \
 	src/fe/libmesh_prof_la-fe_scalar_shape_2D.lo \
 	src/fe/libmesh_prof_la-fe_scalar_shape_3D.lo \
+	src/fe/libmesh_prof_la-fe_subdiv_2D.lo \
 	src/fe/libmesh_prof_la-fe_szabab.lo \
 	src/fe/libmesh_prof_la-fe_szabab_shape_0D.lo \
 	src/fe/libmesh_prof_la-fe_szabab_shape_1D.lo \
@@ -3335,6 +3358,7 @@ am__objects_5 = src/base/libmesh_prof_la-dof_map.lo \
 	src/geom/libmesh_prof_la-face_quad9.lo \
 	src/geom/libmesh_prof_la-face_tri.lo \
 	src/geom/libmesh_prof_la-face_tri3.lo \
+	src/geom/libmesh_prof_la-face_tri3_sd.lo \
 	src/geom/libmesh_prof_la-face_tri6.lo \
 	src/geom/libmesh_prof_la-node.lo \
 	src/geom/libmesh_prof_la-node_elem.lo \
@@ -3378,6 +3402,7 @@ am__objects_5 = src/base/libmesh_prof_la-dof_map.lo \
 	src/mesh/libmesh_prof_la-mesh_smoother.lo \
 	src/mesh/libmesh_prof_la-mesh_smoother_laplace.lo \
 	src/mesh/libmesh_prof_la-mesh_smoother_vsmoother.lo \
+	src/mesh/libmesh_prof_la-mesh_subdiv_support.lo \
 	src/mesh/libmesh_prof_la-mesh_tetgen_interface.lo \
 	src/mesh/libmesh_prof_la-mesh_tetgen_wrapper.lo \
 	src/mesh/libmesh_prof_la-mesh_tools.lo \
@@ -4482,6 +4507,7 @@ libmesh_SOURCES = \
         src/fe/fe_scalar_shape_1D.C \
         src/fe/fe_scalar_shape_2D.C \
         src/fe/fe_scalar_shape_3D.C \
+        src/fe/fe_subdiv_2D.C \
         src/fe/fe_szabab.C \
         src/fe/fe_szabab_shape_0D.C \
         src/fe/fe_szabab_shape_1D.C \
@@ -4551,6 +4577,7 @@ libmesh_SOURCES = \
         src/geom/face_quad9.C \
         src/geom/face_tri.C \
         src/geom/face_tri3.C \
+        src/geom/face_tri3_sd.C \
         src/geom/face_tri6.C \
         src/geom/node.C \
         src/geom/node_elem.C \
@@ -4595,6 +4622,7 @@ libmesh_SOURCES = \
         src/mesh/mesh_smoother.C \
         src/mesh/mesh_smoother_laplace.C \
         src/mesh/mesh_smoother_vsmoother.C \
+        src/mesh/mesh_subdiv_support.C \
         src/mesh/mesh_tetgen_interface.C \
         src/mesh/mesh_tetgen_wrapper.C \
         src/mesh/mesh_tools.C \
@@ -5316,6 +5344,8 @@ src/fe/libmesh_dbg_la-fe_scalar_shape_2D.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_dbg_la-fe_scalar_shape_3D.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
+src/fe/libmesh_dbg_la-fe_subdiv_2D.lo: src/fe/$(am__dirstamp) \
+	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_dbg_la-fe_szabab.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_dbg_la-fe_szabab_shape_0D.lo: src/fe/$(am__dirstamp) \
@@ -5460,6 +5490,8 @@ src/geom/libmesh_dbg_la-face_tri.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_dbg_la-face_tri3.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
+src/geom/libmesh_dbg_la-face_tri3_sd.lo: src/geom/$(am__dirstamp) \
+	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_dbg_la-face_tri6.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_dbg_la-node.lo: src/geom/$(am__dirstamp) \
@@ -5551,6 +5583,8 @@ src/mesh/libmesh_dbg_la-mesh_smoother.lo: src/mesh/$(am__dirstamp) \
 src/mesh/libmesh_dbg_la-mesh_smoother_laplace.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_dbg_la-mesh_smoother_vsmoother.lo:  \
+	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
+src/mesh/libmesh_dbg_la-mesh_subdiv_support.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_dbg_la-mesh_tetgen_interface.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
@@ -6368,6 +6402,8 @@ src/fe/libmesh_devel_la-fe_scalar_shape_2D.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_devel_la-fe_scalar_shape_3D.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
+src/fe/libmesh_devel_la-fe_subdiv_2D.lo: src/fe/$(am__dirstamp) \
+	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_devel_la-fe_szabab.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_devel_la-fe_szabab_shape_0D.lo: src/fe/$(am__dirstamp) \
@@ -6506,6 +6542,8 @@ src/geom/libmesh_devel_la-face_tri.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_devel_la-face_tri3.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
+src/geom/libmesh_devel_la-face_tri3_sd.lo: src/geom/$(am__dirstamp) \
+	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_devel_la-face_tri6.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_devel_la-node.lo: src/geom/$(am__dirstamp) \
@@ -6591,6 +6629,8 @@ src/mesh/libmesh_devel_la-mesh_smoother.lo: src/mesh/$(am__dirstamp) \
 src/mesh/libmesh_devel_la-mesh_smoother_laplace.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_devel_la-mesh_smoother_vsmoother.lo:  \
+	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
+src/mesh/libmesh_devel_la-mesh_subdiv_support.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_devel_la-mesh_tetgen_interface.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
@@ -7351,6 +7391,8 @@ src/fe/libmesh_oprof_la-fe_scalar_shape_2D.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_oprof_la-fe_scalar_shape_3D.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
+src/fe/libmesh_oprof_la-fe_subdiv_2D.lo: src/fe/$(am__dirstamp) \
+	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_oprof_la-fe_szabab.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_oprof_la-fe_szabab_shape_0D.lo: src/fe/$(am__dirstamp) \
@@ -7489,6 +7531,8 @@ src/geom/libmesh_oprof_la-face_tri.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_oprof_la-face_tri3.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
+src/geom/libmesh_oprof_la-face_tri3_sd.lo: src/geom/$(am__dirstamp) \
+	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_oprof_la-face_tri6.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_oprof_la-node.lo: src/geom/$(am__dirstamp) \
@@ -7574,6 +7618,8 @@ src/mesh/libmesh_oprof_la-mesh_smoother.lo: src/mesh/$(am__dirstamp) \
 src/mesh/libmesh_oprof_la-mesh_smoother_laplace.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_oprof_la-mesh_smoother_vsmoother.lo:  \
+	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
+src/mesh/libmesh_oprof_la-mesh_subdiv_support.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_oprof_la-mesh_tetgen_interface.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
@@ -8334,6 +8380,8 @@ src/fe/libmesh_opt_la-fe_scalar_shape_2D.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_opt_la-fe_scalar_shape_3D.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
+src/fe/libmesh_opt_la-fe_subdiv_2D.lo: src/fe/$(am__dirstamp) \
+	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_opt_la-fe_szabab.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_opt_la-fe_szabab_shape_0D.lo: src/fe/$(am__dirstamp) \
@@ -8472,6 +8520,8 @@ src/geom/libmesh_opt_la-face_tri.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_opt_la-face_tri3.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
+src/geom/libmesh_opt_la-face_tri3_sd.lo: src/geom/$(am__dirstamp) \
+	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_opt_la-face_tri6.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_opt_la-node.lo: src/geom/$(am__dirstamp) \
@@ -8557,6 +8607,8 @@ src/mesh/libmesh_opt_la-mesh_smoother.lo: src/mesh/$(am__dirstamp) \
 src/mesh/libmesh_opt_la-mesh_smoother_laplace.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_opt_la-mesh_smoother_vsmoother.lo:  \
+	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
+src/mesh/libmesh_opt_la-mesh_subdiv_support.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_opt_la-mesh_tetgen_interface.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
@@ -9314,6 +9366,8 @@ src/fe/libmesh_prof_la-fe_scalar_shape_2D.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_prof_la-fe_scalar_shape_3D.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
+src/fe/libmesh_prof_la-fe_subdiv_2D.lo: src/fe/$(am__dirstamp) \
+	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_prof_la-fe_szabab.lo: src/fe/$(am__dirstamp) \
 	src/fe/$(DEPDIR)/$(am__dirstamp)
 src/fe/libmesh_prof_la-fe_szabab_shape_0D.lo: src/fe/$(am__dirstamp) \
@@ -9452,6 +9506,8 @@ src/geom/libmesh_prof_la-face_tri.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_prof_la-face_tri3.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
+src/geom/libmesh_prof_la-face_tri3_sd.lo: src/geom/$(am__dirstamp) \
+	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_prof_la-face_tri6.lo: src/geom/$(am__dirstamp) \
 	src/geom/$(DEPDIR)/$(am__dirstamp)
 src/geom/libmesh_prof_la-node.lo: src/geom/$(am__dirstamp) \
@@ -9537,6 +9593,8 @@ src/mesh/libmesh_prof_la-mesh_smoother.lo: src/mesh/$(am__dirstamp) \
 src/mesh/libmesh_prof_la-mesh_smoother_laplace.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_prof_la-mesh_smoother_vsmoother.lo:  \
+	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
+src/mesh/libmesh_prof_la-mesh_subdiv_support.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
 src/mesh/libmesh_prof_la-mesh_tetgen_interface.lo:  \
 	src/mesh/$(am__dirstamp) src/mesh/$(DEPDIR)/$(am__dirstamp)
@@ -10703,6 +10761,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_dbg_la-fe_scalar_shape_1D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_dbg_la-fe_scalar_shape_2D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_dbg_la-fe_scalar_shape_3D.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_dbg_la-fe_subdiv_2D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_dbg_la-fe_szabab.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_dbg_la-fe_szabab_shape_0D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_dbg_la-fe_szabab_shape_1D.Plo@am__quote@
@@ -10786,6 +10845,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_devel_la-fe_scalar_shape_1D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_devel_la-fe_scalar_shape_2D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_devel_la-fe_scalar_shape_3D.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_devel_la-fe_subdiv_2D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_devel_la-fe_szabab.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_devel_la-fe_szabab_shape_0D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_devel_la-fe_szabab_shape_1D.Plo@am__quote@
@@ -10869,6 +10929,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_oprof_la-fe_scalar_shape_1D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_oprof_la-fe_scalar_shape_2D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_oprof_la-fe_scalar_shape_3D.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_oprof_la-fe_subdiv_2D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_oprof_la-fe_szabab.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_oprof_la-fe_szabab_shape_0D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_oprof_la-fe_szabab_shape_1D.Plo@am__quote@
@@ -10952,6 +11013,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_opt_la-fe_scalar_shape_1D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_opt_la-fe_scalar_shape_2D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_opt_la-fe_scalar_shape_3D.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_opt_la-fe_subdiv_2D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_opt_la-fe_szabab.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_opt_la-fe_szabab_shape_0D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_opt_la-fe_szabab_shape_1D.Plo@am__quote@
@@ -11035,6 +11097,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_prof_la-fe_scalar_shape_1D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_prof_la-fe_scalar_shape_2D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_prof_la-fe_scalar_shape_3D.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_prof_la-fe_subdiv_2D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_prof_la-fe_szabab.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_prof_la-fe_szabab_shape_0D.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/fe/$(DEPDIR)/libmesh_prof_la-fe_szabab_shape_1D.Plo@am__quote@
@@ -11104,6 +11167,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_dbg_la-face_quad9.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_dbg_la-face_tri.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_dbg_la-face_tri3.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_dbg_la-face_tri3_sd.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_dbg_la-face_tri6.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_dbg_la-node.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_dbg_la-node_elem.Plo@am__quote@
@@ -11156,6 +11220,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_devel_la-face_quad9.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_devel_la-face_tri.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_devel_la-face_tri3.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_devel_la-face_tri3_sd.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_devel_la-face_tri6.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_devel_la-node.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_devel_la-node_elem.Plo@am__quote@
@@ -11208,6 +11273,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_oprof_la-face_quad9.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_oprof_la-face_tri.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_oprof_la-face_tri3.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_oprof_la-face_tri3_sd.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_oprof_la-face_tri6.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_oprof_la-node.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_oprof_la-node_elem.Plo@am__quote@
@@ -11260,6 +11326,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_opt_la-face_quad9.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_opt_la-face_tri.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_opt_la-face_tri3.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_opt_la-face_tri3_sd.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_opt_la-face_tri6.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_opt_la-node.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_opt_la-node_elem.Plo@am__quote@
@@ -11312,6 +11379,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_prof_la-face_quad9.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_prof_la-face_tri.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_prof_la-face_tri3.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_prof_la-face_tri3_sd.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_prof_la-face_tri6.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_prof_la-node.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/geom/$(DEPDIR)/libmesh_prof_la-node_elem.Plo@am__quote@
@@ -11355,6 +11423,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-mesh_smoother.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-mesh_smoother_laplace.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-mesh_smoother_vsmoother.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-mesh_subdiv_support.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-mesh_tetgen_interface.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-mesh_tetgen_wrapper.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_dbg_la-mesh_tools.Plo@am__quote@
@@ -11415,6 +11484,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-mesh_smoother.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-mesh_smoother_laplace.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-mesh_smoother_vsmoother.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-mesh_subdiv_support.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-mesh_tetgen_interface.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-mesh_tetgen_wrapper.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_devel_la-mesh_tools.Plo@am__quote@
@@ -11475,6 +11545,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-mesh_smoother.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-mesh_smoother_laplace.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-mesh_smoother_vsmoother.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-mesh_subdiv_support.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-mesh_tetgen_interface.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-mesh_tetgen_wrapper.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_oprof_la-mesh_tools.Plo@am__quote@
@@ -11535,6 +11606,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-mesh_smoother.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-mesh_smoother_laplace.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-mesh_smoother_vsmoother.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-mesh_subdiv_support.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-mesh_tetgen_interface.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-mesh_tetgen_wrapper.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_opt_la-mesh_tools.Plo@am__quote@
@@ -11595,6 +11667,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-mesh_smoother.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-mesh_smoother_laplace.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-mesh_smoother_vsmoother.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-mesh_subdiv_support.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-mesh_tetgen_interface.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-mesh_tetgen_wrapper.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mesh/$(DEPDIR)/libmesh_prof_la-mesh_tools.Plo@am__quote@
@@ -13141,6 +13214,13 @@ src/fe/libmesh_dbg_la-fe_scalar_shape_3D.lo: src/fe/fe_scalar_shape_3D.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -c -o src/fe/libmesh_dbg_la-fe_scalar_shape_3D.lo `test -f 'src/fe/fe_scalar_shape_3D.C' || echo '$(srcdir)/'`src/fe/fe_scalar_shape_3D.C
 
+src/fe/libmesh_dbg_la-fe_subdiv_2D.lo: src/fe/fe_subdiv_2D.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -MT src/fe/libmesh_dbg_la-fe_subdiv_2D.lo -MD -MP -MF src/fe/$(DEPDIR)/libmesh_dbg_la-fe_subdiv_2D.Tpo -c -o src/fe/libmesh_dbg_la-fe_subdiv_2D.lo `test -f 'src/fe/fe_subdiv_2D.C' || echo '$(srcdir)/'`src/fe/fe_subdiv_2D.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/fe/$(DEPDIR)/libmesh_dbg_la-fe_subdiv_2D.Tpo src/fe/$(DEPDIR)/libmesh_dbg_la-fe_subdiv_2D.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/fe/fe_subdiv_2D.C' object='src/fe/libmesh_dbg_la-fe_subdiv_2D.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -c -o src/fe/libmesh_dbg_la-fe_subdiv_2D.lo `test -f 'src/fe/fe_subdiv_2D.C' || echo '$(srcdir)/'`src/fe/fe_subdiv_2D.C
+
 src/fe/libmesh_dbg_la-fe_szabab.lo: src/fe/fe_szabab.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -MT src/fe/libmesh_dbg_la-fe_szabab.lo -MD -MP -MF src/fe/$(DEPDIR)/libmesh_dbg_la-fe_szabab.Tpo -c -o src/fe/libmesh_dbg_la-fe_szabab.lo `test -f 'src/fe/fe_szabab.C' || echo '$(srcdir)/'`src/fe/fe_szabab.C
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/fe/$(DEPDIR)/libmesh_dbg_la-fe_szabab.Tpo src/fe/$(DEPDIR)/libmesh_dbg_la-fe_szabab.Plo
@@ -13624,6 +13704,13 @@ src/geom/libmesh_dbg_la-face_tri3.lo: src/geom/face_tri3.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -c -o src/geom/libmesh_dbg_la-face_tri3.lo `test -f 'src/geom/face_tri3.C' || echo '$(srcdir)/'`src/geom/face_tri3.C
 
+src/geom/libmesh_dbg_la-face_tri3_sd.lo: src/geom/face_tri3_sd.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -MT src/geom/libmesh_dbg_la-face_tri3_sd.lo -MD -MP -MF src/geom/$(DEPDIR)/libmesh_dbg_la-face_tri3_sd.Tpo -c -o src/geom/libmesh_dbg_la-face_tri3_sd.lo `test -f 'src/geom/face_tri3_sd.C' || echo '$(srcdir)/'`src/geom/face_tri3_sd.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/geom/$(DEPDIR)/libmesh_dbg_la-face_tri3_sd.Tpo src/geom/$(DEPDIR)/libmesh_dbg_la-face_tri3_sd.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/geom/face_tri3_sd.C' object='src/geom/libmesh_dbg_la-face_tri3_sd.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -c -o src/geom/libmesh_dbg_la-face_tri3_sd.lo `test -f 'src/geom/face_tri3_sd.C' || echo '$(srcdir)/'`src/geom/face_tri3_sd.C
+
 src/geom/libmesh_dbg_la-face_tri6.lo: src/geom/face_tri6.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -MT src/geom/libmesh_dbg_la-face_tri6.lo -MD -MP -MF src/geom/$(DEPDIR)/libmesh_dbg_la-face_tri6.Tpo -c -o src/geom/libmesh_dbg_la-face_tri6.lo `test -f 'src/geom/face_tri6.C' || echo '$(srcdir)/'`src/geom/face_tri6.C
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/geom/$(DEPDIR)/libmesh_dbg_la-face_tri6.Tpo src/geom/$(DEPDIR)/libmesh_dbg_la-face_tri6.Plo
@@ -13924,6 +14011,13 @@ src/mesh/libmesh_dbg_la-mesh_smoother_vsmoother.lo: src/mesh/mesh_smoother_vsmoo
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/mesh_smoother_vsmoother.C' object='src/mesh/libmesh_dbg_la-mesh_smoother_vsmoother.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_dbg_la-mesh_smoother_vsmoother.lo `test -f 'src/mesh/mesh_smoother_vsmoother.C' || echo '$(srcdir)/'`src/mesh/mesh_smoother_vsmoother.C
+
+src/mesh/libmesh_dbg_la-mesh_subdiv_support.lo: src/mesh/mesh_subdiv_support.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_dbg_la-mesh_subdiv_support.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_dbg_la-mesh_subdiv_support.Tpo -c -o src/mesh/libmesh_dbg_la-mesh_subdiv_support.lo `test -f 'src/mesh/mesh_subdiv_support.C' || echo '$(srcdir)/'`src/mesh/mesh_subdiv_support.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mesh/$(DEPDIR)/libmesh_dbg_la-mesh_subdiv_support.Tpo src/mesh/$(DEPDIR)/libmesh_dbg_la-mesh_subdiv_support.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/mesh_subdiv_support.C' object='src/mesh/libmesh_dbg_la-mesh_subdiv_support.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_dbg_la-mesh_subdiv_support.lo `test -f 'src/mesh/mesh_subdiv_support.C' || echo '$(srcdir)/'`src/mesh/mesh_subdiv_support.C
 
 src/mesh/libmesh_dbg_la-mesh_tetgen_interface.lo: src/mesh/mesh_tetgen_interface.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_dbg_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_dbg_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_dbg_la-mesh_tetgen_interface.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_dbg_la-mesh_tetgen_interface.Tpo -c -o src/mesh/libmesh_dbg_la-mesh_tetgen_interface.lo `test -f 'src/mesh/mesh_tetgen_interface.C' || echo '$(srcdir)/'`src/mesh/mesh_tetgen_interface.C
@@ -15962,6 +16056,13 @@ src/fe/libmesh_devel_la-fe_scalar_shape_3D.lo: src/fe/fe_scalar_shape_3D.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -c -o src/fe/libmesh_devel_la-fe_scalar_shape_3D.lo `test -f 'src/fe/fe_scalar_shape_3D.C' || echo '$(srcdir)/'`src/fe/fe_scalar_shape_3D.C
 
+src/fe/libmesh_devel_la-fe_subdiv_2D.lo: src/fe/fe_subdiv_2D.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -MT src/fe/libmesh_devel_la-fe_subdiv_2D.lo -MD -MP -MF src/fe/$(DEPDIR)/libmesh_devel_la-fe_subdiv_2D.Tpo -c -o src/fe/libmesh_devel_la-fe_subdiv_2D.lo `test -f 'src/fe/fe_subdiv_2D.C' || echo '$(srcdir)/'`src/fe/fe_subdiv_2D.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/fe/$(DEPDIR)/libmesh_devel_la-fe_subdiv_2D.Tpo src/fe/$(DEPDIR)/libmesh_devel_la-fe_subdiv_2D.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/fe/fe_subdiv_2D.C' object='src/fe/libmesh_devel_la-fe_subdiv_2D.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -c -o src/fe/libmesh_devel_la-fe_subdiv_2D.lo `test -f 'src/fe/fe_subdiv_2D.C' || echo '$(srcdir)/'`src/fe/fe_subdiv_2D.C
+
 src/fe/libmesh_devel_la-fe_szabab.lo: src/fe/fe_szabab.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -MT src/fe/libmesh_devel_la-fe_szabab.lo -MD -MP -MF src/fe/$(DEPDIR)/libmesh_devel_la-fe_szabab.Tpo -c -o src/fe/libmesh_devel_la-fe_szabab.lo `test -f 'src/fe/fe_szabab.C' || echo '$(srcdir)/'`src/fe/fe_szabab.C
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/fe/$(DEPDIR)/libmesh_devel_la-fe_szabab.Tpo src/fe/$(DEPDIR)/libmesh_devel_la-fe_szabab.Plo
@@ -16445,6 +16546,13 @@ src/geom/libmesh_devel_la-face_tri3.lo: src/geom/face_tri3.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -c -o src/geom/libmesh_devel_la-face_tri3.lo `test -f 'src/geom/face_tri3.C' || echo '$(srcdir)/'`src/geom/face_tri3.C
 
+src/geom/libmesh_devel_la-face_tri3_sd.lo: src/geom/face_tri3_sd.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -MT src/geom/libmesh_devel_la-face_tri3_sd.lo -MD -MP -MF src/geom/$(DEPDIR)/libmesh_devel_la-face_tri3_sd.Tpo -c -o src/geom/libmesh_devel_la-face_tri3_sd.lo `test -f 'src/geom/face_tri3_sd.C' || echo '$(srcdir)/'`src/geom/face_tri3_sd.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/geom/$(DEPDIR)/libmesh_devel_la-face_tri3_sd.Tpo src/geom/$(DEPDIR)/libmesh_devel_la-face_tri3_sd.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/geom/face_tri3_sd.C' object='src/geom/libmesh_devel_la-face_tri3_sd.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -c -o src/geom/libmesh_devel_la-face_tri3_sd.lo `test -f 'src/geom/face_tri3_sd.C' || echo '$(srcdir)/'`src/geom/face_tri3_sd.C
+
 src/geom/libmesh_devel_la-face_tri6.lo: src/geom/face_tri6.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -MT src/geom/libmesh_devel_la-face_tri6.lo -MD -MP -MF src/geom/$(DEPDIR)/libmesh_devel_la-face_tri6.Tpo -c -o src/geom/libmesh_devel_la-face_tri6.lo `test -f 'src/geom/face_tri6.C' || echo '$(srcdir)/'`src/geom/face_tri6.C
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/geom/$(DEPDIR)/libmesh_devel_la-face_tri6.Tpo src/geom/$(DEPDIR)/libmesh_devel_la-face_tri6.Plo
@@ -16745,6 +16853,13 @@ src/mesh/libmesh_devel_la-mesh_smoother_vsmoother.lo: src/mesh/mesh_smoother_vsm
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/mesh_smoother_vsmoother.C' object='src/mesh/libmesh_devel_la-mesh_smoother_vsmoother.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_devel_la-mesh_smoother_vsmoother.lo `test -f 'src/mesh/mesh_smoother_vsmoother.C' || echo '$(srcdir)/'`src/mesh/mesh_smoother_vsmoother.C
+
+src/mesh/libmesh_devel_la-mesh_subdiv_support.lo: src/mesh/mesh_subdiv_support.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_devel_la-mesh_subdiv_support.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_devel_la-mesh_subdiv_support.Tpo -c -o src/mesh/libmesh_devel_la-mesh_subdiv_support.lo `test -f 'src/mesh/mesh_subdiv_support.C' || echo '$(srcdir)/'`src/mesh/mesh_subdiv_support.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mesh/$(DEPDIR)/libmesh_devel_la-mesh_subdiv_support.Tpo src/mesh/$(DEPDIR)/libmesh_devel_la-mesh_subdiv_support.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/mesh_subdiv_support.C' object='src/mesh/libmesh_devel_la-mesh_subdiv_support.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_devel_la-mesh_subdiv_support.lo `test -f 'src/mesh/mesh_subdiv_support.C' || echo '$(srcdir)/'`src/mesh/mesh_subdiv_support.C
 
 src/mesh/libmesh_devel_la-mesh_tetgen_interface.lo: src/mesh/mesh_tetgen_interface.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_devel_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_devel_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_devel_la-mesh_tetgen_interface.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_devel_la-mesh_tetgen_interface.Tpo -c -o src/mesh/libmesh_devel_la-mesh_tetgen_interface.lo `test -f 'src/mesh/mesh_tetgen_interface.C' || echo '$(srcdir)/'`src/mesh/mesh_tetgen_interface.C
@@ -18783,6 +18898,13 @@ src/fe/libmesh_oprof_la-fe_scalar_shape_3D.lo: src/fe/fe_scalar_shape_3D.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/fe/libmesh_oprof_la-fe_scalar_shape_3D.lo `test -f 'src/fe/fe_scalar_shape_3D.C' || echo '$(srcdir)/'`src/fe/fe_scalar_shape_3D.C
 
+src/fe/libmesh_oprof_la-fe_subdiv_2D.lo: src/fe/fe_subdiv_2D.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -MT src/fe/libmesh_oprof_la-fe_subdiv_2D.lo -MD -MP -MF src/fe/$(DEPDIR)/libmesh_oprof_la-fe_subdiv_2D.Tpo -c -o src/fe/libmesh_oprof_la-fe_subdiv_2D.lo `test -f 'src/fe/fe_subdiv_2D.C' || echo '$(srcdir)/'`src/fe/fe_subdiv_2D.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/fe/$(DEPDIR)/libmesh_oprof_la-fe_subdiv_2D.Tpo src/fe/$(DEPDIR)/libmesh_oprof_la-fe_subdiv_2D.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/fe/fe_subdiv_2D.C' object='src/fe/libmesh_oprof_la-fe_subdiv_2D.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/fe/libmesh_oprof_la-fe_subdiv_2D.lo `test -f 'src/fe/fe_subdiv_2D.C' || echo '$(srcdir)/'`src/fe/fe_subdiv_2D.C
+
 src/fe/libmesh_oprof_la-fe_szabab.lo: src/fe/fe_szabab.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -MT src/fe/libmesh_oprof_la-fe_szabab.lo -MD -MP -MF src/fe/$(DEPDIR)/libmesh_oprof_la-fe_szabab.Tpo -c -o src/fe/libmesh_oprof_la-fe_szabab.lo `test -f 'src/fe/fe_szabab.C' || echo '$(srcdir)/'`src/fe/fe_szabab.C
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/fe/$(DEPDIR)/libmesh_oprof_la-fe_szabab.Tpo src/fe/$(DEPDIR)/libmesh_oprof_la-fe_szabab.Plo
@@ -19266,6 +19388,13 @@ src/geom/libmesh_oprof_la-face_tri3.lo: src/geom/face_tri3.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/geom/libmesh_oprof_la-face_tri3.lo `test -f 'src/geom/face_tri3.C' || echo '$(srcdir)/'`src/geom/face_tri3.C
 
+src/geom/libmesh_oprof_la-face_tri3_sd.lo: src/geom/face_tri3_sd.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -MT src/geom/libmesh_oprof_la-face_tri3_sd.lo -MD -MP -MF src/geom/$(DEPDIR)/libmesh_oprof_la-face_tri3_sd.Tpo -c -o src/geom/libmesh_oprof_la-face_tri3_sd.lo `test -f 'src/geom/face_tri3_sd.C' || echo '$(srcdir)/'`src/geom/face_tri3_sd.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/geom/$(DEPDIR)/libmesh_oprof_la-face_tri3_sd.Tpo src/geom/$(DEPDIR)/libmesh_oprof_la-face_tri3_sd.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/geom/face_tri3_sd.C' object='src/geom/libmesh_oprof_la-face_tri3_sd.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/geom/libmesh_oprof_la-face_tri3_sd.lo `test -f 'src/geom/face_tri3_sd.C' || echo '$(srcdir)/'`src/geom/face_tri3_sd.C
+
 src/geom/libmesh_oprof_la-face_tri6.lo: src/geom/face_tri6.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -MT src/geom/libmesh_oprof_la-face_tri6.lo -MD -MP -MF src/geom/$(DEPDIR)/libmesh_oprof_la-face_tri6.Tpo -c -o src/geom/libmesh_oprof_la-face_tri6.lo `test -f 'src/geom/face_tri6.C' || echo '$(srcdir)/'`src/geom/face_tri6.C
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/geom/$(DEPDIR)/libmesh_oprof_la-face_tri6.Tpo src/geom/$(DEPDIR)/libmesh_oprof_la-face_tri6.Plo
@@ -19566,6 +19695,13 @@ src/mesh/libmesh_oprof_la-mesh_smoother_vsmoother.lo: src/mesh/mesh_smoother_vsm
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/mesh_smoother_vsmoother.C' object='src/mesh/libmesh_oprof_la-mesh_smoother_vsmoother.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_oprof_la-mesh_smoother_vsmoother.lo `test -f 'src/mesh/mesh_smoother_vsmoother.C' || echo '$(srcdir)/'`src/mesh/mesh_smoother_vsmoother.C
+
+src/mesh/libmesh_oprof_la-mesh_subdiv_support.lo: src/mesh/mesh_subdiv_support.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_oprof_la-mesh_subdiv_support.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_oprof_la-mesh_subdiv_support.Tpo -c -o src/mesh/libmesh_oprof_la-mesh_subdiv_support.lo `test -f 'src/mesh/mesh_subdiv_support.C' || echo '$(srcdir)/'`src/mesh/mesh_subdiv_support.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mesh/$(DEPDIR)/libmesh_oprof_la-mesh_subdiv_support.Tpo src/mesh/$(DEPDIR)/libmesh_oprof_la-mesh_subdiv_support.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/mesh_subdiv_support.C' object='src/mesh/libmesh_oprof_la-mesh_subdiv_support.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_oprof_la-mesh_subdiv_support.lo `test -f 'src/mesh/mesh_subdiv_support.C' || echo '$(srcdir)/'`src/mesh/mesh_subdiv_support.C
 
 src/mesh/libmesh_oprof_la-mesh_tetgen_interface.lo: src/mesh/mesh_tetgen_interface.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_oprof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_oprof_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_oprof_la-mesh_tetgen_interface.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_oprof_la-mesh_tetgen_interface.Tpo -c -o src/mesh/libmesh_oprof_la-mesh_tetgen_interface.lo `test -f 'src/mesh/mesh_tetgen_interface.C' || echo '$(srcdir)/'`src/mesh/mesh_tetgen_interface.C
@@ -21604,6 +21740,13 @@ src/fe/libmesh_opt_la-fe_scalar_shape_3D.lo: src/fe/fe_scalar_shape_3D.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -c -o src/fe/libmesh_opt_la-fe_scalar_shape_3D.lo `test -f 'src/fe/fe_scalar_shape_3D.C' || echo '$(srcdir)/'`src/fe/fe_scalar_shape_3D.C
 
+src/fe/libmesh_opt_la-fe_subdiv_2D.lo: src/fe/fe_subdiv_2D.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -MT src/fe/libmesh_opt_la-fe_subdiv_2D.lo -MD -MP -MF src/fe/$(DEPDIR)/libmesh_opt_la-fe_subdiv_2D.Tpo -c -o src/fe/libmesh_opt_la-fe_subdiv_2D.lo `test -f 'src/fe/fe_subdiv_2D.C' || echo '$(srcdir)/'`src/fe/fe_subdiv_2D.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/fe/$(DEPDIR)/libmesh_opt_la-fe_subdiv_2D.Tpo src/fe/$(DEPDIR)/libmesh_opt_la-fe_subdiv_2D.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/fe/fe_subdiv_2D.C' object='src/fe/libmesh_opt_la-fe_subdiv_2D.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -c -o src/fe/libmesh_opt_la-fe_subdiv_2D.lo `test -f 'src/fe/fe_subdiv_2D.C' || echo '$(srcdir)/'`src/fe/fe_subdiv_2D.C
+
 src/fe/libmesh_opt_la-fe_szabab.lo: src/fe/fe_szabab.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -MT src/fe/libmesh_opt_la-fe_szabab.lo -MD -MP -MF src/fe/$(DEPDIR)/libmesh_opt_la-fe_szabab.Tpo -c -o src/fe/libmesh_opt_la-fe_szabab.lo `test -f 'src/fe/fe_szabab.C' || echo '$(srcdir)/'`src/fe/fe_szabab.C
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/fe/$(DEPDIR)/libmesh_opt_la-fe_szabab.Tpo src/fe/$(DEPDIR)/libmesh_opt_la-fe_szabab.Plo
@@ -22087,6 +22230,13 @@ src/geom/libmesh_opt_la-face_tri3.lo: src/geom/face_tri3.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -c -o src/geom/libmesh_opt_la-face_tri3.lo `test -f 'src/geom/face_tri3.C' || echo '$(srcdir)/'`src/geom/face_tri3.C
 
+src/geom/libmesh_opt_la-face_tri3_sd.lo: src/geom/face_tri3_sd.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -MT src/geom/libmesh_opt_la-face_tri3_sd.lo -MD -MP -MF src/geom/$(DEPDIR)/libmesh_opt_la-face_tri3_sd.Tpo -c -o src/geom/libmesh_opt_la-face_tri3_sd.lo `test -f 'src/geom/face_tri3_sd.C' || echo '$(srcdir)/'`src/geom/face_tri3_sd.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/geom/$(DEPDIR)/libmesh_opt_la-face_tri3_sd.Tpo src/geom/$(DEPDIR)/libmesh_opt_la-face_tri3_sd.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/geom/face_tri3_sd.C' object='src/geom/libmesh_opt_la-face_tri3_sd.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -c -o src/geom/libmesh_opt_la-face_tri3_sd.lo `test -f 'src/geom/face_tri3_sd.C' || echo '$(srcdir)/'`src/geom/face_tri3_sd.C
+
 src/geom/libmesh_opt_la-face_tri6.lo: src/geom/face_tri6.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -MT src/geom/libmesh_opt_la-face_tri6.lo -MD -MP -MF src/geom/$(DEPDIR)/libmesh_opt_la-face_tri6.Tpo -c -o src/geom/libmesh_opt_la-face_tri6.lo `test -f 'src/geom/face_tri6.C' || echo '$(srcdir)/'`src/geom/face_tri6.C
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/geom/$(DEPDIR)/libmesh_opt_la-face_tri6.Tpo src/geom/$(DEPDIR)/libmesh_opt_la-face_tri6.Plo
@@ -22387,6 +22537,13 @@ src/mesh/libmesh_opt_la-mesh_smoother_vsmoother.lo: src/mesh/mesh_smoother_vsmoo
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/mesh_smoother_vsmoother.C' object='src/mesh/libmesh_opt_la-mesh_smoother_vsmoother.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_opt_la-mesh_smoother_vsmoother.lo `test -f 'src/mesh/mesh_smoother_vsmoother.C' || echo '$(srcdir)/'`src/mesh/mesh_smoother_vsmoother.C
+
+src/mesh/libmesh_opt_la-mesh_subdiv_support.lo: src/mesh/mesh_subdiv_support.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_opt_la-mesh_subdiv_support.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_opt_la-mesh_subdiv_support.Tpo -c -o src/mesh/libmesh_opt_la-mesh_subdiv_support.lo `test -f 'src/mesh/mesh_subdiv_support.C' || echo '$(srcdir)/'`src/mesh/mesh_subdiv_support.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mesh/$(DEPDIR)/libmesh_opt_la-mesh_subdiv_support.Tpo src/mesh/$(DEPDIR)/libmesh_opt_la-mesh_subdiv_support.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/mesh_subdiv_support.C' object='src/mesh/libmesh_opt_la-mesh_subdiv_support.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_opt_la-mesh_subdiv_support.lo `test -f 'src/mesh/mesh_subdiv_support.C' || echo '$(srcdir)/'`src/mesh/mesh_subdiv_support.C
 
 src/mesh/libmesh_opt_la-mesh_tetgen_interface.lo: src/mesh/mesh_tetgen_interface.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_opt_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_opt_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_opt_la-mesh_tetgen_interface.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_opt_la-mesh_tetgen_interface.Tpo -c -o src/mesh/libmesh_opt_la-mesh_tetgen_interface.lo `test -f 'src/mesh/mesh_tetgen_interface.C' || echo '$(srcdir)/'`src/mesh/mesh_tetgen_interface.C
@@ -24425,6 +24582,13 @@ src/fe/libmesh_prof_la-fe_scalar_shape_3D.lo: src/fe/fe_scalar_shape_3D.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/fe/libmesh_prof_la-fe_scalar_shape_3D.lo `test -f 'src/fe/fe_scalar_shape_3D.C' || echo '$(srcdir)/'`src/fe/fe_scalar_shape_3D.C
 
+src/fe/libmesh_prof_la-fe_subdiv_2D.lo: src/fe/fe_subdiv_2D.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -MT src/fe/libmesh_prof_la-fe_subdiv_2D.lo -MD -MP -MF src/fe/$(DEPDIR)/libmesh_prof_la-fe_subdiv_2D.Tpo -c -o src/fe/libmesh_prof_la-fe_subdiv_2D.lo `test -f 'src/fe/fe_subdiv_2D.C' || echo '$(srcdir)/'`src/fe/fe_subdiv_2D.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/fe/$(DEPDIR)/libmesh_prof_la-fe_subdiv_2D.Tpo src/fe/$(DEPDIR)/libmesh_prof_la-fe_subdiv_2D.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/fe/fe_subdiv_2D.C' object='src/fe/libmesh_prof_la-fe_subdiv_2D.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/fe/libmesh_prof_la-fe_subdiv_2D.lo `test -f 'src/fe/fe_subdiv_2D.C' || echo '$(srcdir)/'`src/fe/fe_subdiv_2D.C
+
 src/fe/libmesh_prof_la-fe_szabab.lo: src/fe/fe_szabab.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -MT src/fe/libmesh_prof_la-fe_szabab.lo -MD -MP -MF src/fe/$(DEPDIR)/libmesh_prof_la-fe_szabab.Tpo -c -o src/fe/libmesh_prof_la-fe_szabab.lo `test -f 'src/fe/fe_szabab.C' || echo '$(srcdir)/'`src/fe/fe_szabab.C
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/fe/$(DEPDIR)/libmesh_prof_la-fe_szabab.Tpo src/fe/$(DEPDIR)/libmesh_prof_la-fe_szabab.Plo
@@ -24908,6 +25072,13 @@ src/geom/libmesh_prof_la-face_tri3.lo: src/geom/face_tri3.C
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/geom/libmesh_prof_la-face_tri3.lo `test -f 'src/geom/face_tri3.C' || echo '$(srcdir)/'`src/geom/face_tri3.C
 
+src/geom/libmesh_prof_la-face_tri3_sd.lo: src/geom/face_tri3_sd.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -MT src/geom/libmesh_prof_la-face_tri3_sd.lo -MD -MP -MF src/geom/$(DEPDIR)/libmesh_prof_la-face_tri3_sd.Tpo -c -o src/geom/libmesh_prof_la-face_tri3_sd.lo `test -f 'src/geom/face_tri3_sd.C' || echo '$(srcdir)/'`src/geom/face_tri3_sd.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/geom/$(DEPDIR)/libmesh_prof_la-face_tri3_sd.Tpo src/geom/$(DEPDIR)/libmesh_prof_la-face_tri3_sd.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/geom/face_tri3_sd.C' object='src/geom/libmesh_prof_la-face_tri3_sd.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/geom/libmesh_prof_la-face_tri3_sd.lo `test -f 'src/geom/face_tri3_sd.C' || echo '$(srcdir)/'`src/geom/face_tri3_sd.C
+
 src/geom/libmesh_prof_la-face_tri6.lo: src/geom/face_tri6.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -MT src/geom/libmesh_prof_la-face_tri6.lo -MD -MP -MF src/geom/$(DEPDIR)/libmesh_prof_la-face_tri6.Tpo -c -o src/geom/libmesh_prof_la-face_tri6.lo `test -f 'src/geom/face_tri6.C' || echo '$(srcdir)/'`src/geom/face_tri6.C
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/geom/$(DEPDIR)/libmesh_prof_la-face_tri6.Tpo src/geom/$(DEPDIR)/libmesh_prof_la-face_tri6.Plo
@@ -25208,6 +25379,13 @@ src/mesh/libmesh_prof_la-mesh_smoother_vsmoother.lo: src/mesh/mesh_smoother_vsmo
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/mesh_smoother_vsmoother.C' object='src/mesh/libmesh_prof_la-mesh_smoother_vsmoother.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_prof_la-mesh_smoother_vsmoother.lo `test -f 'src/mesh/mesh_smoother_vsmoother.C' || echo '$(srcdir)/'`src/mesh/mesh_smoother_vsmoother.C
+
+src/mesh/libmesh_prof_la-mesh_subdiv_support.lo: src/mesh/mesh_subdiv_support.C
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_prof_la-mesh_subdiv_support.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_prof_la-mesh_subdiv_support.Tpo -c -o src/mesh/libmesh_prof_la-mesh_subdiv_support.lo `test -f 'src/mesh/mesh_subdiv_support.C' || echo '$(srcdir)/'`src/mesh/mesh_subdiv_support.C
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mesh/$(DEPDIR)/libmesh_prof_la-mesh_subdiv_support.Tpo src/mesh/$(DEPDIR)/libmesh_prof_la-mesh_subdiv_support.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mesh/mesh_subdiv_support.C' object='src/mesh/libmesh_prof_la-mesh_subdiv_support.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -c -o src/mesh/libmesh_prof_la-mesh_subdiv_support.lo `test -f 'src/mesh/mesh_subdiv_support.C' || echo '$(srcdir)/'`src/mesh/mesh_subdiv_support.C
 
 src/mesh/libmesh_prof_la-mesh_tetgen_interface.lo: src/mesh/mesh_tetgen_interface.C
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmesh_prof_la_CPPFLAGS) $(CPPFLAGS) $(libmesh_prof_la_CXXFLAGS) $(CXXFLAGS) -MT src/mesh/libmesh_prof_la-mesh_tetgen_interface.lo -MD -MP -MF src/mesh/$(DEPDIR)/libmesh_prof_la-mesh_tetgen_interface.Tpo -c -o src/mesh/libmesh_prof_la-mesh_tetgen_interface.lo `test -f 'src/mesh/mesh_tetgen_interface.C' || echo '$(srcdir)/'`src/mesh/mesh_tetgen_interface.C
