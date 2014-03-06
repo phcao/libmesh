@@ -1657,8 +1657,6 @@ void DofMap::extract_local_vector (const NumericVector<Number>& Ug,
 void DofMap::dof_indices (const Elem* const elem,
                           std::vector<dof_id_type>& di) const
 {
-  START_LOG("dof_indices()", "DofMap");
-
   libmesh_assert(elem);
 
   // Clear the DOF indices vector
@@ -1671,6 +1669,8 @@ void DofMap::dof_indices (const Elem* const elem,
     if (sd_elem->is_ghost())
       return;
   }
+
+  START_LOG("dof_indices()", "DofMap");
 
   const unsigned int n_vars  = this->n_variables();
 
@@ -1744,8 +1744,6 @@ void DofMap::dof_indices (const Elem* const elem,
                           std::vector<dof_id_type>& di,
                           const unsigned int vn) const
 {
-  START_LOG("dof_indices()", "DofMap");
-
   libmesh_assert(elem);
 
   // Clear the DOF indices vector
@@ -1758,6 +1756,8 @@ void DofMap::dof_indices (const Elem* const elem,
     if (sd_elem->is_ghost())
       return;
   }
+
+  START_LOG("dof_indices()", "DofMap");
 
 #ifdef DEBUG
   // Check that sizes match in DEBUG mode
