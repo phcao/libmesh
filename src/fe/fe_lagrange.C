@@ -326,6 +326,7 @@ namespace libMesh
 		return 2;
 
 	      case TRI3:
+	      case TRI3SD:
 	      case TRI6:
 		return 3;
 
@@ -479,6 +480,7 @@ namespace libMesh
 		}
 
 	      case TRI3:
+	      case TRI3SD:
 	      case TRI6:
 		{
 		  switch (n)

@@ -34,6 +34,7 @@ namespace libMesh
       case SZABAB:
       case CLOUGH: /* PB: Really H2 */
       case HERMITE: /* PB: Really H2 */
+      case SUBDIV: /* PB: Really H2 */
       case LAGRANGE_VEC:
       case MONOMIAL: /* PB: Shouldn't this be L2 conforming? */
       case XYZ: /* PB: Shouldn't this be L2 conforming? */

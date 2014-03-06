@@ -111,6 +111,7 @@ INSTANTIATE_ENUM_MAPS(ElemType, elem_type)
 
 	elem_type_to_enum["TRI"       ]=TRI3;
 	elem_type_to_enum["TRI3"      ]=TRI3;
+	elem_type_to_enum["TRI3SD"    ]=TRI3SD;
 	elem_type_to_enum["TRI6"      ]=TRI6;
 
 	elem_type_to_enum["QUAD"      ]=QUAD4;
@@ -241,6 +242,7 @@ INSTANTIATE_ENUM_MAPS(FEFamily, fefamily)
 	fefamily_to_enum["LEGENDRE"     ]=LEGENDRE;
 	fefamily_to_enum["CLOUGH"       ]=CLOUGH;
 	fefamily_to_enum["HERMITE"      ]=HERMITE;
+	fefamily_to_enum["SUBDIV"       ]=SUBDIV;
 	fefamily_to_enum["NEDELEC_ONE"  ]=NEDELEC_ONE;
       }
 
