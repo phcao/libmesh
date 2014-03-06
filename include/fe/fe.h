@@ -553,23 +553,23 @@ public:
 
 template <>
 Real FE<2,SUBDIV>::shape(const Elem* elem,
-			  const Order order,
-			  const unsigned int i,
-			  const Point& p);
+                         const Order order,
+                         const unsigned int i,
+                         const Point& p);
 
 template <>
 Real FE<2,SUBDIV>::shape_deriv(const Elem* elem,
-			  const Order order,
-			  const unsigned int i,
-			  const unsigned int j,
-			  const Point& p);
+                               const Order order,
+                               const unsigned int i,
+                               const unsigned int j,
+                               const Point& p);
 
 template <>
 Real FE<2,SUBDIV>::shape_second_deriv(const Elem* elem,
-			  const Order order,
-			  const unsigned int i,
-			  const unsigned int j,
-			  const Point& p);
+                                      const Order order,
+                                      const unsigned int i,
+                                      const unsigned int j,
+                                      const Point& p);
 
 
 class FESubdiv : public FE<2,SUBDIV>
@@ -585,7 +585,7 @@ public:
 
   /**
    * This is at the core of this class. Use this for each new
-	 * non-ghosted element in the mesh.  Reinitializes all the physical
+   * non-ghosted element in the mesh.  Reinitializes all the physical
    * element-dependent data based on the current element
    * \p elem.  By default the shape functions and associated
    * data are computed at the quadrature points specified
@@ -594,7 +594,7 @@ public:
    * argument \p pts.
    */
   virtual void reinit (const Elem* elem,
-		       const std::vector<Point>* const pts = NULL,
+                       const std::vector<Point>* const pts = NULL,
                        const std::vector<Real>* const weights = NULL);
 
   /**
@@ -602,8 +602,8 @@ public:
    * overriding this virtual function.
    */
   virtual void reinit (const Elem*,
-		       const unsigned int,
-		       const Real = TOLERANCE,
+                       const unsigned int,
+                       const Real = TOLERANCE,
                        const std::vector<Point>* const = NULL,
                        const std::vector<Real>* const = NULL)
   { libmesh_error(); }
@@ -623,7 +623,7 @@ public:
    * the quadrature points.
    */
   virtual void init_shape_functions(const std::vector<Point>& qp,
-				    const Elem* elem);
+                                    const Elem* elem);
 
   /**
    * @returns the value of the \f$ i^{th} \f$ of the 12 quartic
@@ -632,8 +632,8 @@ public:
    * \p w.
    */
   static Real regular_shape(const unsigned int i,
-			  const Real v,
-			  const Real w);
+                            const Real v,
+                            const Real w);
 
   /**
    * @returns the \f$ j^{th} \f$ derivative of the \f$ i^{th}
@@ -642,9 +642,9 @@ public:
    * coordinates \p v, \p w.
    */
   static Real regular_shape_deriv(const unsigned int i,
-			  const unsigned int j,
-			  const Real v,
-			  const Real w);
+                                  const unsigned int j,
+                                  const Real v,
+                                  const Real w);
 
   /**
    * @returns the second \f$ j^{th} \f$ derivative of the
@@ -653,9 +653,9 @@ public:
    * barycentric coordinates \p v, \p w.
    */
   static Real regular_shape_second_deriv(const unsigned int i,
-			  const unsigned int j,
-			  const Real v,
-			  const Real w);
+                                         const unsigned int j,
+                                         const Real v,
+                                         const Real w);
 
 
   /**
@@ -668,7 +668,7 @@ public:
    * element of \p weights.
    */
   static void loop_subdiv_mask(std::vector<Real> & weights,
-			  const unsigned int valence);
+                               const unsigned int valence);
 
 
   /**
@@ -676,7 +676,7 @@ public:
    * size depends on the element's \p valence.
    */
   static void init_subdiv_matrix(DenseMatrix<Real> &A,
-			  unsigned int valence);
+                                 unsigned int valence);
 };
 
 

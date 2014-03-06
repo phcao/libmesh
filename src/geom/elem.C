@@ -240,8 +240,8 @@ AutoPtr<Elem> Elem::build(const ElemType type,
       }
     case TRI3SD:
       {
-	elem = new Tri3SD(p);
-	break;
+        elem = new Tri3SD(p);
+        break;
       }
     case TRI6:
       {

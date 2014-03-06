@@ -54,7 +54,7 @@ public:
    * @returns \p TRI3SD
    */
   ElemType type () const { return TRI3SD; }
-  
+
   /**
    * @returns true iff the element map is definitely affine within
    * numerical tolerances
@@ -111,7 +111,7 @@ public:
    * Sets the boolean flag identifying ghost elements.
    */
   void set_ghost(bool ghosted) { _is_ghost = ghosted; }
-  
+
 private:
 
   /**
