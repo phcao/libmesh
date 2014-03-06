@@ -1397,7 +1397,8 @@ INSTANTIATE_ALL_MAPS(1);
 INSTANTIATE_ALL_MAPS(2);
 INSTANTIATE_ALL_MAPS(3);
 
-// subdivision elements are implemented only for 2D meshes
-INSTANTIATE_MAPS(2,SUBDIV);
+// subdivision elements are implemented only for 2D meshes & reimplement
+// the inverse_maps method separately
+INSTANTIATE_SUBDIV_MAPS;
 
 } // namespace libMesh
