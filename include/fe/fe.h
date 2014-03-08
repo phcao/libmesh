@@ -552,27 +552,27 @@ public:
 // call them from inside FESubdivision::init_shape_functions
 
 template <>
-Real FE<2,SUBDIV>::shape(const Elem* elem,
-                         const Order order,
-                         const unsigned int i,
-                         const Point& p);
+Real FE<2,SUBDIVISION>::shape(const Elem* elem,
+                              const Order order,
+                              const unsigned int i,
+                              const Point& p);
 
 template <>
-Real FE<2,SUBDIV>::shape_deriv(const Elem* elem,
-                               const Order order,
-                               const unsigned int i,
-                               const unsigned int j,
-                               const Point& p);
+Real FE<2,SUBDIVISION>::shape_deriv(const Elem* elem,
+                                    const Order order,
+                                    const unsigned int i,
+                                    const unsigned int j,
+                                    const Point& p);
 
 template <>
-Real FE<2,SUBDIV>::shape_second_deriv(const Elem* elem,
-                                      const Order order,
-                                      const unsigned int i,
-                                      const unsigned int j,
-                                      const Point& p);
+Real FE<2,SUBDIVISION>::shape_second_deriv(const Elem* elem,
+                                           const Order order,
+                                           const unsigned int i,
+                                           const unsigned int j,
+                                           const Point& p);
 
 
-class FESubdivision : public FE<2,SUBDIV>
+class FESubdivision : public FE<2,SUBDIVISION>
 {
 public:
 

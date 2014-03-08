@@ -31,7 +31,7 @@ namespace libMesh
 {
 
 FESubdivision::FESubdivision(const FEType& fet) :
-  FE<2,SUBDIV>(fet)
+  FE<2,SUBDIVISION>(fet)
 {
   // Only 2D meshes in 3D space are supported
   libmesh_assert_equal_to(LIBMESH_DIM, 3);
@@ -460,14 +460,14 @@ void FESubdivision::init_shape_functions(const std::vector<Point> &qp,
         {
           for (unsigned int p = 0; p < n_qp; ++p)
             {
-              phi[i][p]          = FE<2,SUBDIV>::shape             (elem, fe_type.order, cvi[i],    qp[p]);
-              dphidxi[i][p]      = FE<2,SUBDIV>::shape_deriv       (elem, fe_type.order, cvi[i], 0, qp[p]);
-              dphideta[i][p]     = FE<2,SUBDIV>::shape_deriv       (elem, fe_type.order, cvi[i], 1, qp[p]);
+              phi[i][p]          = FE<2,SUBDIVISION>::shape             (elem, fe_type.order, cvi[i],    qp[p]);
+              dphidxi[i][p]      = FE<2,SUBDIVISION>::shape_deriv       (elem, fe_type.order, cvi[i], 0, qp[p]);
+              dphideta[i][p]     = FE<2,SUBDIVISION>::shape_deriv       (elem, fe_type.order, cvi[i], 1, qp[p]);
               dphi[i][p](0)      = dphidxi[i][p];
               dphi[i][p](1)      = dphideta[i][p];
-              d2phidxi2[i][p]    = FE<2,SUBDIV>::shape_second_deriv(elem, fe_type.order, cvi[i], 0, qp[p]);
-              d2phidxideta[i][p] = FE<2,SUBDIV>::shape_second_deriv(elem, fe_type.order, cvi[i], 1, qp[p]);
-              d2phideta2[i][p]   = FE<2,SUBDIV>::shape_second_deriv(elem, fe_type.order, cvi[i], 2, qp[p]);
+              d2phidxi2[i][p]    = FE<2,SUBDIVISION>::shape_second_deriv(elem, fe_type.order, cvi[i], 0, qp[p]);
+              d2phidxideta[i][p] = FE<2,SUBDIVISION>::shape_second_deriv(elem, fe_type.order, cvi[i], 1, qp[p]);
+              d2phideta2[i][p]   = FE<2,SUBDIVISION>::shape_second_deriv(elem, fe_type.order, cvi[i], 2, qp[p]);
               d2phi[i][p](0,0)   = d2phidxi2[i][p];
               d2phi[i][p](0,1)   = d2phi[i][p](1,0) = d2phidxideta[i][p];
               d2phi[i][p](1,1)   = d2phideta2[i][p];
@@ -572,7 +572,7 @@ void FESubdivision::init_shape_functions(const std::vector<Point> &qp,
           u = 1 - v - w;
           if ((u > 1 + eps) || (u < -eps))
             {
-              std::cout << "SUBDIV irregular patch: u is outside valid range!\n";
+              std::cout << "SUBDIVISION irregular patch: u is outside valid range!\n";
               libmesh_error();
             }
 
@@ -592,12 +592,12 @@ void FESubdivision::init_shape_functions(const std::vector<Point> &qp,
 
           for (unsigned int i = 0; i < 12; ++i)
             {
-              tphi[i]          = FE<2,SUBDIV>::shape             (elem, fe_type.order, i,    transformed_p);
-              tdphidxi[i]      = FE<2,SUBDIV>::shape_deriv       (elem, fe_type.order, i, 0, transformed_p);
-              tdphideta[i]     = FE<2,SUBDIV>::shape_deriv       (elem, fe_type.order, i, 1, transformed_p);
-              td2phidxi2[i]    = FE<2,SUBDIV>::shape_second_deriv(elem, fe_type.order, i, 0, transformed_p);
-              td2phidxideta[i] = FE<2,SUBDIV>::shape_second_deriv(elem, fe_type.order, i, 1, transformed_p);
-              td2phideta2[i]   = FE<2,SUBDIV>::shape_second_deriv(elem, fe_type.order, i, 2, transformed_p);
+              tphi[i]          = FE<2,SUBDIVISION>::shape             (elem, fe_type.order, i,    transformed_p);
+              tdphidxi[i]      = FE<2,SUBDIVISION>::shape_deriv       (elem, fe_type.order, i, 0, transformed_p);
+              tdphideta[i]     = FE<2,SUBDIVISION>::shape_deriv       (elem, fe_type.order, i, 1, transformed_p);
+              td2phidxi2[i]    = FE<2,SUBDIVISION>::shape_second_deriv(elem, fe_type.order, i, 0, transformed_p);
+              td2phidxideta[i] = FE<2,SUBDIVISION>::shape_second_deriv(elem, fe_type.order, i, 1, transformed_p);
+              td2phideta2[i]   = FE<2,SUBDIVISION>::shape_second_deriv(elem, fe_type.order, i, 2, transformed_p);
             }
 
           // Finally, we can compute the irregular shape functions as the product of P
@@ -692,10 +692,10 @@ void FESubdivision::reinit(const Elem* elem,
 
 
 template <>
-Real FE<2,SUBDIV>::shape(const ElemType type,
-                         const Order order,
-                         const unsigned int i,
-                         const Point& p)
+Real FE<2,SUBDIVISION>::shape(const ElemType type,
+                              const Order order,
+                              const unsigned int i,
+                              const Point& p)
 {
   switch (order)
     {
@@ -723,23 +723,23 @@ Real FE<2,SUBDIV>::shape(const ElemType type,
 
 
 template <>
-Real FE<2,SUBDIV>::shape(const Elem* elem,
-                         const Order order,
-                         const unsigned int i,
-                         const Point& p)
+Real FE<2,SUBDIVISION>::shape(const Elem* elem,
+                              const Order order,
+                              const unsigned int i,
+                              const Point& p)
 {
   libmesh_assert(elem);
-  return FE<2,SUBDIV>::shape(elem->type(), order, i, p);
+  return FE<2,SUBDIVISION>::shape(elem->type(), order, i, p);
 }
 
 
 
 template <>
-Real FE<2,SUBDIV>::shape_deriv(const ElemType type,
-                               const Order order,
-                               const unsigned int i,
-                               const unsigned int j,
-                               const Point& p)
+Real FE<2,SUBDIVISION>::shape_deriv(const ElemType type,
+                                    const Order order,
+                                    const unsigned int i,
+                                    const unsigned int j,
+                                    const Point& p)
 {
   switch (order)
     {
@@ -767,24 +767,24 @@ Real FE<2,SUBDIV>::shape_deriv(const ElemType type,
 
 
 template <>
-Real FE<2,SUBDIV>::shape_deriv(const Elem* elem,
-                               const Order order,
-                               const unsigned int i,
-                               const unsigned int j,
-                               const Point& p)
+Real FE<2,SUBDIVISION>::shape_deriv(const Elem* elem,
+                                    const Order order,
+                                    const unsigned int i,
+                                    const unsigned int j,
+                                    const Point& p)
 {
   libmesh_assert(elem);
-  return FE<2,SUBDIV>::shape_deriv(elem->type(), order, i, j, p);
+  return FE<2,SUBDIVISION>::shape_deriv(elem->type(), order, i, j, p);
 }
 
 
 
 template <>
-Real FE<2,SUBDIV>::shape_second_deriv(const ElemType type,
-                                      const Order order,
-                                      const unsigned int i,
-                                      const unsigned int j,
-                                      const Point& p)
+Real FE<2,SUBDIVISION>::shape_second_deriv(const ElemType type,
+                                           const Order order,
+                                           const unsigned int i,
+                                           const unsigned int j,
+                                           const Point& p)
 {
   switch (order)
     {
@@ -812,23 +812,23 @@ Real FE<2,SUBDIV>::shape_second_deriv(const ElemType type,
 
 
 template <>
-Real FE<2,SUBDIV>::shape_second_deriv(const Elem* elem,
-                                      const Order order,
-                                      const unsigned int i,
-                                      const unsigned int j,
-                                      const Point& p)
+Real FE<2,SUBDIVISION>::shape_second_deriv(const Elem* elem,
+                                           const Order order,
+                                           const unsigned int i,
+                                           const unsigned int j,
+                                           const Point& p)
 {
   libmesh_assert(elem);
-  return FE<2,SUBDIV>::shape_second_deriv(elem->type(), order, i, j, p);
+  return FE<2,SUBDIVISION>::shape_second_deriv(elem->type(), order, i, j, p);
 }
 
 
 
 template <>
-void FE<2,SUBDIV>::nodal_soln(const Elem* elem,
-                              const Order,
-                              const std::vector<Number>& elem_soln,
-                              std::vector<Number>& nodal_soln)
+void FE<2,SUBDIVISION>::nodal_soln(const Elem* elem,
+                                   const Order,
+                                   const std::vector<Number>& elem_soln,
+                                   std::vector<Number>& nodal_soln)
 {
   libmesh_assert(elem);
   libmesh_assert_equal_to(elem->type(), TRI3SD);
@@ -863,40 +863,40 @@ void FE<2,SUBDIV>::nodal_soln(const Elem* elem,
 // the empty template specializations below are needed to avoid
 // linker reference errors, but should never get called
 template <>
-void FE<2,SUBDIV>::side_map(const Elem*,
-                            const Elem*,
-                            const unsigned int,
-                            const std::vector<Point>&,
-                            std::vector<Point>&)
+void FE<2,SUBDIVISION>::side_map(const Elem*,
+                                 const Elem*,
+                                 const unsigned int,
+                                 const std::vector<Point>&,
+                                 std::vector<Point>&)
 {
   libmesh_error();
 }
 
 template <>
-void FE<2,SUBDIV>::edge_reinit(Elem const*,
-                               unsigned int,
-                               Real,
-                               const std::vector<Point>* const,
-                               const std::vector<Real>* const)
+void FE<2,SUBDIVISION>::edge_reinit(Elem const*,
+                                    unsigned int,
+                                    Real,
+                                    const std::vector<Point>* const,
+                                    const std::vector<Real>* const)
 {
   libmesh_error();
 }
 
 template <>
-Point FE<2,SUBDIV>::inverse_map(const Elem*,
-                                const Point&,
-                                const Real,
-                                const bool)
+Point FE<2,SUBDIVISION>::inverse_map(const Elem*,
+                                     const Point&,
+                                     const Real,
+                                     const bool)
 {
   libmesh_error();
 }
 
 template <>
-void FE<2,SUBDIV>::inverse_map(const Elem*,
-                               const std::vector<Point>&,
-                               std::vector<Point>&,
-                               Real,
-                               bool)
+void FE<2,SUBDIVISION>::inverse_map(const Elem*,
+                                    const std::vector<Point>&,
+                                    std::vector<Point>&,
+                                    Real,
+                                    bool)
 {
   libmesh_error();
 }
@@ -904,25 +904,25 @@ void FE<2,SUBDIV>::inverse_map(const Elem*,
 
 
 // The number of dofs per subdivision element depends on the valence of its nodes, so it is non-static
-template <> unsigned int FE<2,SUBDIV>::n_dofs(const ElemType, const Order) { libmesh_error(); return 0; }
+template <> unsigned int FE<2,SUBDIVISION>::n_dofs(const ElemType, const Order) { libmesh_error(); return 0; }
 
 // Loop subdivision elements have only a single dof per node
-template <> unsigned int FE<2,SUBDIV>::n_dofs_at_node(const ElemType, const Order, const unsigned int) { return 1; }
+template <> unsigned int FE<2,SUBDIVISION>::n_dofs_at_node(const ElemType, const Order, const unsigned int) { return 1; }
 
 // Subdivision FEMs have dofs only at the nodes
-template <> unsigned int FE<2,SUBDIV>::n_dofs_per_elem(const ElemType, const Order) { return 0; }
+template <> unsigned int FE<2,SUBDIVISION>::n_dofs_per_elem(const ElemType, const Order) { return 0; }
 
 // Subdivision FEMs have dofs only at the nodes
-template <> void FE<2,SUBDIV>::dofs_on_side(const Elem *const, const Order, unsigned int, std::vector<unsigned int> &di) { di.resize(0); }
-template <> void FE<2,SUBDIV>::dofs_on_edge(const Elem *const, const Order, unsigned int, std::vector<unsigned int> &di) { di.resize(0); }
+template <> void FE<2,SUBDIVISION>::dofs_on_side(const Elem *const, const Order, unsigned int, std::vector<unsigned int> &di) { di.resize(0); }
+template <> void FE<2,SUBDIVISION>::dofs_on_edge(const Elem *const, const Order, unsigned int, std::vector<unsigned int> &di) { di.resize(0); }
 
 // Subdivision FEMs are C^1 continuous
-template <> FEContinuity FE<2,SUBDIV>::get_continuity() const { return C_ONE; }
+template <> FEContinuity FE<2,SUBDIVISION>::get_continuity() const { return C_ONE; }
 
 // Subdivision FEMs are not hierarchic
-template <> bool FE<2,SUBDIV>::is_hierarchic() const { return false; }
+template <> bool FE<2,SUBDIVISION>::is_hierarchic() const { return false; }
 
 // Subdivision FEM shapes need reinit
-template <> bool FE<2,SUBDIV>::shapes_need_reinit() const { return true; }
+template <> bool FE<2,SUBDIVISION>::shapes_need_reinit() const { return true; }
 
 } // namespace libMesh

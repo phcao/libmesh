@@ -420,7 +420,7 @@ FEGenericBase<Real>::build (const unsigned int dim,
               return ap;
             }
 
-          case SUBDIV:
+          case SUBDIVISION:
             {
               AutoPtr<FEBase> ap(new FESubdivision(fet));
               return ap;

@@ -243,7 +243,7 @@ void init_fefamily_to_enum ()
       fefamily_to_enum["LEGENDRE"     ]=LEGENDRE;
       fefamily_to_enum["CLOUGH"       ]=CLOUGH;
       fefamily_to_enum["HERMITE"      ]=HERMITE;
-      fefamily_to_enum["SUBDIV"       ]=SUBDIV;
+      fefamily_to_enum["SUBDIVISION"  ]=SUBDIVISION;
       fefamily_to_enum["NEDELEC_ONE"  ]=NEDELEC_ONE;
     }
 
