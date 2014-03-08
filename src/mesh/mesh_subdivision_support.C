@@ -208,7 +208,7 @@ void MeshTools::Subdiv::tag_boundary_ghosts(MeshBase& mesh)
   for (; el != end_el; ++el)
     {
       Elem* elem = *el;
-      libmesh_assert_equal_to(elem->type(), TRI3SD);
+      libmesh_assert_equal_to(elem->type(), TRI3SUBDIVISION);
 
       Tri3Subdivision* sd_elem = static_cast<Tri3Subdivision*>(elem);
       for (unsigned int i = 0; i < elem->n_sides(); ++i)
@@ -244,7 +244,7 @@ void MeshTools::Subdiv::add_boundary_ghosts(MeshBase& mesh)
   for (unsigned int eid = 0; eid < n_elem; ++eid)
     {
       Elem* elem = mesh.elem(eid);
-      libmesh_assert_equal_to(elem->type(), TRI3SD);
+      libmesh_assert_equal_to(elem->type(), TRI3SUBDIVISION);
 
       for (unsigned int i = 0; i < elem->n_sides(); ++i)
         {

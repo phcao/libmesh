@@ -414,7 +414,7 @@ void FESubdivision::init_shape_functions(const std::vector<Point> &qp,
                                          const Elem *elem)
 {
   libmesh_assert(elem);
-  libmesh_assert_equal_to(elem->type(), TRI3SD);
+  libmesh_assert_equal_to(elem->type(), TRI3SUBDIVISION);
   const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
 
   START_LOG("init_shape_functions()", "FESubdivision");
@@ -660,7 +660,7 @@ void FESubdivision::reinit(const Elem* elem,
                            const std::vector<Real>* const)
 {
   libmesh_assert(elem);
-  libmesh_assert_equal_to(elem->type(), TRI3SD);
+  libmesh_assert_equal_to(elem->type(), TRI3SUBDIVISION);
   const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
 
   START_LOG("reinit()", "FESubdivision");
@@ -703,7 +703,7 @@ Real FE<2,SUBDIVISION>::shape(const ElemType type,
       {
         switch (type)
           {
-          case TRI3SD:
+          case TRI3SUBDIVISION:
             libmesh_assert_less(i, 12);
             return FESubdivision::regular_shape(i,p(0),p(1));
           default:
@@ -747,7 +747,7 @@ Real FE<2,SUBDIVISION>::shape_deriv(const ElemType type,
       {
         switch (type)
           {
-          case TRI3SD:
+          case TRI3SUBDIVISION:
             libmesh_assert_less(i, 12);
             return FESubdivision::regular_shape_deriv(i,j,p(0),p(1));
           default:
@@ -792,7 +792,7 @@ Real FE<2,SUBDIVISION>::shape_second_deriv(const ElemType type,
       {
         switch (type)
           {
-          case TRI3SD:
+          case TRI3SUBDIVISION:
             libmesh_assert_less(i, 12);
             return FESubdivision::regular_shape_second_deriv(i,j,p(0),p(1));
           default:
@@ -831,7 +831,7 @@ void FE<2,SUBDIVISION>::nodal_soln(const Elem* elem,
                                    std::vector<Number>& nodal_soln)
 {
   libmesh_assert(elem);
-  libmesh_assert_equal_to(elem->type(), TRI3SD);
+  libmesh_assert_equal_to(elem->type(), TRI3SUBDIVISION);
   const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
 
   nodal_soln.resize(3); // three nodes per element

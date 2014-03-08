@@ -51,9 +51,9 @@ public:
   Tri3Subdivision(Elem *p);
 
   /**
-   * @returns \p TRI3SD
+   * @returns \p TRI3SUBDIVISION
    */
-  ElemType type () const { return TRI3SD; }
+  ElemType type () const { return TRI3SUBDIVISION; }
 
   /**
    * @returns true iff the element map is definitely affine within

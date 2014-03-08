@@ -815,7 +815,7 @@ void FEMap::compute_map(const unsigned int dim,
 
   // Determine the nodes contributing to element elem
   std::vector<Node*> elem_nodes;
-  if (elem->type() == TRI3SD)
+  if (elem->type() == TRI3SUBDIVISION)
     {
       // Subdivision surface FE require the 1-ring around elem
       libmesh_assert_equal_to (dim, 2);

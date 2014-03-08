@@ -115,7 +115,7 @@ const unsigned int Elem::type_to_n_nodes_map [] =
 
     1,  // NODEELEM
 
-    3,  // TRI3SD
+    3,  // TRI3SUBDIVISION
   };
 
 const unsigned int Elem::type_to_n_sides_map [] =
@@ -238,7 +238,7 @@ AutoPtr<Elem> Elem::build(const ElemType type,
         elem = new Tri3(p);
         break;
       }
-    case TRI3SD:
+    case TRI3SUBDIVISION:
       {
         elem = new Tri3Subdivision(p);
         break;

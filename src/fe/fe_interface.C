@@ -1327,7 +1327,7 @@ unsigned int FEInterface::max_order(const FEType& fe_t,
     case SUBDIVISION:
       switch (el_t)
         {
-        case TRI3SD:
+        case TRI3SUBDIVISION:
           return unlimited;
         default:
           return unknown;
