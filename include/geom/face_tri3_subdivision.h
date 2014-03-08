@@ -34,21 +34,21 @@ namespace libMesh
  */
 
 // ------------------------------------------------------------
-// Tri3SD class definition
-class Tri3SD : public Tri3
+// Tri3Subdivision class definition
+class Tri3Subdivision : public Tri3
 {
 public:
 
   /**
    * Constructor without parent specification.
    */
-  Tri3SD() :
+  Tri3Subdivision() :
     Tri3(), _subdivision_updated(false), _is_ghost(false) {}
 
   /**
    * Constructor with parent specification.
    */
-  Tri3SD(Elem *p);
+  Tri3Subdivision(Elem *p);
 
   /**
    * @returns \p TRI3SD

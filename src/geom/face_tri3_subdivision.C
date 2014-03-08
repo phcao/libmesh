@@ -29,12 +29,12 @@ namespace libMesh
 // ------------------------------------------------------------
 // Tri3 subdivision class member functions
 
-Tri3SD::Tri3SD(Elem *p) : Tri3(p), _subdivision_updated(true)
+Tri3Subdivision::Tri3Subdivision(Elem *p) : Tri3(p), _subdivision_updated(true)
 {
   if (p)
     {
       libmesh_assert_equal_to(p->type(), TRI3SD);
-      Tri3SD* sd_elem = static_cast<Tri3SD*>(p);
+      Tri3Subdivision* sd_elem = static_cast<Tri3Subdivision*>(p);
       _is_ghost = sd_elem->is_ghost();
 
       if (!_is_ghost)
@@ -47,7 +47,7 @@ Tri3SD::Tri3SD(Elem *p) : Tri3(p), _subdivision_updated(true)
 }
 
 
-void Tri3SD::prepare_subdivision_properties()
+void Tri3Subdivision::prepare_subdivision_properties()
 {
   /*
    * Find the index of the irregular vertex, if any.
@@ -99,13 +99,13 @@ void Tri3SD::prepare_subdivision_properties()
 }
 
 
-unsigned int Tri3SD::local_node_number(unsigned int node_id) const
+unsigned int Tri3Subdivision::local_node_number(unsigned int node_id) const
 {
   return (_nodes[0]->id() == node_id) ? 0 : ( (_nodes[1]->id() == node_id) ? 1 : ( (_nodes[2]->id() == node_id) ? 2 : 3 ) );
 }
 
 
-unsigned int Tri3SD::get_ordered_valence(unsigned int node_id) const
+unsigned int Tri3Subdivision::get_ordered_valence(unsigned int node_id) const
 {
   libmesh_assert_less(node_id, n_neighbors());
   libmesh_assert(_subdivision_updated);
@@ -113,7 +113,7 @@ unsigned int Tri3SD::get_ordered_valence(unsigned int node_id) const
 }
 
 
-Node* Tri3SD::get_ordered_node(unsigned int node_id) const
+Node* Tri3Subdivision::get_ordered_node(unsigned int node_id) const
 {
   libmesh_assert_less(node_id, 3);
   libmesh_assert(_subdivision_updated);

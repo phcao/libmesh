@@ -816,19 +816,19 @@ void FEMap::compute_map(const unsigned int dim,
   // Determine the nodes contributing to element elem
   std::vector<Node*> elem_nodes;
   if (elem->type() == TRI3SD)
-  {
-    // Subdivision surface FE require the 1-ring around elem
-    libmesh_assert_equal_to (dim, 2);
-    const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
-    MeshTools::Subdiv::find_one_ring(sd_elem, elem_nodes);
-  }
+    {
+      // Subdivision surface FE require the 1-ring around elem
+      libmesh_assert_equal_to (dim, 2);
+      const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
+      MeshTools::Subdiv::find_one_ring(sd_elem, elem_nodes);
+    }
   else
-  {
-    // All other FE use only the nodes of elem itself
-    elem_nodes.resize(elem->n_nodes(), NULL);
-    for (unsigned int i=0; i<elem->n_nodes(); i++)
-      elem_nodes[i] = elem->get_node(i);
-  }
+    {
+      // All other FE use only the nodes of elem itself
+      elem_nodes.resize(elem->n_nodes(), NULL);
+      for (unsigned int i=0; i<elem->n_nodes(); i++)
+        elem_nodes[i] = elem->get_node(i);
+    }
 
   // Compute map at all quadrature points
   for (unsigned int p=0; p!=n_qp; p++)

@@ -1665,7 +1665,7 @@ void DofMap::dof_indices (const Elem* const elem,
   // Ghost subdivision elements have no real dofs
   if (elem->type() == TRI3SD)
     {
-      const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+      const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
       if (sd_elem->is_ghost())
         return;
     }
@@ -1689,7 +1689,7 @@ void DofMap::dof_indices (const Elem* const elem,
   if (elem->type() == TRI3SD)
     {
       // Subdivision surface FE require the 1-ring around elem
-      const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+      const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
       MeshTools::Subdiv::find_one_ring(sd_elem, elem_nodes);
     }
   else
@@ -1752,7 +1752,7 @@ void DofMap::dof_indices (const Elem* const elem,
   // Ghost subdivision elements have no real dofs
   if (elem->type() == TRI3SD)
     {
-      const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+      const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
       if (sd_elem->is_ghost())
         return;
     }
@@ -1774,7 +1774,7 @@ void DofMap::dof_indices (const Elem* const elem,
   if (elem->type() == TRI3SD)
     {
       // Subdivision surface FE require the 1-ring around elem
-      const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+      const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
       MeshTools::Subdiv::find_one_ring(sd_elem, elem_nodes);
     }
   else
@@ -2050,7 +2050,7 @@ void DofMap::old_dof_indices (const Elem* const elem,
   if (elem->type() == TRI3SD)
     {
       // Subdivision surface FE require the 1-ring around elem
-      const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+      const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
       MeshTools::Subdiv::find_one_ring(sd_elem, elem_nodes);
     }
   else

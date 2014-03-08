@@ -415,7 +415,7 @@ void FESubdivision::init_shape_functions(const std::vector<Point> &qp,
 {
   libmesh_assert(elem);
   libmesh_assert_equal_to(elem->type(), TRI3SD);
-  const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+  const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
 
   START_LOG("init_shape_functions()", "FESubdivision");
 
@@ -661,7 +661,7 @@ void FESubdivision::reinit(const Elem* elem,
 {
   libmesh_assert(elem);
   libmesh_assert_equal_to(elem->type(), TRI3SD);
-  const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+  const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
 
   START_LOG("reinit()", "FESubdivision");
 
@@ -832,7 +832,7 @@ void FE<2,SUBDIVISION>::nodal_soln(const Elem* elem,
 {
   libmesh_assert(elem);
   libmesh_assert_equal_to(elem->type(), TRI3SD);
-  const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
+  const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
 
   nodal_soln.resize(3); // three nodes per element
 

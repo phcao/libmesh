@@ -28,7 +28,7 @@ namespace libMesh
 {
 
 
-void MeshTools::Subdiv::find_one_ring(const Tri3SD* elem, std::vector<Node*>& nodes)
+void MeshTools::Subdiv::find_one_ring(const Tri3Subdivision* elem, std::vector<Node*>& nodes)
 {
   libmesh_assert(elem->is_subdivision_updated());
   libmesh_assert(elem->get_ordered_node(0));
@@ -43,7 +43,7 @@ void MeshTools::Subdiv::find_one_ring(const Tri3SD* elem, std::vector<Node*>& no
 
   const unsigned int nn0 = elem->local_node_number(nodes[0]->id());
 
-  Tri3SD* nb = dynamic_cast<Tri3SD*>(elem->neighbor(nn0));
+  Tri3Subdivision* nb = dynamic_cast<Tri3Subdivision*>(elem->neighbor(nn0));
   libmesh_assert(nb);
 
   unsigned int j, i = 1;
@@ -53,32 +53,32 @@ void MeshTools::Subdiv::find_one_ring(const Tri3SD* elem, std::vector<Node*>& no
       ++i;
       j = nb->local_node_number(nodes[0]->id());
       nodes[i] = nb->get_node(next[j]);
-      nb = static_cast<Tri3SD*>(nb->neighbor(j));
+      nb = static_cast<Tri3Subdivision*>(nb->neighbor(j));
     } while (nb != elem);
 
   /* for nodes connected with N (= valence[0]) */
-  nb = static_cast<Tri3SD*>(elem->neighbor(next[nn0]));
+  nb = static_cast<Tri3Subdivision*>(elem->neighbor(next[nn0]));
   j = nb->local_node_number(nodes[1]->id());
   nodes[valence+1] = nb->get_node(next[j]);
 
-  nb = static_cast<Tri3SD*>(nb->neighbor(next[j]));
+  nb = static_cast<Tri3Subdivision*>(nb->neighbor(next[j]));
   j = nb->local_node_number(nodes[valence+1]->id());
   nodes[valence+4] = nb->get_node(next[j]);
 
-  nb = static_cast<Tri3SD*>(nb->neighbor(next[j]));
+  nb = static_cast<Tri3Subdivision*>(nb->neighbor(next[j]));
   j = nb->local_node_number(nodes[valence+4]->id());
   nodes[valence+5] = nb->get_node(next[j]);
 
   /* for nodes connected with 1 */
-  nb = static_cast<Tri3SD*>(elem->neighbor(next[nn0]));
+  nb = static_cast<Tri3Subdivision*>(elem->neighbor(next[nn0]));
   j = nb->local_node_number(nodes[1]->id());
   // nodes[valence+1] has been determined already
 
-  nb = static_cast<Tri3SD*>(nb->neighbor(j));
+  nb = static_cast<Tri3Subdivision*>(nb->neighbor(j));
   j = nb->local_node_number(nodes[1]->id());
   nodes[valence+2] = nb->get_node(next[j]);
 
-  nb = static_cast<Tri3SD*>(nb->neighbor(j));
+  nb = static_cast<Tri3Subdivision*>(nb->neighbor(j));
   j = nb->local_node_number(nodes[1]->id());
   nodes[valence+3] = nb->get_node(next[j]);
 
@@ -103,7 +103,7 @@ void MeshTools::Subdiv::all_subdivision(MeshBase& mesh)
       const Elem* elem = *el;
       libmesh_assert_equal_to(elem->type(), TRI3);
 
-      Elem* tri = new Tri3SD;
+      Elem* tri = new Tri3Subdivision;
       tri->set_id(elem->id());
       tri->set_node(0) = (*el)->get_node(0);
       tri->set_node(1) = (*el)->get_node(1);
@@ -193,7 +193,7 @@ void MeshTools::Subdiv::prepare_subdivision_mesh(MeshBase& mesh, bool ghosted)
   const MeshBase::const_element_iterator end_el = mesh.elements_end();
   for (; el != end_el; ++el)
     {
-      Tri3SD* elem = dynamic_cast<Tri3SD*>(*el);
+      Tri3Subdivision* elem = dynamic_cast<Tri3Subdivision*>(*el);
       libmesh_assert(elem);
       if (!elem->is_ghost())
         elem->prepare_subdivision_properties();
@@ -210,7 +210,7 @@ void MeshTools::Subdiv::tag_boundary_ghosts(MeshBase& mesh)
       Elem* elem = *el;
       libmesh_assert_equal_to(elem->type(), TRI3SD);
 
-      Tri3SD* sd_elem = static_cast<Tri3SD*>(elem);
+      Tri3Subdivision* sd_elem = static_cast<Tri3Subdivision*>(elem);
       for (unsigned int i = 0; i < elem->n_sides(); ++i)
         {
           if (elem->neighbor(i) == NULL)
@@ -219,12 +219,12 @@ void MeshTools::Subdiv::tag_boundary_ghosts(MeshBase& mesh)
               // set all other neighbors to ghosts as well
               if (elem->neighbor(next[i]))
                 {
-                  Tri3SD* nb = static_cast<Tri3SD*>(elem->neighbor(next[i]));
+                  Tri3Subdivision* nb = static_cast<Tri3Subdivision*>(elem->neighbor(next[i]));
                   nb->set_ghost(true);
                 }
               if (elem->neighbor(prev[i]))
                 {
-                  Tri3SD* nb = static_cast<Tri3SD*>(elem->neighbor(prev[i]));
+                  Tri3Subdivision* nb = static_cast<Tri3Subdivision*>(elem->neighbor(prev[i]));
                   nb->set_ghost(true);
                 }
             }
@@ -238,7 +238,7 @@ void MeshTools::Subdiv::add_boundary_ghosts(MeshBase& mesh)
   static const Real tol = 1e-5;
 
   // add the mirrored ghost elements (without using iterators, because the mesh is modified in the course)
-  std::vector<Tri3SD*> ghost_elems;
+  std::vector<Tri3Subdivision*> ghost_elems;
   std::vector<Node*> ghost_nodes;
   const unsigned int n_elem = mesh.n_elem();
   for (unsigned int eid = 0; eid < n_elem; ++eid)
@@ -274,7 +274,7 @@ void MeshTools::Subdiv::add_boundary_ghosts(MeshBase& mesh)
                   ghost_nodes.push_back(node);
                 }
 
-              Tri3SD* newelem = new Tri3SD();
+              Tri3Subdivision* newelem = new Tri3Subdivision();
               ghost_elems.push_back(newelem);
 
               newelem->set_node(0) = elem->get_node(next[i]);
@@ -294,12 +294,12 @@ void MeshTools::Subdiv::add_boundary_ghosts(MeshBase& mesh)
     }
 
   // add the missing ghost elements (connecting new ghost nodes)
-  std::vector<Tri3SD*> missing_ghost_elems;
-  std::vector<Tri3SD*>::iterator       ghost_el     = ghost_elems.begin();
-  const std::vector<Tri3SD*>::iterator end_ghost_el = ghost_elems.end();
+  std::vector<Tri3Subdivision*> missing_ghost_elems;
+  std::vector<Tri3Subdivision*>::iterator       ghost_el     = ghost_elems.begin();
+  const std::vector<Tri3Subdivision*>::iterator end_ghost_el = ghost_elems.end();
   for (; ghost_el != end_ghost_el; ++ghost_el)
     {
-      Tri3SD *elem = *ghost_el;
+      Tri3Subdivision *elem = *ghost_el;
       libmesh_assert(elem->is_ghost());
 
       for (unsigned int i = 0; i < elem->n_sides(); ++i)
@@ -307,14 +307,14 @@ void MeshTools::Subdiv::add_boundary_ghosts(MeshBase& mesh)
           if (elem->neighbor(i) == NULL && elem->neighbor(prev[i]) != NULL)
             {
               // go around counter-clockwise
-              Tri3SD *nb1 = static_cast<Tri3SD *>(elem->neighbor(prev[i]));
-              Tri3SD *nb2 = nb1;
+              Tri3Subdivision *nb1 = static_cast<Tri3Subdivision *>(elem->neighbor(prev[i]));
+              Tri3Subdivision *nb2 = nb1;
               unsigned int j = i;
               while (nb1 != NULL && nb1->id() != elem->id())
                 {
                   j = nb1->local_node_number(elem->node(i));
                   nb2 = nb1;
-                  nb1 = static_cast<Tri3SD *>(nb1->neighbor(prev[j]));
+                  nb1 = static_cast<Tri3Subdivision *>(nb1->neighbor(prev[j]));
                   libmesh_assert(nb1 == NULL || nb1->id() != nb2->id());
                 }
 
@@ -326,7 +326,7 @@ void MeshTools::Subdiv::add_boundary_ghosts(MeshBase& mesh)
               if (elem->get_node(next[i])->id() == nb2->get_node(prev[j])->id())
                 break;
 
-              Tri3SD *newelem = new Tri3SD();
+              Tri3Subdivision *newelem = new Tri3Subdivision();
               newelem->set_node(0) = elem->get_node(next[i]);
               newelem->set_node(1) = elem->get_node(i);
               newelem->set_node(2) = nb2->get_node(prev[j]);
@@ -345,8 +345,8 @@ void MeshTools::Subdiv::add_boundary_ghosts(MeshBase& mesh)
     } // end ghost element loop
 
   // add the missing ghost elements to the mesh
-  std::vector<Tri3SD*>::iterator       missing_el     = missing_ghost_elems.begin();
-  const std::vector<Tri3SD*>::iterator end_missing_el = missing_ghost_elems.end();
+  std::vector<Tri3Subdivision*>::iterator       missing_el     = missing_ghost_elems.begin();
+  const std::vector<Tri3Subdivision*>::iterator end_missing_el = missing_ghost_elems.end();
   for (; missing_el != end_missing_el; ++missing_el)
     mesh.add_elem(*missing_el);
 }
