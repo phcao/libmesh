@@ -306,7 +306,7 @@ AutoPtr<FEAbstract> FEAbstract::build( const unsigned int dim,
 
           case SUBDIV:
             {
-              AutoPtr<FEAbstract> ap(new FESubdiv(fet));
+              AutoPtr<FEAbstract> ap(new FESubdivision(fet));
               return ap;
             }
 

@@ -30,7 +30,7 @@
 namespace libMesh
 {
 
-FESubdiv::FESubdiv(const FEType& fet) :
+FESubdivision::FESubdivision(const FEType& fet) :
   FE<2,SUBDIV>(fet)
 {
   // Only 2D meshes in 3D space are supported
@@ -39,8 +39,8 @@ FESubdiv::FESubdiv(const FEType& fet) :
 
 
 
-void FESubdiv::init_subdivision_matrix(DenseMatrix<Real> &A,
-                                       unsigned int valence)
+void FESubdivision::init_subdivision_matrix(DenseMatrix<Real> &A,
+                                            unsigned int valence)
 {
   A.resize(valence + 12, valence + 12);
 
@@ -131,9 +131,9 @@ void FESubdiv::init_subdivision_matrix(DenseMatrix<Real> &A,
 
 
 
-Real FESubdiv::regular_shape(const unsigned int i,
-                             const Real v,
-                             const Real w)
+Real FESubdivision::regular_shape(const unsigned int i,
+                                  const Real v,
+                                  const Real w)
 {
   // These are the 12 quartic box splines, see Cirak et al.,
   // Int. J. Numer. Meth. Engng. 2000; 47:2039-2072, Appendix A.1.
@@ -190,10 +190,10 @@ Real FESubdiv::regular_shape(const unsigned int i,
 
 
 
-Real FESubdiv::regular_shape_deriv(const unsigned int i,
-                                   const unsigned int j,
-                                   const Real v,
-                                   const Real w)
+Real FESubdivision::regular_shape_deriv(const unsigned int i,
+                                        const unsigned int j,
+                                        const Real v,
+                                        const Real w)
 {
   const Real u = 1 - v - w;
   const Real factor = 1. / 12;
@@ -282,10 +282,10 @@ Real FESubdiv::regular_shape_deriv(const unsigned int i,
 
 
 
-Real FESubdiv::regular_shape_second_deriv(const unsigned int i,
-                                          const unsigned int j,
-                                          const Real v,
-                                          const Real w)
+Real FESubdivision::regular_shape_second_deriv(const unsigned int i,
+                                               const unsigned int j,
+                                               const Real v,
+                                               const Real w)
 {
   const Real u = 1 - v - w;
   const Real factor = 1. / 12;
@@ -398,8 +398,8 @@ Real FESubdiv::regular_shape_second_deriv(const unsigned int i,
 
 
 
-void FESubdiv::loop_subdivision_mask(std::vector<Real> & weights,
-                                     const unsigned int valence)
+void FESubdivision::loop_subdivision_mask(std::vector<Real> & weights,
+                                          const unsigned int valence)
 {
   libmesh_assert_greater(valence, 0);
   const Real cs = std::cos(2 * libMesh::pi / valence);
@@ -410,14 +410,14 @@ void FESubdiv::loop_subdivision_mask(std::vector<Real> & weights,
 
 
 
-void FESubdiv::init_shape_functions(const std::vector<Point> &qp,
-                                    const Elem *elem)
+void FESubdivision::init_shape_functions(const std::vector<Point> &qp,
+                                         const Elem *elem)
 {
   libmesh_assert(elem);
   libmesh_assert_equal_to(elem->type(), TRI3SD);
   const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
 
-  START_LOG("init_shape_functions()", "FESubdiv");
+  START_LOG("init_shape_functions()", "FESubdivision");
 
   calculations_started = true;
 
@@ -638,12 +638,12 @@ void FESubdiv::init_shape_functions(const std::vector<Point> &qp,
   this->_fe_map->get_d2phideta2_map()   = d2phideta2;
   this->_fe_map->get_d2phidxideta_map() = d2phidxideta;
 
-  STOP_LOG("init_shape_functions()", "FESubdiv");
+  STOP_LOG("init_shape_functions()", "FESubdivision");
 }
 
 
 
-void FESubdiv::attach_quadrature_rule(QBase *q)
+void FESubdivision::attach_quadrature_rule(QBase *q)
 {
   libmesh_assert(q);
 
@@ -655,15 +655,15 @@ void FESubdiv::attach_quadrature_rule(QBase *q)
 
 
 
-void FESubdiv::reinit(const Elem* elem,
-                      const std::vector<Point>* const pts,
-                      const std::vector<Real>* const)
+void FESubdivision::reinit(const Elem* elem,
+                           const std::vector<Point>* const pts,
+                           const std::vector<Real>* const)
 {
   libmesh_assert(elem);
   libmesh_assert_equal_to(elem->type(), TRI3SD);
   const Tri3SD* sd_elem = static_cast<const Tri3SD*>(elem);
 
-  START_LOG("reinit()", "FESubdiv");
+  START_LOG("reinit()", "FESubdivision");
 
   libmesh_assert(!sd_elem->is_ghost());
   libmesh_assert(sd_elem->is_subdivision_updated());
@@ -686,7 +686,7 @@ void FESubdiv::reinit(const Elem* elem,
   // Compute the map for this element.
   this->_fe_map->compute_map (this->dim, this->qrule->get_weights(), elem);
 
-  STOP_LOG("reinit()", "FESubdiv");
+  STOP_LOG("reinit()", "FESubdivision");
 }
 
 
@@ -705,7 +705,7 @@ Real FE<2,SUBDIV>::shape(const ElemType type,
           {
           case TRI3SD:
             libmesh_assert_less(i, 12);
-            return FESubdiv::regular_shape(i,p(0),p(1));
+            return FESubdivision::regular_shape(i,p(0),p(1));
           default:
             std::cerr << "ERROR: Unsupported element type!" << std::endl;
             libmesh_error();
@@ -749,7 +749,7 @@ Real FE<2,SUBDIV>::shape_deriv(const ElemType type,
           {
           case TRI3SD:
             libmesh_assert_less(i, 12);
-            return FESubdiv::regular_shape_deriv(i,j,p(0),p(1));
+            return FESubdivision::regular_shape_deriv(i,j,p(0),p(1));
           default:
             std::cerr << "ERROR: Unsupported element type!" << std::endl;
             libmesh_error();
@@ -794,7 +794,7 @@ Real FE<2,SUBDIV>::shape_second_deriv(const ElemType type,
           {
           case TRI3SD:
             libmesh_assert_less(i, 12);
-            return FESubdiv::regular_shape_second_deriv(i,j,p(0),p(1));
+            return FESubdivision::regular_shape_second_deriv(i,j,p(0),p(1));
           default:
             std::cerr << "ERROR: Unsupported element type!" << std::endl;
             libmesh_error();

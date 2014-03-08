@@ -545,11 +545,11 @@ public:
  */
 
 //-------------------------------------------------------------
-// FESubdiv class definition
+// FESubdivision class definition
 
 
 // template specialization prototypes, needed for being able to
-// call them from inside FESubdiv::init_shape_functions
+// call them from inside FESubdivision::init_shape_functions
 
 template <>
 Real FE<2,SUBDIV>::shape(const Elem* elem,
@@ -572,7 +572,7 @@ Real FE<2,SUBDIV>::shape_second_deriv(const Elem* elem,
                                       const Point& p);
 
 
-class FESubdiv : public FE<2,SUBDIV>
+class FESubdivision : public FE<2,SUBDIV>
 {
 public:
 
@@ -581,7 +581,7 @@ public:
    * Currently only supported for two-dimensional meshes in
    * three-dimensional space.
    */
-  FESubdiv(const FEType& fet);
+  FESubdivision(const FEType& fet);
 
   /**
    * This is at the core of this class. Use this for each new
@@ -668,7 +668,7 @@ public:
    * element of \p weights.
    */
   static void loop_subdivision_mask(std::vector<Real> & weights,
-                               const unsigned int valence);
+                                    const unsigned int valence);
 
 
   /**
@@ -676,7 +676,7 @@ public:
    * size depends on the element's \p valence.
    */
   static void init_subdivision_matrix(DenseMatrix<Real> &A,
-                                 unsigned int valence);
+                                      unsigned int valence);
 };
 
 

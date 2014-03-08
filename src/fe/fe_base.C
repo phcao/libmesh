@@ -422,7 +422,7 @@ FEGenericBase<Real>::build (const unsigned int dim,
 
           case SUBDIV:
             {
-              AutoPtr<FEBase> ap(new FESubdiv(fet));
+              AutoPtr<FEBase> ap(new FESubdivision(fet));
               return ap;
             }
 
