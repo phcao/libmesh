@@ -56,8 +56,8 @@
 #include "libmesh/exodusII_io.h"
 
 // These are the include files typically needed for subdivision elements.
-#include "libmesh/face_tri3_sd.h"
-#include "libmesh/mesh_subdiv_support.h"
+#include "libmesh/face_tri3_subdivision.h"
+#include "libmesh/mesh_subdivision_support.h"
 
 // Bring in everything from the libMesh namespace
 using namespace libMesh;
@@ -111,7 +111,7 @@ int main (int argc, char** argv)
   // argument is set to true, the outermost existing
   // elements are converted into ghost elements, and the
   // actual physical mesh is thus getting smaller.
-  MeshTools::Subdiv::prepare_subdiv_mesh (mesh, false);
+  MeshTools::Subdiv::prepare_subdivision_mesh (mesh, false);
 
   // Print information about the subdivision mesh to the screen.
   mesh.print_info();
@@ -139,9 +139,9 @@ int main (int argc, char** argv)
   // Loop Subdivision Elements are always interpolated
   // by quartic box splines, hence the order must always
   // be \p FOURTH.
-  system.add_variable ("u", FOURTH, SUBDIV);
-  system.add_variable ("v", FOURTH, SUBDIV);
-  system.add_variable ("w", FOURTH, SUBDIV);
+  system.add_variable ("u", FOURTH, SUBDIVISION);
+  system.add_variable ("v", FOURTH, SUBDIVISION);
+  system.add_variable ("w", FOURTH, SUBDIVISION);
 
   // Give the system a pointer to the matrix and rhs assembly
   // function.
@@ -325,8 +325,8 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
     // The ghost elements at the boundaries need to be excluded
     // here, as they don't belong to the physical shell,
     // but serve for a proper boundary treatment only.
-    libmesh_assert_equal_to (elem->type(), TRI3SD);
-    const Tri3SD* sd_elem = static_cast<const Tri3SD*> (elem);
+    libmesh_assert_equal_to (elem->type(), TRI3SUBDIVISION);
+    const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*> (elem);
     if (sd_elem->is_ghost())
       continue;
 
@@ -548,8 +548,8 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
 
     // For the boundary conditions, we only need to loop over
     // the ghost elements.
-    libmesh_assert_equal_to (elem->type(), TRI3SD);
-    const Tri3SD* gh_elem = static_cast<const Tri3SD*> (elem);
+    libmesh_assert_equal_to (elem->type(), TRI3SUBDIVISION);
+    const Tri3Subdivision* gh_elem = static_cast<const Tri3Subdivision*> (elem);
     if (!gh_elem->is_ghost())
       continue;
 
@@ -557,7 +557,7 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
     // that is, the boundary of the original mesh without ghosts.
     for (unsigned int s=0; s<elem->n_sides(); ++s)
     {
-      const Tri3SD* nb_elem = static_cast<const Tri3SD*> (elem->neighbor(s));
+      const Tri3Subdivision* nb_elem = static_cast<const Tri3Subdivision*> (elem->neighbor(s));
       if (nb_elem == NULL || nb_elem->is_ghost())
         continue;
 
