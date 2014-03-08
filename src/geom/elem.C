@@ -33,7 +33,7 @@
 #include "libmesh/edge_edge4.h"
 #include "libmesh/edge_inf_edge2.h"
 #include "libmesh/face_tri3.h"
-#include "libmesh/face_tri3_sd.h"
+#include "libmesh/face_tri3_subdivision.h"
 #include "libmesh/face_tri6.h"
 #include "libmesh/face_quad4.h"
 #include "libmesh/face_quad8.h"

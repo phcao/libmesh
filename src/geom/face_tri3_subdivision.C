@@ -18,8 +18,8 @@
 // C++ includes
 
 // Local includes
-#include "libmesh/face_tri3_sd.h"
-#include "libmesh/mesh_subdiv_support.h"
+#include "libmesh/face_tri3_subdivision.h"
+#include "libmesh/mesh_subdivision_support.h"
 
 namespace libMesh
 {
@@ -29,7 +29,7 @@ namespace libMesh
 // ------------------------------------------------------------
 // Tri3 subdivision class member functions
 
-Tri3SD::Tri3SD(Elem *p) : Tri3(p), _subdiv_updated(true)
+Tri3SD::Tri3SD(Elem *p) : Tri3(p), _subdivision_updated(true)
 {
   if (p)
     {
@@ -47,7 +47,7 @@ Tri3SD::Tri3SD(Elem *p) : Tri3(p), _subdiv_updated(true)
 }
 
 
-void Tri3SD::prepare_subdiv_properties()
+void Tri3SD::prepare_subdivision_properties()
 {
   /*
    * Find the index of the irregular vertex, if any.
@@ -95,7 +95,7 @@ void Tri3SD::prepare_subdiv_properties()
       libmesh_error();
     }
 
-  _subdiv_updated = true;
+  _subdivision_updated = true;
 }
 
 
@@ -108,7 +108,7 @@ unsigned int Tri3SD::local_node_number(unsigned int node_id) const
 unsigned int Tri3SD::get_ordered_valence(unsigned int node_id) const
 {
   libmesh_assert_less(node_id, n_neighbors());
-  libmesh_assert(_subdiv_updated);
+  libmesh_assert(_subdivision_updated);
   return get_ordered_node(node_id)->valence();
 }
 
@@ -116,7 +116,7 @@ unsigned int Tri3SD::get_ordered_valence(unsigned int node_id) const
 Node* Tri3SD::get_ordered_node(unsigned int node_id) const
 {
   libmesh_assert_less(node_id, 3);
-  libmesh_assert(_subdiv_updated);
+  libmesh_assert(_subdivision_updated);
   return _ordered_nodes[node_id];
 }
 

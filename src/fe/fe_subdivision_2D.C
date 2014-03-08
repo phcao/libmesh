@@ -21,7 +21,7 @@
 #include "libmesh/libmesh_logging.h"
 #include "libmesh/fe_type.h"
 #include "libmesh/quadrature.h"
-#include "libmesh/face_tri3_sd.h"
+#include "libmesh/face_tri3_subdivision.h"
 #include "libmesh/fe_macro.h"
 #include "libmesh/dense_matrix.h"
 #include "libmesh/utility.h"
@@ -39,8 +39,8 @@ FESubdiv::FESubdiv(const FEType& fet) :
 
 
 
-void FESubdiv::init_subdiv_matrix(DenseMatrix<Real> &A,
-                                  unsigned int valence)
+void FESubdiv::init_subdivision_matrix(DenseMatrix<Real> &A,
+                                       unsigned int valence)
 {
   A.resize(valence + 12, valence + 12);
 
@@ -103,7 +103,7 @@ void FESubdiv::init_subdiv_matrix(DenseMatrix<Real> &A,
 
   // Last, set the S11 part: first row
   std::vector<Real> weights;
-  loop_subdiv_mask(weights, valence);
+  loop_subdivision_mask(weights, valence);
   for (unsigned int i = 0; i <= valence; ++i)
     A(0,i) = weights[i];
 
@@ -398,8 +398,8 @@ Real FESubdiv::regular_shape_second_deriv(const unsigned int i,
 
 
 
-void FESubdiv::loop_subdiv_mask(std::vector<Real> & weights,
-                                const unsigned int valence)
+void FESubdiv::loop_subdivision_mask(std::vector<Real> & weights,
+                                     const unsigned int valence)
 {
   libmesh_assert_greater(valence, 0);
   const Real cs = std::cos(2 * libMesh::pi / valence);
@@ -577,7 +577,7 @@ void FESubdiv::init_shape_functions(const std::vector<Point> &qp,
             }
 
           DenseMatrix<Real> A;
-          init_subdiv_matrix(A, valence);
+          init_subdivision_matrix(A, valence);
 
           // compute P*A^k
           if (k > 1)
@@ -666,7 +666,7 @@ void FESubdiv::reinit(const Elem* elem,
   START_LOG("reinit()", "FESubdiv");
 
   libmesh_assert(!sd_elem->is_ghost());
-  libmesh_assert(sd_elem->is_subdiv_updated());
+  libmesh_assert(sd_elem->is_subdivision_updated());
 
   // check if vertices 1 and 2 are regular
   libmesh_assert_equal_to(sd_elem->get_ordered_valence(1), 6);

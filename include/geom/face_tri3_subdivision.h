@@ -17,8 +17,8 @@
 
 
 
-#ifndef LIBMESH_FACE_TRI3_SD_H
-#define LIBMESH_FACE_TRI3_SD_H
+#ifndef LIBMESH_FACE_TRI3_SUBDIVISION_H
+#define LIBMESH_FACE_TRI3_SUBDIVISION_H
 
 
 // Local includes
@@ -43,7 +43,7 @@ public:
    * Constructor without parent specification.
    */
   Tri3SD() :
-    Tri3(), _subdiv_updated(false), _is_ghost(false) {}
+    Tri3(), _subdivision_updated(false), _is_ghost(false) {}
 
   /**
    * Constructor with parent specification.
@@ -77,13 +77,13 @@ public:
    * the irregular node (valence != 6), if there is one, is the first.
    * The nodes are ordered once in advance for efficiency.
    */
-  void prepare_subdiv_properties();
+  void prepare_subdivision_properties();
 
   /**
    * @returns \p true iff the subdivision element is ready for use,
    * i.e. the nodes have been reordered.
    */
-  bool is_subdiv_updated() const { return _subdiv_updated; }
+  bool is_subdivision_updated() const { return _subdivision_updated; }
 
   /**
    * @returns a pointer to the node whose ordered id is \p node_id.
@@ -124,7 +124,7 @@ private:
    * \p true iff the subdivision element is ready for use,
    * i.e. the nodes have been reordered.
    */
-  bool _subdiv_updated;
+  bool _subdivision_updated;
 
   /**
    * \p true iff the element is a ghost element
@@ -136,4 +136,4 @@ private:
 
 } // namespace libMesh
 
-#endif // LIBMESH_FACE_TRI3_SD_H
+#endif // LIBMESH_FACE_TRI3_SUBDIVISION_H

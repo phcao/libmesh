@@ -36,13 +36,13 @@
   template void  FE<_dim,_type>::inverse_map(const Elem*,const std::vector<Point>&,std::vector<Point>&,Real,bool); \
   template Point FE<_dim,_type>::inverse_map(const Elem*,const Point&,Real,bool)
 
-#define INSTANTIATE_SUBDIV_MAPS \
+#define INSTANTIATE_SUBDIVISION_MAPS \
   template Point FE<2,SUBDIV>::map(const Elem*,const Point&);\
   template Point FE<2,SUBDIV>::map_xi(const Elem*,const Point&);\
   template Point FE<2,SUBDIV>::map_eta(const Elem*,const Point&);\
   template Point FE<2,SUBDIV>::map_zeta(const Elem*,const Point&)
 
-#define INSTANTIATE_SUBDIV_FE \
+#define INSTANTIATE_SUBDIVISION_FE \
   template unsigned int FE<2,SUBDIV>::n_shape_functions () const;\
   template void         FE<2,SUBDIV>::attach_quadrature_rule (QBase*);\
   template unsigned int FE<2,SUBDIV>::n_quadrature_points () const;\

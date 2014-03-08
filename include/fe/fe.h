@@ -667,7 +667,7 @@ public:
    * evaluated. The weight for the node itself is the first
    * element of \p weights.
    */
-  static void loop_subdiv_mask(std::vector<Real> & weights,
+  static void loop_subdivision_mask(std::vector<Real> & weights,
                                const unsigned int valence);
 
 
@@ -675,7 +675,7 @@ public:
    * Builds the subdivision matrix \p A for the Loop scheme. The
    * size depends on the element's \p valence.
    */
-  static void init_subdiv_matrix(DenseMatrix<Real> &A,
+  static void init_subdivision_matrix(DenseMatrix<Real> &A,
                                  unsigned int valence);
 };
 

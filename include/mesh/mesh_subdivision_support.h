@@ -17,15 +17,15 @@
 
 
 
-#ifndef LIBMESH_MESH_SUBDIV_SUPPORT_H
-#define LIBMESH_MESH_SUBDIV_SUPPORT_H
+#ifndef LIBMESH_MESH_SUBDIVISION_SUPPORT_H
+#define LIBMESH_MESH_SUBDIVISION_SUPPORT_H
 
 
 
 // Local Includes -----------------------------------
 #include "libmesh/libmesh.h"
 #include "libmesh/mesh_base.h"
-#include "libmesh/face_tri3_sd.h"
+#include "libmesh/face_tri3_subdivision.h"
 #include "libmesh/elem.h"
 
 // C++ Includes   -----------------------------------
@@ -66,9 +66,9 @@ namespace MeshTools
     /**
      * Turns a triangulated \p mesh into a subdivision mesh. This
      * function normally needn't be called by the user, because it is
-     * invoked by \p prepare_subdiv_mesh.
+     * invoked by \p prepare_subdivision_mesh.
      */
-    void all_subdiv(MeshBase& mesh);
+    void all_subdivision(MeshBase& mesh);
 
     /**
      * Prepares the \p mesh for use with subdivision elements. The
@@ -77,19 +77,19 @@ namespace MeshTools
      * boundaries. If \p true, the outermost element layer is taken as
      * ghosts, i.e. no new elements are added.
      */
-    void prepare_subdiv_mesh(MeshBase& mesh, bool ghosted = false);
+    void prepare_subdivision_mesh(MeshBase& mesh, bool ghosted = false);
 
     /**
      * Adds a new layer of "ghost" elements along the domain boundaries.
      * This function normally needn't be called by the user, because it
-     * is invoked by \p prepare_subdiv_mesh.
+     * is invoked by \p prepare_subdivision_mesh.
      */
     void add_boundary_ghosts(MeshBase& mesh);
 
     /**
      * Flags the outermost element layer along the domain boundaries as
      * "ghost" elements. This function normally needn't be called by the
-     * user, because it is invoked by \p prepare_subdiv_mesh.
+     * user, because it is invoked by \p prepare_subdivision_mesh.
      */
     void tag_boundary_ghosts(MeshBase& mesh);
 
@@ -111,4 +111,4 @@ namespace MeshTools
 } // namespace libMesh
 
 
-#endif // LIBMESH_MESH_SUBDIV_SUPPORT_H
+#endif // LIBMESH_MESH_SUBDIVISION_SUPPORT_H

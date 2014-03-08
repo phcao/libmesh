@@ -29,7 +29,7 @@
 #include "libmesh/fe_macro.h"
 #include "libmesh/fe_map.h"
 #include "libmesh/fe_xyz_map.h"
-#include "libmesh/mesh_subdiv_support.h"
+#include "libmesh/mesh_subdivision_support.h"
 
 namespace libMesh
 {
@@ -1399,6 +1399,6 @@ INSTANTIATE_ALL_MAPS(3);
 
 // subdivision elements are implemented only for 2D meshes & reimplement
 // the inverse_maps method separately
-INSTANTIATE_SUBDIV_MAPS;
+INSTANTIATE_SUBDIVISION_MAPS;
 
 } // namespace libMesh

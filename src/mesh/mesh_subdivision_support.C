@@ -21,7 +21,7 @@
 
 // Local includes
 #include "libmesh/mesh_tools.h"
-#include "libmesh/mesh_subdiv_support.h"
+#include "libmesh/mesh_subdivision_support.h"
 #include "libmesh/boundary_info.h"
 
 namespace libMesh
@@ -30,7 +30,7 @@ namespace libMesh
 
 void MeshTools::Subdiv::find_one_ring(const Tri3SD* elem, std::vector<Node*>& nodes)
 {
-  libmesh_assert(elem->is_subdiv_updated());
+  libmesh_assert(elem->is_subdivision_updated());
   libmesh_assert(elem->get_ordered_node(0));
 
   unsigned int valence = elem->get_ordered_valence(0);
@@ -86,7 +86,7 @@ void MeshTools::Subdiv::find_one_ring(const Tri3SD* elem, std::vector<Node*>& no
 }
 
 
-void MeshTools::Subdiv::all_subdiv(MeshBase& mesh)
+void MeshTools::Subdiv::all_subdivision(MeshBase& mesh)
 {
   std::vector<Elem*> new_elements;
   new_elements.reserve(mesh.n_elem());
@@ -153,12 +153,12 @@ void MeshTools::Subdiv::all_subdiv(MeshBase& mesh)
 }
 
 
-void MeshTools::Subdiv::prepare_subdiv_mesh(MeshBase& mesh, bool ghosted)
+void MeshTools::Subdiv::prepare_subdivision_mesh(MeshBase& mesh, bool ghosted)
 {
   mesh.prepare_for_use();
 
   // convert all mesh elements to subdivision elements
-  all_subdiv(mesh);
+  all_subdivision(mesh);
 
   if (!ghosted)
     {
@@ -196,7 +196,7 @@ void MeshTools::Subdiv::prepare_subdiv_mesh(MeshBase& mesh, bool ghosted)
       Tri3SD* elem = dynamic_cast<Tri3SD*>(*el);
       libmesh_assert(elem);
       if (!elem->is_ghost())
-        elem->prepare_subdiv_properties();
+        elem->prepare_subdivision_properties();
     }
 }
 

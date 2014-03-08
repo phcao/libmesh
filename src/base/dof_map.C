@@ -42,7 +42,7 @@
 #include "libmesh/sparsity_pattern.h"
 #include "libmesh/string_to_enum.h"
 #include "libmesh/threads.h"
-#include "libmesh/mesh_subdiv_support.h"
+#include "libmesh/mesh_subdivision_support.h"
 
 
 
