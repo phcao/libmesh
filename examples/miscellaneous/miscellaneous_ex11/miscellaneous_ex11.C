@@ -111,7 +111,7 @@ int main (int argc, char** argv)
   // argument is set to true, the outermost existing
   // elements are converted into ghost elements, and the
   // actual physical mesh is thus getting smaller.
-  MeshTools::Subdiv::prepare_subdivision_mesh (mesh, false);
+  MeshTools::Subdivision::prepare_subdivision_mesh (mesh, false);
 
   // Print information about the subdivision mesh to the screen.
   mesh.print_info();
@@ -578,8 +578,8 @@ void assemble_shell (EquationSystems& es, const std::string& system_name)
        */
       Node* nodes [4]; // n1, n2, n3, n4
       nodes[1] = gh_elem->get_node(s); // n2
-      nodes[2] = gh_elem->get_node(MeshTools::Subdiv::next[s]); // n3
-      nodes[3] = gh_elem->get_node(MeshTools::Subdiv::prev[s]); // n4
+      nodes[2] = gh_elem->get_node(MeshTools::Subdivision::next[s]); // n3
+      nodes[3] = gh_elem->get_node(MeshTools::Subdivision::prev[s]); // n4
 
       // The node in the interior of the domain, \p n1, is the
       // hardest to find.  Walk along the edges of element \p nb until
