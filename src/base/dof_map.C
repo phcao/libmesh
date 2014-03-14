@@ -1690,7 +1690,7 @@ void DofMap::dof_indices (const Elem* const elem,
     {
       // Subdivision surface FE require the 1-ring around elem
       const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
-      MeshTools::Subdiv::find_one_ring(sd_elem, elem_nodes);
+      MeshTools::Subdivision::find_one_ring(sd_elem, elem_nodes);
     }
   else
     {
@@ -1775,7 +1775,7 @@ void DofMap::dof_indices (const Elem* const elem,
     {
       // Subdivision surface FE require the 1-ring around elem
       const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
-      MeshTools::Subdiv::find_one_ring(sd_elem, elem_nodes);
+      MeshTools::Subdivision::find_one_ring(sd_elem, elem_nodes);
     }
   else
     {
@@ -2051,7 +2051,7 @@ void DofMap::old_dof_indices (const Elem* const elem,
     {
       // Subdivision surface FE require the 1-ring around elem
       const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
-      MeshTools::Subdiv::find_one_ring(sd_elem, elem_nodes);
+      MeshTools::Subdivision::find_one_ring(sd_elem, elem_nodes);
     }
   else
     {

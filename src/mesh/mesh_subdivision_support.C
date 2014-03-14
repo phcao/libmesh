@@ -28,7 +28,7 @@ namespace libMesh
 {
 
 
-void MeshTools::Subdiv::find_one_ring(const Tri3Subdivision* elem, std::vector<Node*>& nodes)
+void MeshTools::Subdivision::find_one_ring(const Tri3Subdivision* elem, std::vector<Node*>& nodes)
 {
   libmesh_assert(elem->is_subdivision_updated());
   libmesh_assert(elem->get_ordered_node(0));
@@ -86,7 +86,7 @@ void MeshTools::Subdiv::find_one_ring(const Tri3Subdivision* elem, std::vector<N
 }
 
 
-void MeshTools::Subdiv::all_subdivision(MeshBase& mesh)
+void MeshTools::Subdivision::all_subdivision(MeshBase& mesh)
 {
   std::vector<Elem*> new_elements;
   new_elements.reserve(mesh.n_elem());
@@ -153,7 +153,7 @@ void MeshTools::Subdiv::all_subdivision(MeshBase& mesh)
 }
 
 
-void MeshTools::Subdiv::prepare_subdivision_mesh(MeshBase& mesh, bool ghosted)
+void MeshTools::Subdivision::prepare_subdivision_mesh(MeshBase& mesh, bool ghosted)
 {
   mesh.prepare_for_use();
 
@@ -201,7 +201,7 @@ void MeshTools::Subdiv::prepare_subdivision_mesh(MeshBase& mesh, bool ghosted)
 }
 
 
-void MeshTools::Subdiv::tag_boundary_ghosts(MeshBase& mesh)
+void MeshTools::Subdivision::tag_boundary_ghosts(MeshBase& mesh)
 {
   MeshBase::element_iterator       el     = mesh.elements_begin();
   const MeshBase::element_iterator end_el = mesh.elements_end();
@@ -233,7 +233,7 @@ void MeshTools::Subdiv::tag_boundary_ghosts(MeshBase& mesh)
 }
 
 
-void MeshTools::Subdiv::add_boundary_ghosts(MeshBase& mesh)
+void MeshTools::Subdivision::add_boundary_ghosts(MeshBase& mesh)
 {
   static const Real tol = 1e-5;
 

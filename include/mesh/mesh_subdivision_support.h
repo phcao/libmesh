@@ -34,13 +34,13 @@ namespace libMesh
 {
 
 // ------------------------------------------------------------
-// MeshTools::Subdiv namespace
+// MeshTools::Subdivision namespace
 namespace MeshTools
 {
 /**
  * Utility functions for subdivision surface operations on a \p Mesh.
  */
-namespace Subdiv
+namespace Subdivision
 {
 /**
  * Determines the 1-ring of element \p elem, and writes it to the
@@ -105,7 +105,7 @@ static const unsigned int next[3] = {1,2,0};
  */
 static const unsigned int prev[3] = {2,0,1};
 
-} // end namespace Meshtools::Subdiv
+} // end namespace MeshTools::Subdivision
 } // end namespace MeshTools
 
 } // namespace libMesh

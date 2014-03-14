@@ -820,7 +820,7 @@ void FEMap::compute_map(const unsigned int dim,
       // Subdivision surface FE require the 1-ring around elem
       libmesh_assert_equal_to (dim, 2);
       const Tri3Subdivision* sd_elem = static_cast<const Tri3Subdivision*>(elem);
-      MeshTools::Subdiv::find_one_ring(sd_elem, elem_nodes);
+      MeshTools::Subdivision::find_one_ring(sd_elem, elem_nodes);
     }
   else
     {
